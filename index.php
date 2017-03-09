@@ -4,7 +4,6 @@
 session_start();
 
 include("functions/functions.php");
-include("login.php");
 
 include("templates/header.php");
 include("templates/content.php");
