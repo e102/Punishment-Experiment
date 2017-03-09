@@ -5,8 +5,8 @@
 
 <html>
 <head>
-    <title>UCL Social Network Home</title>
-    <link rel="stylesheet" href="styles/home_style.css" media="all"/>
+    <title>Terms and Conditions</title>
+    <link rel="stylesheet" href="styles/default.css" media="all"/>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
     if (isset($_POST['proceed'])) {
         if (isset($_POST['agrees_to_terms_checkbox'])) {
             echo "<script>alert('Checkbox okay.')</script>";
-            echo "<script>window.open('index.php','_self')</script>";
+            echo "<script>window.open('instructions.php','_self')</script>";
         }
 
         else {

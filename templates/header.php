@@ -3,7 +3,6 @@
 <html>
 
 <head>
-    <title>Login</title>
     <link rel="stylesheet" href="styles/style.css" media="all"/>
 </head>
 
