@@ -95,6 +95,7 @@
     <input type="text" id="question_7"><label>ECU's</label>
     <br>
     <button onclick="submit_quiz()">Submit</button>
+    <button onclick="test()">Test</button>
 </form>
 
 <script>
@@ -120,6 +121,11 @@
 
         //IMPORTANT: Answer to question 4 is wrong.
         return question_1_answer && question_2_answer && question_3_answer && (question_4_answer == 24) && (question_5_answer == 8) && (question_6_answer == 20) && (question_7_answer == 28);
+    }
+
+    function test() {
+        window.location.href = "index.php";
+        //console.log(new_window);
     }
 </script>
 </body>

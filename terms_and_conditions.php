@@ -30,7 +30,7 @@
 
         else {
             echo "<script>alert('Please read and agree to the above to proceed')</script>";
-            echo "<script>window.open('terms_and_conditions.php'_self')</script>";
+            echo "<script>window.open('terms_and_conditions.php','_self')</script>";
         }
     }
     ?>
