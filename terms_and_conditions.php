@@ -25,13 +25,12 @@
     <?php
     if (isset($_POST['proceed'])) {
         if (isset($_POST['agrees_to_terms_checkbox'])) {
-            echo "<script>alert('Checkbox okay.')</script>";
             echo "<script>window.open('instructions.php','_self')</script>";
         }
 
         else {
             echo "<script>alert('Please read and agree to the above to proceed')</script>";
-            echo "<script>window.open('home.php','_self')</script>";
+            echo "<script>window.open('terms_and_conditions.php'_self')</script>";
         }
     }
     ?>

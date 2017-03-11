@@ -2,11 +2,9 @@
 <html>
 <?php include("templates/header.php"); ?>
 <head>
-    <title>Terms and Conditions</title>
+    <title>Instructions</title>
     <link rel="stylesheet" href="styles/default.css" media="all"/>
 </head>
-
-<title>Instructions</title>
 
 <body>
 <h1>Instructions</h1>
@@ -71,7 +69,7 @@
     <input type="radio" name="question_2" value="0"><label for="0">0</label><br>
     <input type="radio" name="question_2" value="14"><label for="14">14</label><br>
     <input type="radio" name="question_2" value="20"><label for="20">20</label><br>
-    <input type="radio" id = "question_2_correct_answer" name="question_2" value="28"><label for="28">28</label><br>
+    <input type="radio" id="question_2_correct_answer" name="question_2" value="28"><label for="28">28</label><br>
     <input type="radio" name="question_2" value="32"><label for="32">32</label><br>
 
     <h4>Round 2</h4>
@@ -79,21 +77,23 @@
         20 ECU’s. What is <b>your</b> total payoff for round 2?</p>
     <input type="radio" name="question_3" value="1"><label for=">1">1</label><br>
     <input type="radio" name="question_3" value="11"><label for="11">11</label><br>
-    <input type="radio" id = "question_3_correct_answer" name="question_3" value="32"><label for="32">32</label><br>
+    <input type="radio" id="question_3_correct_answer" name="question_3" value="32"><label for="32">32</label><br>
     <input type="radio" name="question_2" value="38"><label for="38">38</label><br>
     <input type="radio" name="question_3" value="40"><label for="40">40</label><br>
 
     <h4>Round 3</h4>
     <p>In round 3, you contribute 4 ECU’s to the Social Good, player Green contributes 0,
-        player Red contributes 8 and player Blue contributes 20. What is <b>your</b> total payoff for round 3?.</p>
+        player Red contributes 8 and player Blue contributes 20.</p>
+
+    <p>What is <b>your</b> total payoff for round 3?.</p>
     <input type="text" id="question_4"><label>ECU's</label>
-    <p>What is Blue's total payoff for round 3?</p>
+    <p><br>What is Blue's total payoff for round 3?</p>
     <input type="text" id="question_5"><label>ECU's</label>
-    <p>What is Red's total payoff for round 3?</p>
+    <p><br>What is Red's total payoff for round 3?</p>
     <input type="text" id="question_6"><label>ECU's</label>
-    <p>What is the total payoff of Green for this round? (answer: 28).</p>
+    <p><br>What is the total payoff of Green for this round? (answer: 28).</p>
     <input type="text" id="question_7"><label>ECU's</label>
-    <div></div>
+    <br>
     <button onclick="submit_quiz()">Submit</button>
 </form>
 
@@ -101,6 +101,7 @@
     function submit_quiz() {
         if (validate_answers() == true) {
             alert("Answers correct");
+            window.open('round_0.php','_self');
         }
         else {
             alert("Answers incorrect. Please try again");
@@ -117,6 +118,7 @@
         var question_6_answer = document.getElementById('question_6').value;
         var question_7_answer = document.getElementById('question_7').value;
 
+        //IMPORTANT: Answer to question 4 is wrong.
         return question_1_answer && question_2_answer && question_3_answer && (question_4_answer == 24) && (question_5_answer == 8) && (question_6_answer == 20) && (question_7_answer == 28);
     }
 </script>
