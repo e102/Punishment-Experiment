@@ -47,7 +47,7 @@ include("templates/header.php");
                     createUser($user_payment_id);
                     $_SESSION['user_id'] = getUserID($user_payment_id);
                 } catch (Exception $e) {
-                    echo($e -> getTraceAsString());
+                    echo($e->getTraceAsString());
                 }
                 echo "<script>alert('Welcome to the game!')</script>";
                 echo "<script>window.open('terms_and_conditions.php','_self')</script>";
