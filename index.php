@@ -34,17 +34,21 @@ include("templates/header.php");
             $user_payment_id = mysqli_real_escape_string($con, $_POST['user_ID']);
 
             $get_id = "select * from valid_user_id_list where user_id = '$user_payment_id'";
-            $run_id = mysqli_query($con, $get_id);
-            $check_id = mysqli_num_rows($run_id);
+            $run_payment_id = mysqli_query($con, $get_id);
+            $check_payment_id = mysqli_num_rows($run_payment_id);
 
-            if ($check_id == 0) {
+            if ($check_payment_id == 0) {
                 echo "<script>alert('Your ID has not been recognized.')</script>";
                 echo "<script>window.open('index.php','_self')</script>";
             }
 
             else {
-                $_SESSION["user_payment_id"] = $user_payment_id;
-                createUser($user_payment_id);
+                try {
+                    createUser($user_payment_id);
+                    $_SESSION['user_id'] = getUserID($user_payment_id);
+                } catch (Exception $e) {
+                    echo($e -> getTraceAsString());
+                }
                 echo "<script>alert('Welcome to the game!')</script>";
                 echo "<script>window.open('terms_and_conditions.php','_self')</script>";
             }
@@ -62,14 +66,38 @@ include("templates/header.php");
                     echo "<script>console.log('New record created successfully')</script>";
                 }
                 else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                    throw new Exception("SQL Error");
                 }
             }
-            elseif ($check_id == 1) {
-                echo "<script>console.log('User already exists. Logging in')</script>";
+            elseif ($check_id > 1) {
+                throw new Exception("Serious error. Check user != 0 or 1");
             }
-            else{
-                echo "<script>console.log('Serious error. Check user != 0 or 1')</script>";
+            elseif ($check_id == 1) {
+                throw new Exception("User already exists.");
+            }
+
+
+        }
+
+        function getUserID($user_payment_id) {
+            global $con;
+            $sql_query = "select * from users where user_payment_id = '$user_payment_id'";
+            $run_query = mysqli_query($con, $sql_query);
+            $check_query = mysqli_num_rows($run_query);
+
+            if ($check_query == 1) {
+                while ($row = mysqli_fetch_array($run_query)) {
+                    $_SESSION["user_id"] = $row["user_ID"];
+                }
+            }
+            elseif ($check_query == 0) {
+                throw new Exception("No user found with this id");
+            }
+            elseif ($check_query > 1) {
+                throw new Exception("Multiple users found with this id");
+            }
+            else {
+                throw new Exception("Unexpected error");
             }
         }
 
