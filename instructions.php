@@ -2,7 +2,8 @@
 <html>
 <?php
 include("templates/header.php");
-include "includes/connection.php";
+include ("includes/connection.php");
+session_start();
 ?>
 <head>
     <title>Instructions</title>
@@ -101,13 +102,19 @@ include "includes/connection.php";
 </form>
 <?php
 if (isset($_POST['submit'])) {
-    submit_quiz();
-}
-
-function submit_quiz() {
-    if (validate_answers() == true) {
+    if (validate_answers_test() == true) {
         echo("<script>alert('Answers correct')</script>");
-        echo("<script>window.open('round_0.php', '_self')</script>");
+
+        $userID = $_SESSION["user_id"];
+        $sql = "UPDATE users SET passed_comprehension_quiz = 1 WHERE user_id =$userID";
+        if (mysqli_query($con, $sql)) {
+            echo("<script>alert('You have passed the quiz')</script>");
+            echo("<script>window.open('round_0.php', '_self')</script>");
+        }
+        else {
+            echo("<script>alert('Could not connect to server')</script>");
+            echo "Error: " . $sql . "<br>" . mysqli_error($con);
+        }
     }
     else {
         echo("<script>alert('Answers incorrect. Please try again')</script>");
@@ -125,6 +132,10 @@ function validate_answers() {
 
     //IMPORTANT: Answer to question 4 is wrong.
     return (($question_1_answer == 8) && ($question_2_answer == 28) && ($question_3_answer == 32) && ($question_4_answer == 24) && ($question_5_answer == 8) && ($question_6_answer == 20) && ($question_7_answer == 28));
+}
+
+function validate_answers_test(){
+    return true;
 }
 
 ?>
