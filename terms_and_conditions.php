@@ -33,11 +33,11 @@ include("templates/header.php");
         Please refrain from communicating with the other participants (current or former) for the duration of the
         experiment and make all decisions independently, without discussing them with others.</p>
     <form action="" method="post">
-        <input type="checkbox" name="agrees_to_terms_checkbox" value="agreed_to_t&c"> I have read and understood the
+        <input type="checkbox" name="agrees_to_terms_checkbox" value="agreed_to_t&c" required="required"> I have read
+        and understood the
         above<br>
         <button name="proceed">Proceed</button>
     </form>
-
     <?php
     include("includes/connection.php");
     if (!$con) {
@@ -45,19 +45,13 @@ include("templates/header.php");
     }
 
     if (isset($_POST['proceed'])) {
-        if (isset($_POST['agrees_to_terms_checkbox'])) {
-            $userID = $_SESSION["user_id"];
-            echo ("<h3>$userID");
-            $sql = "UPDATE users SET agreed_to_conditions = 1 WHERE user_id = '$userID')";
-            if (mysqli_query($con, $sql)) {
-                echo "<script>window.open('instructions.php','_self')</script>";
-            }
-            else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($con);
-            }
+        $userID = $_SESSION["user_id"];
+        $sql = "UPDATE users SET agreed_to_conditions = 1 WHERE user_id =$userID";
+        if (mysqli_query($con, $sql)) {
+            echo "<script>window.open('instructions.php','_self')</script>";
         }
         else {
-            echo "<script>alert('Please read and agree to the above to proceed')</script>";
+            echo "Error: " . $sql . "<br>" . mysqli_error($con);
         }
     }
     ?>
