@@ -46,11 +46,11 @@ include("templates/header.php");
                 try {
                     createUser($user_payment_id);
                     $_SESSION['user_id'] = getUserID($user_payment_id);
+                    echo "<script>alert('Welcome to the game!')</script>";
+                    echo "<script>window.open('terms_and_conditions.php','_self')</script>";
                 } catch (Exception $e) {
-                    echo($e->getTraceAsString());
+                    echo($e->getMessage());
                 }
-                echo "<script>alert('Welcome to the game!')</script>";
-                echo "<script>window.open('terms_and_conditions.php','_self')</script>";
             }
         }
 
@@ -60,7 +60,10 @@ include("templates/header.php");
             $run_id = mysqli_query($con, $get_id);
             $check_id = mysqli_num_rows($run_id);
 
-            if ($check_id == 0) {
+            if ($check_id == 1) {
+                echo("<script>console.log('User already exists')</script>");
+            }
+            elseif ($check_id == 0) {
                 $sql = "INSERT INTO users(user_payment_id) VALUES ('$user_payment_id')";
                 if (mysqli_query($con, $sql)) {
                     echo "<script>console.log('New record created successfully')</script>";
@@ -71,9 +74,6 @@ include("templates/header.php");
             }
             elseif ($check_id > 1) {
                 throw new Exception("Serious error. Check user != 0 or 1");
-            }
-            elseif ($check_id == 1) {
-                throw new Exception("User already exists.");
             }
 
 
@@ -87,7 +87,7 @@ include("templates/header.php");
 
             if ($check_query == 1) {
                 while ($row = mysqli_fetch_array($run_query)) {
-                    $_SESSION["user_id"] = $row["user_ID"];
+                    return $row["user_ID"];
                 }
             }
             elseif ($check_query == 0) {

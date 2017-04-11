@@ -1,7 +1,8 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
-
-<?php include("templates/header.php"); ?>
+<?php
+session_start();
+include("templates/header.php");
+?>
 
 <html>
 <head>
@@ -42,10 +43,11 @@
     if (!$con) {
         die("Could not connect to server: " . mysqli_connect_error());
     }
-    
+
     if (isset($_POST['proceed'])) {
         if (isset($_POST['agrees_to_terms_checkbox'])) {
             $userID = $_SESSION["user_id"];
+            echo ("<h3>$userID");
             $sql = "UPDATE users SET agreed_to_conditions = 1 WHERE user_id = '$userID')";
             if (mysqli_query($con, $sql)) {
                 echo "<script>window.open('instructions.php','_self')</script>";
