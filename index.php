@@ -6,6 +6,10 @@ include("templates/header.php");
 ?>
 
 <html>
+<head>
+    <link rel='stylesheet' href='styles/default.css' media='all'/>
+</head>
+
 <div id="content">
     <div id="signup_form">
         <form action="" method="post">

@@ -16,6 +16,7 @@ $test_round_AI_1_payoff = (20 - $test_round_AI_1_contribution) + (0.4 * $total_c
 $test_round_AI_2_payoff = (20 - $test_round_AI_2_contribution) + (0.4 * $total_contribution);
 $test_round_AI_3_payoff = (20 - $test_round_AI_3_contribution) + (0.4 * $total_contribution);
 
+$userID = $_SESSION["user_id"];
 $sql1 = "UPDATE users SET test_round_AI_1_contribution = $test_round_AI_1_contribution WHERE user_id =$userID";
 $sql2 = "UPDATE users SET test_round_AI_2_contribution = $test_round_AI_2_contribution WHERE user_id =$userID";
 $sql3 = "UPDATE users SET test_round_AI_3_contribution = $test_round_AI_3_contribution WHERE user_id =$userID";
@@ -27,7 +28,7 @@ if (!(mysqli_query($con, $sql1) && mysqli_query($con, $sql2) && mysqli_query($co
 echo("
     <head>
         <title>Practice Round Results</title>
-        <link rel=\'stylesheet\' href=\'styles/default.css\' media=\'all\'/>
+        <link rel='stylesheet' href='styles/default.css' media='all'/>
     </head>
     
     <body>
