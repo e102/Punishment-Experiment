@@ -3,6 +3,7 @@
 <?php
 session_start();
 include("templates/header.php");
+include("includes/connection.php");
 ?>
 
 <html>
@@ -28,8 +29,6 @@ include("templates/header.php");
             </table>
         </form>
         <?php
-        include("includes/connection.php");
-
         if (!$con) {
             die("Connection failed: " . mysqli_connect_error());
         }

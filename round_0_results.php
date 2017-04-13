@@ -63,7 +63,7 @@ echo("
 ");
 
 if (isset($_POST['submit'])) {
-    echo("<script>window.open('round_1.php', '_self')</script>");
+    echo("<script>window.open('round_1_instructions.php', '_self')</script>");
 }
 ?>
 </body>
