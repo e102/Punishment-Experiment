@@ -16,9 +16,9 @@ session_start();
 
 <p>Remember</p>
 <ul>
-    <li>You start with 20 tokens</li>
-    <li>You can donate any number of these tokens to the common pool</li>
-    <li>Your final income is the sum of any tokens you keep + 0.4 x the
+    <li>You start with 20 ECUs</li>
+    <li>You can donate any number of these ECUs to the common pool</li>
+    <li>Your final income is the sum of any ECUs you keep + 0.4 x the
         total contribution of all 4 group members to the common pool.
     </li>
 </ul>
@@ -26,7 +26,7 @@ session_start();
 <p>In total: payout = (20 - your contribution to the project) + 0.4*(total contributions to the project)</p>
 <br>
 
-<p id="tokens_kept">Your tokens:20</p>
+<p id="tokens_kept">Your ECUs:20</p>
 
 <form action="" method="post">
     <p>Contribution to common pool:</p>
@@ -76,7 +76,7 @@ if (isset($_POST['submit'])) {
     function update_ECU_Count() {
         var contribution = document.getElementById("r0_contribution");
         var x = contribution.options[contribution.selectedIndex].value;
-        document.getElementById("tokens_kept").innerHTML = "Your tokens:" + (20 - x).toString();
+        document.getElementById("tokens_kept").innerHTML = "Your ECUs:" + (20 - x).toString();
     }
 </script>
 </body>

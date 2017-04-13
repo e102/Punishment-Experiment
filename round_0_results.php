@@ -36,10 +36,10 @@ echo("
     
     <h3>Donations:</h3>
     <ul>
-        <li>You donated $test_round_player_contribution tokens to the common pool</li>
-        <li>Player 2 donated $test_round_AI_1_contribution tokens to the common pool</li>
-        <li>Player 3 donated $test_round_AI_2_contribution tokens to the common pool</li>
-        <li>Player 4 donated $test_round_AI_3_contribution tokens to the common pool</li>
+        <li>You donated $test_round_player_contribution ECUs to the common pool</li>
+        <li>Player 2 donated $test_round_AI_1_contribution ECUs to the common pool</li>
+        <li>Player 3 donated $test_round_AI_2_contribution ECUs to the common pool</li>
+        <li>Player 4 donated $test_round_AI_3_contribution ECUs to the common pool</li>
     </ul>
     
     <br>

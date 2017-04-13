@@ -17,7 +17,7 @@ session_start();
     variation of the initial game. It is important that you read these instructions carefully as the decisions that you
     make in the experiment will affect which lottery you will be able to enter. Your total payoff for the experiment
     will be the results of one of the parts of the experiment chosen at random by the computer. In this experiment we
-    use Experiment Currency Units (ECU’s) also referred to as tokens, which will be later transformed into payments
+    use Experiment Currency Units (ECU’s)s, which will be later transformed into payments
     according to the following rate:</p>
 
 <p>10 ECU = 1£</p>
@@ -26,8 +26,8 @@ session_start();
     They have been given the same instructions that you are reading now and play by exactly the same rules. In the
     beginning of the experiment you and all the other participants will be endowed with 20 ECU, which you can choose to
     either contribute to the Social Good, or keep for yourself. For every ECU contributed to the Social Good every
-    participant will receive 0.4 ECU’s. That makes the social return of every contributed token equal to 4*0.4 = 1.6.
-    Every token that has not been contributed to the social good remains at your disposal.</p>
+    participant will receive 0.4 ECU’s. That makes the social return of every contributed ECU equal to 4*0.4 = 1.6.
+    Every ECU that has not been contributed to the social good remains at your disposal.</p>
 
 <p>The number of the period appears in the top left corner of the screen. In the top right corner you can see how many
     more seconds remain for you to decide on the distribution of your points. Your decision must be made before the time
@@ -46,7 +46,7 @@ session_start();
 
 <p>Your income for the round will consist of:</p>
 <ul>
-    <li>the tokens which you have kept for yourself (“Income from ECU kept”);</li>
+    <li>the ECUs which you have kept for yourself (“Income from ECU kept”);</li>
     <li>the “income from the project”. This income is calculated as follows: your income from the project = 0.4 x the
         total contribution of all 4 group members to the project.
     </li>
@@ -98,7 +98,7 @@ session_start();
     <p><br>What is the total payoff of Green for this round? (answer: 28).</p>
     <input type="text" name="question_7" required="required"><label>ECU's</label>
     <br>
-    <button name="submit">Submit</button>
+    <button name="submit">Submit (Dev testing. Will always work.)</button>
 </form>
 <?php
 if (isset($_POST['submit'])) {

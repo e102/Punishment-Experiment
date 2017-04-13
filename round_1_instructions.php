@@ -15,9 +15,9 @@ session_start();
 </p>
 <ul>
     <li>There are three rounds in the game</li>
-    <li>You start with 20 tokens</li>
-    <li>You can contribute tokens to the common pool</li>
-    <li>Your ECU's are the sum of your leftover tokens and the total donated to the common pool timex 0.4</li>
+    <li>You start with 20 ECUs</li>
+    <li>You can contribute ECUs to the common pool</li>
+    <li>Your ECU's are the sum of your leftover ECUs and the total donated to the common pool times 0.4</li>
 </ul>
 
 <form action='' method='post'>
