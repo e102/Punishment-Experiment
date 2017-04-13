@@ -103,8 +103,6 @@ session_start();
 <?php
 if (isset($_POST['submit'])) {
     if (validate_answers_test() == true) {
-        echo("<script>alert('Answers correct')</script>");
-
         $userID = $_SESSION["user_id"];
         $sql = "UPDATE users SET passed_comprehension_quiz = 1 WHERE user_id =$userID";
         if (mysqli_query($con, $sql)) {
