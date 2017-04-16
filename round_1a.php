@@ -18,7 +18,8 @@ session_start();
 <div id="display_after_load" style="display:none">
     <p>All players have connected. Please enter your contribution below</p>
     <br>
-    <p id='ECUs_kept'>Your ECUs:20</p>
+    <p>You start with 20 ECU's</p>
+    <p id='ECUs_kept'>ECUs remaining after your contribution:20</p>
     <form action='' method='post'>
         <p>Contribution to common pool:</p>
         <select id='r1a_contribution' name='r1a_contribution' onchange='update_ECU_Count()'>
@@ -91,7 +92,7 @@ if (isset($_POST['submit'])) {
     function update_ECU_Count() {
         var contribution = document.getElementById("r1a_contribution");
         var x = contribution.options[contribution.selectedIndex].value;
-        document.getElementById("ECUs_kept").innerHTML = "Your ECUs:" + (20 - x).toString();
+        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + (20 - x).toString();
     }
 </script>
 </body>
