@@ -10,7 +10,7 @@ session_start();
 </head>
 
 <body>
-<h1>Welcome to the round 2</h1>
+<h1>Welcome to round 2</h1>
 <div id="display_before_load">
     <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
     <p>The previous round's results are displayed below:</p>
@@ -28,14 +28,19 @@ function display_round_1a_results($user_ID) {
 
     if ($check_query == 1) {
         while ($row = mysqli_fetch_array($run_query)) {
+            global $round_1a_player_contribution;
             $round_1a_player_contribution = $row["round_1a_player_contribution"];
             $round_1a_AI_1_contribution = $row["round_1a_AI_1_contribution"];
             $round_1a_AI_2_contribution = $row["round_1a_AI_2_contribution"];
             $round_1a_AI_3_contribution = $row["round_1a_AI_3_contribution"];
 
+            global $round_1a_player_ECU_at_end;
             $round_1a_player_ECU_at_end = $row["round_1a_player_ECU_at_end"];
+            global $round_1a_AI_1_ECU_at_end;
             $round_1a_AI_1_ECU_at_end = $row["round_1a_AI_1_ECU_at_end"];
+            global $round_1a_AI_2_ECU_at_end;
             $round_1a_AI_2_ECU_at_end = $row["round_1a_AI_2_ECU_at_end"];
+            global $round_1a_AI_3_ECU_at_end;
             $round_1a_AI_3_ECU_at_end = $row["round_1a_AI_3_ECU_at_end"];
         }
     }
@@ -50,20 +55,15 @@ function display_round_1a_results($user_ID) {
     }
 
     echo("
-    <head>
-        <title>Round 1a Results</title>
-        <link rel='stylesheet' href='styles/default.css' media='all'/>
-    </head>
-    
     <body>
-    <h1>The results:</h1>
+    <h1>Round 1 results:</h1>
     
     <h3>Initial State:</h3>
     <ul>
-        <li>You entered the round with 0 ECUs</li>
-        <li>Player 2 entered the round with 0 ECUs</li>
-        <li>Player 3 entered the round with 0 ECUs</li>
-        <li>Player 4 entered the round with 0 ECUs</li>
+        <li>You entered the round with 20 ECUs</li>
+        <li>Player 2 entered the round with 20 ECUs</li>
+        <li>Player 3 entered the round with 20 ECUs</li>
+        <li>Player 4 entered the round with 20 ECUs</li>
     </ul>
     
     <h3>Donations:</h3>
@@ -79,7 +79,7 @@ function display_round_1a_results($user_ID) {
     <ul>
         <li>You have $round_1a_player_ECU_at_end ECU's</li>
         <li>Player 2 has $round_1a_AI_1_ECU_at_end ECU's</li>
-        <li>Player 3 hsa $round_1a_AI_2_ECU_at_end ECU's</li>
+        <li>Player 3 has $round_1a_AI_2_ECU_at_end ECU's</li>
         <li>Player 4 has $round_1a_AI_3_ECU_at_end ECU's</li>
     </ul>
     <br>
@@ -100,7 +100,7 @@ function display_round_1a_results($user_ID) {
             <option value='0' selected='selected'>0</option>
             <script>
                 var contribution_dropdown = document.getElementById("r1b_contribution");
-                for (var i=1;i<=player_starting_ECU;i++) {
+                for (var i = 1; i <= player_starting_ECU; i++) {
                     var option = document.createElement("option");
                     option.text = i;
                     option.value = i;
@@ -116,15 +116,24 @@ function display_round_1a_results($user_ID) {
 <?php
 if (isset($_POST['submit'])) {
     $round_1b_player_contribution = (int)htmlspecialchars($_POST["r1b_contribution"]);
-    $round_1b_AI_1_contribution = rand(5, 15);
-    $round_1b_AI_2_contribution = rand(5, 15);
-    $round_1b_AI_3_contribution = rand(5, 15);
+    global $round_1a_player_contribution;
+    global $round_1a_AI_1_ECU_at_end;
+    $round_1b_AI_1_contribution = calculate_AI_contribution($round_1a_player_contribution, $round_1a_AI_1_ECU_at_end);
+    global $round_1a_AI_2_ECU_at_end;
+    $round_1b_AI_2_contribution = calculate_AI_contribution($round_1a_player_contribution, $round_1a_AI_2_ECU_at_end);
+    global $round_1a_AI_2_ECU_at_end;
+    $round_1b_AI_3_contribution = calculate_AI_contribution($round_1a_player_contribution, $round_1a_AI_2_ECU_at_end);
 
     $total_contribution = $round_1b_player_contribution + $round_1b_AI_1_contribution + $round_1b_AI_2_contribution + $round_1b_AI_3_contribution;
-    $round_1b_player_ECU_at_end = (20 - $round_1b_player_contribution) + (0.4 * $total_contribution);
-    $round_1b_AI_1_ECU_at_end = (20 - $round_1b_AI_1_contribution) + (0.4 * $total_contribution);
-    $round_1b_AI_2_ECU_at_end = (20 - $round_1b_AI_2_contribution) + (0.4 * $total_contribution);
-    $round_1b_AI_3_ECU_at_end = (20 - $round_1b_AI_3_contribution) + (0.4 * $total_contribution);
+
+    global $round_1a_player_ECU_at_end;
+    $round_1b_player_ECU_at_end = ($round_1a_player_ECU_at_end - $round_1b_player_contribution) + (0.4 * $total_contribution);
+    global $round_1a_AI_1_ECU_at_end;
+    $round_1b_AI_1_ECU_at_end = ($round_1a_AI_1_ECU_at_end - $round_1b_AI_1_contribution) + (0.4 * $total_contribution);
+    global $round_1a_AI_2_ECU_at_end;
+    $round_1b_AI_2_ECU_at_end = ($round_1a_AI_2_ECU_at_end - $round_1b_AI_2_contribution) + (0.4 * $total_contribution);
+    global $round_1a_AI_3_ECU_at_end;
+    $round_1b_AI_3_ECU_at_end = ($round_1a_AI_3_ECU_at_end - $round_1b_AI_3_contribution) + (0.4 * $total_contribution);
 
     $userID = $_SESSION["user_id"];
     $sql1 = "UPDATE users SET round_1b_player_contribution = $round_1b_player_contribution, round_1b_player_ECU_at_end = $round_1b_player_ECU_at_end WHERE user_id =$userID";
@@ -137,9 +146,18 @@ if (isset($_POST['submit'])) {
         echo "Error: " . $sql4 . "<br>" . mysqli_error($con);
     }
     else {
-        echo("<script>window.open('round_1b.php', '_self')</script>");
+        echo("<script>window.open('round_1c.php', '_self')</script>");
     }
 }
+
+function calculate_AI_contribution($player_contribution, $AI_ECU_available) {
+    $AI_contribution = rand($player_contribution, $player_contribution + 10);
+    if ($AI_contribution > $AI_ECU_available) {
+        $AI_contribution = $AI_ECU_available;
+    }
+    return $AI_contribution;
+}
+
 ?>
 
 <script>
@@ -156,7 +174,7 @@ if (isset($_POST['submit'])) {
     function update_ECU_Count() {
         var contribution = document.getElementById("r1b_contribution");
         var x = contribution.options[contribution.selectedIndex].value;
-        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + (20 - x).toString();
+        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + (player_starting_ECU - x).toString();
     }
 </script>
 </body>

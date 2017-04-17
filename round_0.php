@@ -26,7 +26,8 @@ session_start();
 <p>In total: payout = (20 - your contribution to the project) + 0.4*(total contributions to the project)</p>
 <br>
 
-<p id="tokens_kept">Your ECUs:20</p>
+<p>Your starting ECU's: 20</p>
+<p id="tokens_kept">ECU's kept: 20</p>
 
 <form action="" method="post">
     <p>Contribution to common pool:</p>
@@ -76,7 +77,7 @@ if (isset($_POST['submit'])) {
     function update_ECU_Count() {
         var contribution = document.getElementById("r0_contribution");
         var x = contribution.options[contribution.selectedIndex].value;
-        document.getElementById("tokens_kept").innerHTML = "Your ECUs:" + (20 - x).toString();
+        document.getElementById("tokens_kept").innerHTML = "ECUs kept: " + (20 - x).toString();
     }
 </script>
 </body>

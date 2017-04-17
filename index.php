@@ -49,7 +49,6 @@ include("includes/connection.php");
                 try {
                     createUser($user_payment_id);
                     $_SESSION['user_id'] = getUserID($user_payment_id);
-                    echo "<script>alert('Welcome to the game!')</script>";
                     echo "<script>window.open('terms_and_conditions.php','_self')</script>";
                 } catch (Exception $e) {
                     echo($e->getMessage());

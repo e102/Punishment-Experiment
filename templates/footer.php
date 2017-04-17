@@ -2,6 +2,6 @@
 
 <html>
 <div id="footer">
-    <h2>&copy; Srdjan Miletic, Evelyn Svingen 2017</h2>
+    <h2>Contact Details</h2>
 </div>
 </html>

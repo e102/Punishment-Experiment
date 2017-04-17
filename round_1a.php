@@ -10,8 +10,8 @@ session_start();
 </head>
 
 <body>
+<h1>Welcome to round 1</h1>
 <div id="display_before_load">
-    <h1>Welcome to the round 1</h1>
     <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
 </div>
 
