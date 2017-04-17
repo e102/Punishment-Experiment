@@ -57,7 +57,7 @@ session_start();
 
 <h1>Comprehension Quiz</h1>
 <p>These questions are designed to check if you have understood the instructions. The programme will not allow you to
-    continue to the start of the game unless of the questions have been answered correctly.</p>
+    continue to the start of the game unless each of the questions have been answered correctly.</p>
 
 <form action="" method="post">
     <h4>Round 1</h4>
