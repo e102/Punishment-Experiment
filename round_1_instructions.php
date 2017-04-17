@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
 <?php include("templates/header.php");
-include("includes/connection.php");
-session_start();
 ?>
 <head>
-    <title>Round 1: Instructions</title>
+    <title>Game 1 Instructions</title>
     <link rel='stylesheet' href='styles/default.css' media='all'/>
 </head>
 

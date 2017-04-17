@@ -97,11 +97,13 @@ function display_round_1b_results($user_ID) {
     <form action='' method='post'>
         <p>Contribution to common pool:</p>
         <select id='r1c_contribution' name='r1c_contribution' onchange='update_ECU_Count()'>
-            <option value='0' selected='selected'>0</option>
             <script>
                 var contribution_dropdown = document.getElementById("r1c_contribution");
-                for (var i = 1; i <= player_starting_ECU; i++) {
+                for (var i = 0; i <= player_starting_ECU; i++) {
                     var option = document.createElement("option");
+                    if (i == 0) {
+                        option.selected = "selected";
+                    }
                     option.text = i;
                     option.value = i;
                     contribution_dropdown.add(option);
