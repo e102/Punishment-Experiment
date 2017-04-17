@@ -11,10 +11,7 @@ session_start();
 
 <body>
 <h1>Welcome to round 3</h1>
-<div id="display_before_load">
-    <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
-    <p>The previous round's results are displayed below:</p>
-</div>
+<br>
 
 <?php
 $userID = $_SESSION["user_id"];
@@ -42,6 +39,11 @@ function display_round_1b_results($user_ID) {
             $round_1b_AI_2_ECU_at_end = $row["round_1b_AI_2_ECU_at_end"];
             global $round_1b_AI_3_ECU_at_end;
             $round_1b_AI_3_ECU_at_end = $row["round_1b_AI_3_ECU_at_end"];
+
+            $round_1a_player_ECU_at_end = $row["round_1a_player_ECU_at_end"];
+            $round_1a_AI_1_ECU_at_end = $row["round_1a_AI_1_ECU_at_end"];
+            $round_1a_AI_2_ECU_at_end = $row["round_1a_AI_2_ECU_at_end"];
+            $round_1a_AI_3_ECU_at_end = $row["round_1a_AI_3_ECU_at_end"];
         }
     }
     elseif ($check_query == 0) {
@@ -56,14 +58,14 @@ function display_round_1b_results($user_ID) {
 
     echo("
     <body>
-    <h1>Round 1 results:</h1>
+    <h1>Round 2 results:</h1>
     
     <h3>Initial State:</h3>
     <ul>
-        <li>You entered the round with 20 ECUs</li>
-        <li>Player 2 entered the round with 20 ECUs</li>
-        <li>Player 3 entered the round with 20 ECUs</li>
-        <li>Player 4 entered the round with 20 ECUs</li>
+        <li>You entered the round with $round_1a_player_ECU_at_end ECUs</li>
+        <li>Player 2 entered the round with $round_1a_AI_1_ECU_at_end ECUs</li>
+        <li>Player 3 entered the round with $round_1a_AI_2_ECU_at_end ECUs</li>
+        <li>Player 4 entered the round with $round_1a_AI_3_ECU_at_end ECUs</li>
     </ul>
     
     <h3>Donations:</h3>
@@ -88,6 +90,10 @@ function display_round_1b_results($user_ID) {
 }
 
 ?>
+
+<div id="display_before_load">
+    <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
+</div>
 
 <div id="display_after_load" style="display:none">
     <p>All players have connected. Please enter your contribution below</p>
@@ -153,7 +159,7 @@ if (isset($_POST['submit'])) {
 }
 
 function calculate_AI_contribution($player_contribution, $AI_ECU_available) {
-    $AI_contribution = rand($player_contribution, $player_contribution + 10);
+    $AI_contribution = rand($player_contribution - 10, $player_contribution + 10);
     if ($AI_contribution > $AI_ECU_available) {
         $AI_contribution = $AI_ECU_available;
     }

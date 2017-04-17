@@ -11,10 +11,7 @@ session_start();
 
 <body>
 <h1>Welcome to round 2</h1>
-<div id="display_before_load">
-    <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
-    <p>The previous round's results are displayed below:</p>
-</div>
+<br>
 
 <?php
 $userID = $_SESSION["user_id"];
@@ -88,6 +85,9 @@ function display_round_1a_results($user_ID) {
 }
 
 ?>
+<div id="display_before_load">
+    <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
+</div>
 
 <div id="display_after_load" style="display:none">
     <p>All players have connected. Please enter your contribution below</p>
