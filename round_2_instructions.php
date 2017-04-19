@@ -10,6 +10,8 @@
 <p>You will now play game 2. The rules are the same as game 1 with one addition. You can now punish or reward other
     participants. Punishing a player removes their ECU's. Rewarding them gives them ECU's. It costs you 0.5 ECU's to
     punish/reward a player 1 ECU</p>
+
+<h3>IMPORTANT: Player names have been changed. You are still playing with the same people, but their names have been reassigned.</h3>
 <ul>
     <li>There are three rounds in the game</li>
     <li>You start with 20 ECUs</li>
