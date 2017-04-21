@@ -109,7 +109,7 @@ function submit_choices($userID) {
 
     global $con;
     if (mysqli_query($con, $sql1) && mysqli_query($con, $sql2) && mysqli_query($con, $sql3) && mysqli_query($con, $sql4)) {
-        echo("<script>window.open('round_2a_results.php', '_self')</script>");
+        echo("<script>window.open('round_2a_punishment.php', '_self')</script>");
     }
     else {
         echo("<script>alert('Could not connect to server')</script>");
