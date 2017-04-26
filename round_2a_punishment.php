@@ -36,6 +36,8 @@ function get_previous_round_contributions($user_ID) {
             $round_2a_AI_2_contribution = $row["round_2a_AI_2_contribution"];
             global $round_2a_AI_3_contribution;
             $round_2a_AI_3_contribution = $row["round_2a_AI_3_contribution"];
+            global $round_2a_total_contribution;
+            $round_2a_total_contribution = $round_2a_player_contribution + $round_2a_AI_1_contribution + $round_2a_AI_2_contribution + $round_2a_AI_3_contribution;
         }
     }
     else {
@@ -55,6 +57,7 @@ function display_round_2a_results($round_2a_player_contribution, $round_2a_AI_1_
         <li>Player 3 entered the round with 20 ECUs</li>
         <li>Player 4 entered the round with 20 ECUs</li>
     </ul>
+    <br>
     
     <h3>Donations:</h3>
     <ul>
@@ -206,104 +209,16 @@ function display_round_2a_results($round_2a_player_contribution, $round_2a_AI_1_
 
 <?php
 include("includes/upload_player_rewards.php");
+include("includes/upload_AI_rewards.php");
+include("includes/update_total_ECU.php");
 if (isset($_POST['submit'])) {
     $userID = $_SESSION["user_id"];
     upload_player_rewards($player_count, $userID, "2a");
+    upload_AI_rewards($player_count, $userID, "2a");
+    global $round_2a_total_contribution;
+    update_total_ECU($player_count, $userID, "2a", $round_2a_total_contribution);
+    echo("<script>window.open('round_2a_results.php', '_self')</script>");
 }
-
-//AI punishments
-
-
-function upload_AI_rewards($player_count, $userID, $round_name) {
-    for ($current_AI = 2; $current_AI <= $player_count; $current_AI++) {
-        for ($target_player = 1; $target_player <= $player_count; $target_player++) {
-            if ($target_player == $current_AI) {
-                continue;
-            }
-            $global
-            $current_AI_contribution =
-
-            if ($target_player == 1) {
-                global $round_2a_player_contribution;
-                $target_player_contribution = $round_2a_player_contribution;
-            }
-            else{
-
-            }
-
-            //lazy AI
-            if (($current_AI % 4) == 2) {
-                continue;
-            }
-
-            //normal AI. Rewards and Punishes
-            if (($current_AI % 4) == 1) {
-            }
-
-            //mean AI. Only punishes
-            if (($current_AI % 4) == 0) {
-
-            }
-        }
-    }
-}
-
-//player final
-
-//AI final
-
-
-//function upload_player_rewards($player_count, $userID, $round_name) {
-//    global $con;
-//    for ($i = 2; $i <= $player_count; $i++) {
-//        if ($_POST['punish_or_reward_dropdown_player_' . $i] == "reward") {
-//            $player_reward = $_POST['amount_dropdown_player_' . $i];
-//        }
-//        elseif ($_POST['punish_or_reward_dropdown_player_' . $i] == "punish") {
-//            $player_reward = -$_POST['amount_dropdown_player_' . $i];
-//        }
-//        elseif ($_POST['punish_or_reward_dropdown_player_' . $i] == "no") {
-//            $player_reward = -$_POST['amount_dropdown_player_' . $i];
-//        }
-//        else {
-//            throw new Exception("!= punish||reward||no");
-//        }
-//
-//        $sql = "UPDATE users SET round_" . $round_name . "_player_reward_AI_" . ($i - 1) . " = $player_reward WHERE user_id =$userID";
-//
-//        if (mysqli_query($con, $sql)) {
-//            echo("<script>console.log('User punishment uploaded successfully.')</script>");
-//        }
-//        else {
-//            echo("<script>alert('Could not connect to server')</script>");
-//            echo "Error: " . $sql . "<br>" . mysqli_error($con);
-//        }
-//    }
-//}
-
-//global $round_1b_player_ECU_at_end;
-//$round_1c_player_ECU_at_end = ($round_1b_player_ECU_at_end - $round_1c_player_contribution) + (0.4 * $total_contribution);
-//global $round_1b_AI_1_ECU_at_end;
-//$round_1c_AI_1_ECU_at_end = ($round_1b_AI_1_ECU_at_end - $round_1c_AI_1_contribution) + (0.4 * $total_contribution);
-//global $round_1b_AI_2_ECU_at_end;
-//$round_1c_AI_2_ECU_at_end = ($round_1b_AI_2_ECU_at_end - $round_1c_AI_2_contribution) + (0.4 * $total_contribution);
-//global $round_1b_AI_3_ECU_at_end;
-//$round_1c_AI_3_ECU_at_end = ($round_1b_AI_3_ECU_at_end - $round_1c_AI_3_contribution) + (0.4 * $total_contribution);
-//
-//
-//$sql1 = "UPDATE users SET round_1c_player_contribution = $round_1c_player_contribution, round_1c_player_ECU_at_end = $round_1c_player_ECU_at_end WHERE user_id =$userID";
-//$sql2 = "UPDATE users SET round_1c_AI_1_contribution = $round_1c_AI_1_contribution, round_1c_AI_1_ECU_at_end = $round_1c_AI_1_ECU_at_end WHERE user_id =$userID";
-//$sql3 = "UPDATE users SET round_1c_AI_2_contribution = $round_1c_AI_2_contribution, round_1c_AI_2_ECU_at_end = $round_1c_AI_2_ECU_at_end WHERE user_id =$userID";
-//$sql4 = "UPDATE users SET round_1c_AI_3_contribution = $round_1c_AI_3_contribution, round_1c_AI_3_ECU_at_end = $round_1c_AI_3_ECU_at_end WHERE user_id =$userID";
-//
-//if (!(mysqli_query($con, $sql1) && mysqli_query($con, $sql2) && mysqli_query($con, $sql3) && mysqli_query($con, $sql4))) {
-//    echo("<script>alert('Could not connect to server')</script>");
-//    echo "Error: " . $sql4 . "<br>" . mysqli_error($con);
-//}
-//else {
-//    echo("<script>window.open('round_1_results.php', '_self')</script>");
-//}
-
 ?>
 
 <?php include("templates/footer.php") ?>

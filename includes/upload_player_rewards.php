@@ -20,7 +20,7 @@ function upload_player_rewards($player_count, $userID, $round_name) {
         $sql = "UPDATE users SET round_" . $round_name . "_player_reward_AI_" . ($i - 1) . " = $player_reward WHERE user_id =$userID";
 
         if (mysqli_query($con, $sql)) {
-            echo("<script>console.log('User punishment uploaded successfully.')</script>");
+            echo("<script>console.log('User reward for AI ' + ($i-1) + ' uploaded successfully.')</script>");
         }
         else {
             echo("<script>alert('Could not connect to server')</script>");
