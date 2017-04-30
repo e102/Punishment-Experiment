@@ -16,7 +16,7 @@ get_previous_round_contributions($_SESSION["user_id"]);
 display_round_2a_results($round_2a_player_contribution, $round_2a_AI_1_contribution, $round_2a_AI_2_contribution, $round_2a_AI_3_contribution);
 
 $player_count = 4;
-echo("<script>var player_starting_ECU = 20 - $round_2a_player_contribution</script>");
+echo("<script>var player_starting_ECU = (20 - $round_2a_player_contribution) + 0.4*($round_2a_player_contribution + $round_2a_AI_1_contribution + $round_2a_AI_2_contribution + $round_2a_AI_3_contribution)</script>");
 
 echo("<script>var player_count = $player_count;</script>");
 
@@ -216,8 +216,8 @@ if (isset($_POST['submit'])) {
     upload_player_rewards($player_count, $userID, "2a");
     upload_AI_rewards($player_count, $userID, "2a");
     global $round_2a_total_contribution;
-    update_total_ECU($player_count, $userID, "2a", $round_2a_total_contribution);
-    echo("<script>window.open('round_2a_results.php', '_self')</script>");
+    update_total_ECU($player_count, $userID, "2a", $round_2a_total_contribution);   //bug
+    //echo("<script>window.open('round_2a_results.php', '_self')</script>");
 }
 ?>
 

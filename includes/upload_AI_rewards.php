@@ -89,8 +89,6 @@ function upload_AI_rewards($player_count, $userID, $round_name) {
         }
     }
 
-    include_once("get_contribution.php");
-
     global $con;
     $sql_query = "select * from users where user_ID = '$userID'";
     $run_query = mysqli_query($con, $sql_query);
@@ -99,45 +97,47 @@ function upload_AI_rewards($player_count, $userID, $round_name) {
         throw new Exception("Could not fetch data");
     }
 
-    for ($current_AI = 2; $current_AI <= $player_count; $current_AI++) {
-        $current_AI_contribution = get_contribution($round_name, $current_AI, $run_query);
-        for ($target_player = 1; $target_player <= $player_count; $target_player++) {
-            if ($target_player == $current_AI) {
-                continue;
-            }
+    try {
+        for ($current_AI = 2; $current_AI <= $player_count; $current_AI++) {
+            include_once("get_contribution.php");
+            $current_AI_contribution = get_contribution($round_name, $current_AI);
+            for ($target_player = 1; $target_player <= $player_count; $target_player++) {
+                if ($target_player == $current_AI) {
+                    continue;
+                }
 
-            $target_player_contribution = get_contribution($round_name, $target_player, $run_query);
+                $target_player_contribution = get_contribution($round_name, $target_player);
 
-            if ($current_AI == 2) {
-                $AI_type = "lazy";
-            }
-            elseif ($current_AI == 3) {
-                $AI_type = "normal";
-            }
-            elseif ($current_AI == 4) {
-                $AI_type = "mean";
-            }
-            else {
-                throw new Exception("Too many players for this version to handle.");
-            }
+                if ($current_AI == 2) {
+                    $AI_type = "lazy";
+                }
+                elseif ($current_AI == 3) {
+                    $AI_type = "normal";
+                }
+                elseif ($current_AI == 4) {
+                    $AI_type = "mean";
+                }
+                else {
+                    throw new Exception("Too many players for this version to handle.");
+                }
 
 
-            $reward = calculate_reward($AI_type, $current_AI_contribution, $target_player_contribution, get_AI_ECU_available($current_AI - 1));
+                $reward = calculate_reward($AI_type, $current_AI_contribution, $target_player_contribution, get_AI_ECU_available($current_AI - 1));
 
-            if ($target_player == 1) {
-                $sql = "UPDATE users SET round_" . $round_name . "_AI_" . ($current_AI - 1) . "_reward_player = $reward WHERE user_id =$userID";
-            }
-            else {
-                $sql = "UPDATE users SET round_" . $round_name . "_AI_" . ($current_AI - 1) . "_reward_AI_" . ($target_player - 1) . " = $reward WHERE user_id =$userID";
-            }
+                if ($target_player == 1) {
+                    $sql = "UPDATE users SET round_" . $round_name . "_AI_" . ($current_AI - 1) . "_reward_player = $reward WHERE user_id =$userID";
+                }
+                else {
+                    $sql = "UPDATE users SET round_" . $round_name . "_AI_" . ($current_AI - 1) . "_reward_AI_" . ($target_player - 1) . " = $reward WHERE user_id =$userID";
+                }
 
-            if (mysqli_query($con, $sql)) {
-                echo("<script>console.log('punishment uploaded successfully.')</script>");
-            }
-            else {
-                echo("<script>alert('Could not connect to server')</script>");
-                throw new Exception("Error: " . $sql . "<br>" . mysqli_error($con));
+                if (!mysqli_query($con, $sql)) {
+                    echo("<script>alert('Could not connect to server')</script>");
+                    throw new Exception("Error: " . $sql . "<br>" . mysqli_error($con));
+                }
             }
         }
+    } catch (Exception $e) {
+        echo ($e . "<br>");
     }
 }
