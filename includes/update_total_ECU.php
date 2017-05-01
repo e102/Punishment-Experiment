@@ -6,63 +6,31 @@ function update_total_ECU($player_count, $user_ID, $round_name) {
 
     include_once("get_starting_ECU.php");
 
-    function get_total_rewards_given($round_name, $player, $user_ID, $player_count) {
+    function get_total_rewards_given($round_name, $rewarding_player, $user_ID, $player_count) {
         $player_rewards_given = 0;
 
-        global $con;
-        $sql_query = "select * from users where user_ID = '$user_ID'";
-        $run_query = mysqli_query($con, $sql_query);
-
-        while ($row = mysqli_fetch_array($run_query)) {
-            if ($player == 1) {
-                for ($target_player = 2; $target_player <= $player_count; $target_player++) {
-                    $player_rewards_given += abs($row["round_" . $round_name . "_player_reward_AI_" . ($target_player - 1)]);
-                }
+        include_once("get_reward.php");
+        for ($rewarded_player = 1; $rewarded_player <= $player_count; $rewarded_player++) {
+            if ($rewarded_player == $rewarding_player) {
+                continue;
             }
-            else {
-                for ($target_player = 1; $target_player <= $player_count; $target_player++) {
-                    if ($target_player == $player) {
-                        continue;
-                    }
-                    elseif ($target_player == 1) {
-                        $player_rewards_given += abs($row["round_" . $round_name . "_AI_" . ($player - 1) . "_reward_player"]);
-                    }
-                    else {
-                        $player_rewards_given += abs($row["round_" . $round_name . "_AI_" . ($player - 1) . "_reward_AI_" . ($target_player - 1)]);
-                    }
-                }
-            }
+            $player_rewards_given += abs(get_reward($round_name, $rewarding_player, $rewarded_player, $user_ID));
         }
+
         return $player_rewards_given;
     }
 
-    function get_total_reward_received($round_name, $current_player, $user_ID, $player_count) {
+    function get_total_reward_received($round_name, $rewarded_player, $user_ID, $player_count) {
         $player_rewards_received = 0;
 
-        global $con;
-        $sql_query = "select * from users where user_ID = '$user_ID'";
-        $run_query = mysqli_query($con, $sql_query);
-
-        while ($row = mysqli_fetch_array($run_query)) {
-            if ($current_player == 1) {
-                for ($target_player = 2; $target_player <= $player_count; $target_player++) {
-                    $player_rewards_received += $row["round_" . $round_name . "_AI_" . ($target_player - 1) . "_reward_player"];
-                }
+        include_once("get_reward.php");
+        for ($rewarding_player = 1; $rewarding_player <= $player_count; $rewarding_player++) {
+            if ($rewarding_player == $rewarded_player) {
+                continue;
             }
-            else {
-                for ($target_player = 1; $target_player <= $player_count; $target_player++) {
-                    if ($target_player == $current_player) {
-                        continue;
-                    }
-                    elseif ($target_player == 1) {
-                        $player_rewards_received += $row["round_" . $round_name . "_player_reward_AI_" . ($current_player - 1)];
-                    }
-                    else {
-                        $player_rewards_received += $row["round_" . $round_name . "_AI_" . ($target_player - 1) . "_reward_AI_" . ($current_player - 1)];
-                    }
-                }
-            }
+            $player_rewards_received += get_reward($round_name, $rewarding_player, $rewarded_player, $user_ID);
         }
+
         return $player_rewards_received;
     }
 
@@ -92,7 +60,7 @@ function update_total_ECU($player_count, $user_ID, $round_name) {
                 $total_contribution += get_contribution($round_name, $i, $user_ID);
             }
 
-            $total_ECU = $player_starting_ECU + ($total_contribution * 0.4) - $player_contribution - ($player_rewards_given / 2) + $player_rewards_received;
+            $total_ECU = max(0, $player_starting_ECU + ($total_contribution * 0.4) - $player_contribution - ($player_rewards_given / 2) + $player_rewards_received);
 
             echo("<h2>player " . $current_player . "</h2>");
             echo("player starting ECU = " . $player_starting_ECU);

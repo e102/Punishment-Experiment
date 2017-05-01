@@ -17,18 +17,23 @@ echo("<script>var player_count = $player_count;</script>");
 $round_name = "2a";
 
 include_once("includes/get_starting_ECU.php");
-$player_initial_ECU = get_starting_ECU($round_name,1,$_SESSION["user_id"]);
-$AI_1_initial_ECU = get_starting_ECU($round_name,1,$_SESSION["user_id"]);
-$AI_2_initial_ECU = get_starting_ECU($round_name,1,$_SESSION["user_id"]);
-$AI_3_initial_ECU = get_starting_ECU($round_name,1,$_SESSION["user_id"]);
+$player_initial_ECU = get_starting_ECU($round_name, 1, $_SESSION["user_id"]);
+$AI_1_initial_ECU = get_starting_ECU($round_name, 2, $_SESSION["user_id"]);
+$AI_2_initial_ECU = get_starting_ECU($round_name, 3, $_SESSION["user_id"]);
+$AI_3_initial_ECU = get_starting_ECU($round_name, 4, $_SESSION["user_id"]);
 display_initial_ECU($round_name, $player_initial_ECU, $AI_1_initial_ECU, $AI_2_initial_ECU, $AI_3_initial_ECU);
 
 include_once("includes/get_contribution.php");
-$player_1_contribution = get_contribution($round_name,1,$_SESSION["user_id"]);
-$AI_1_contribution = get_contribution($round_name,1,$_SESSION["user_id"]);
-$AI_2_contribution = get_contribution($round_name,1,$_SESSION["user_id"]);
-$AI_3_contribution = get_contribution($round_name,1,$_SESSION["user_id"]);
+$player_1_contribution = get_contribution($round_name, 1, $_SESSION["user_id"]);
+$AI_1_contribution = get_contribution($round_name, 2, $_SESSION["user_id"]);
+$AI_2_contribution = get_contribution($round_name, 3, $_SESSION["user_id"]);
+$AI_3_contribution = get_contribution($round_name, 4, $_SESSION["user_id"]);
 display_contributions($player_1_contribution, $AI_1_contribution, $AI_2_contribution, $AI_3_contribution);
+
+include_once("includes/get_reward.php");    //TODO You're in the middle of using your new get_reward function to auto_generate rewards
+//for ($current_player = 1; $current_player <= $player_count; $current_player++) {
+//    display_rewards($current_player,1,1,1,-1);
+//}
 
 $player_starting_ECU = (20 - $player_1_contribution) + 0.4 * ($player_1_contribution + $AI_1_contribution + $AI_2_contribution + $AI_3_contribution);
 
@@ -65,18 +70,37 @@ function display_contributions($player_1_contribution, $player_2_contribution, $
     ");
 }
 
-//function display_rewards($target_player, $player_1_reward, $player_2_reward, $player_3_reward, $player_4_reward) {
-//    echo("
-//    <h3>Player $target_player rewards:</h3>
-//    <ul>
-//        <li>You donated $target_player ECUs to the common pool</li>
-//        <li>Player 2 donated $player_2_reward ECUs to the common pool</li>
-//        <li>Player 3 donated $player_3_reward ECUs to the common pool</li>
-//        <li>Player 4 donated $player_4_reward ECUs to the common pool</li>
-//    </ul>
-//    <br>
-//    ");
-//}
+function display_rewards($target_player, $player_1_reward, $player_2_reward, $player_3_reward, $player_4_reward) {
+    if ($target_player == 1) {
+        echo("
+        <h3>Your rewards:</h3>
+        <ul>");
+    }
+    else {
+        echo("
+        <h3>Player $target_player rewards:</h3>
+        <ul>");
+    }
+
+    for($i = 1; $i < count(func_get_args()); $i++) {
+        if ($target_player == $i) {
+            continue;
+        }
+
+        $args_array = func_get_args();
+        $current_reward = $args_array[$i];
+        if ($current_reward >= 0) {
+            echo("<li>Player $i rewarded player $target_player for $current_reward ECU's</li>");
+        }
+        elseif ($current_reward < 0) {
+            echo("<li>Player $i punished player $target_player for $current_reward ECU's</li>");
+        }
+    }
+    echo("
+    </ul>
+    <br>
+    ");
+}
 
 ?>
 
