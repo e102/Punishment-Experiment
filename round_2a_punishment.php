@@ -13,9 +13,14 @@ session_start();
 
 <?php
 get_previous_round_contributions($_SESSION["user_id"]);
-display_round_2a_results($round_2a_player_contribution, $round_2a_AI_1_contribution, $round_2a_AI_2_contribution, $round_2a_AI_3_contribution);
-
 $player_count = 4;
+$round_name = "2a";
+
+
+display_initial_ECU($round_name);
+display_contributions($round_2a_player_contribution, $round_2a_AI_1_contribution, $round_2a_AI_2_contribution, $round_2a_AI_3_contribution);
+
+
 echo("<script>var player_starting_ECU = (20 - $round_2a_player_contribution) + 0.4*($round_2a_player_contribution + $round_2a_AI_1_contribution + $round_2a_AI_2_contribution + $round_2a_AI_3_contribution)</script>");
 
 echo("<script>var player_count = $player_count;</script>");
@@ -36,8 +41,6 @@ function get_previous_round_contributions($user_ID) {
             $round_2a_AI_2_contribution = $row["round_2a_AI_2_contribution"];
             global $round_2a_AI_3_contribution;
             $round_2a_AI_3_contribution = $row["round_2a_AI_3_contribution"];
-            global $round_2a_total_contribution;
-            $round_2a_total_contribution = $round_2a_player_contribution + $round_2a_AI_1_contribution + $round_2a_AI_2_contribution + $round_2a_AI_3_contribution;
         }
     }
     else {
@@ -45,10 +48,11 @@ function get_previous_round_contributions($user_ID) {
     }
 }
 
-function display_round_2a_results($round_2a_player_contribution, $round_2a_AI_1_contribution, $round_2a_AI_2_contribution, $round_2a_AI_3_contribution) {
+function display_initial_ECU($round_name) {
+    $round_number = substr($round_name, 0, 1);
     echo("
     <body>
-    <h1>Round 1 results:</h1>
+    <h1>Round $round_number results:</h1>
     
     <h3>Initial State:</h3>
     <ul>
@@ -58,7 +62,11 @@ function display_round_2a_results($round_2a_player_contribution, $round_2a_AI_1_
         <li>Player 4 entered the round with 20 ECUs</li>
     </ul>
     <br>
-    
+    ");
+}
+
+function display_contributions($round_2a_player_contribution, $round_2a_AI_1_contribution, $round_2a_AI_2_contribution, $round_2a_AI_3_contribution) {
+    echo("
     <h3>Donations:</h3>
     <ul>
         <li>You donated $round_2a_player_contribution ECUs to the common pool</li>
@@ -213,11 +221,11 @@ include("includes/upload_AI_rewards.php");
 include("includes/update_total_ECU.php");
 if (isset($_POST['submit'])) {
     $userID = $_SESSION["user_id"];
-    upload_player_rewards($player_count, $userID, "2a");
-    upload_AI_rewards($player_count, $userID, "2a");
+    upload_player_rewards($player_count, $userID, $round_name);
+    upload_AI_rewards($player_count, $userID, $round_name);
     global $round_2a_total_contribution;
-    update_total_ECU($player_count, $userID, "2a", $round_2a_total_contribution);
-    echo("<script>window.open('round_2a_results.php', '_self')</script>");
+    update_total_ECU($player_count, $userID, $round_name);
+    //echo("<script>window.open('round_2a_results.php', '_self')</script>");
 }
 ?>
 
