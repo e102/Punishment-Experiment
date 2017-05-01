@@ -12,43 +12,30 @@ session_start();
 <body>
 
 <?php
-get_previous_round_contributions($_SESSION["user_id"]);
 $player_count = 4;
+echo("<script>var player_count = $player_count;</script>");
 $round_name = "2a";
 
+include_once("includes/get_starting_ECU.php");
+$player_initial_ECU = get_starting_ECU($round_name,1,$_SESSION["user_id"]);
+$AI_1_initial_ECU = get_starting_ECU($round_name,1,$_SESSION["user_id"]);
+$AI_2_initial_ECU = get_starting_ECU($round_name,1,$_SESSION["user_id"]);
+$AI_3_initial_ECU = get_starting_ECU($round_name,1,$_SESSION["user_id"]);
+display_initial_ECU($round_name, $player_initial_ECU, $AI_1_initial_ECU, $AI_2_initial_ECU, $AI_3_initial_ECU);
 
-display_initial_ECU($round_name);
-display_contributions($round_2a_player_contribution, $round_2a_AI_1_contribution, $round_2a_AI_2_contribution, $round_2a_AI_3_contribution);
+include_once("includes/get_contribution.php");
+$player_1_contribution = get_contribution($round_name,1,$_SESSION["user_id"]);
+$AI_1_contribution = get_contribution($round_name,1,$_SESSION["user_id"]);
+$AI_2_contribution = get_contribution($round_name,1,$_SESSION["user_id"]);
+$AI_3_contribution = get_contribution($round_name,1,$_SESSION["user_id"]);
+display_contributions($player_1_contribution, $AI_1_contribution, $AI_2_contribution, $AI_3_contribution);
+
+$player_starting_ECU = (20 - $player_1_contribution) + 0.4 * ($player_1_contribution + $AI_1_contribution + $AI_2_contribution + $AI_3_contribution);
+
+echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 
 
-echo("<script>var player_starting_ECU = (20 - $round_2a_player_contribution) + 0.4*($round_2a_player_contribution + $round_2a_AI_1_contribution + $round_2a_AI_2_contribution + $round_2a_AI_3_contribution)</script>");
-
-echo("<script>var player_count = $player_count;</script>");
-
-function get_previous_round_contributions($user_ID) {
-    global $con;
-    $sql_query = "select * from users where user_ID = '$user_ID'";
-    $run_query = mysqli_query($con, $sql_query);
-    $check_query = mysqli_num_rows($run_query);
-
-    if ($check_query == 1) {
-        while ($row = mysqli_fetch_array($run_query)) {
-            global $round_2a_player_contribution;
-            $round_2a_player_contribution = $row["round_2a_player_contribution"];
-            global $round_2a_AI_1_contribution;
-            $round_2a_AI_1_contribution = $row["round_2a_AI_1_contribution"];
-            global $round_2a_AI_2_contribution;
-            $round_2a_AI_2_contribution = $row["round_2a_AI_2_contribution"];
-            global $round_2a_AI_3_contribution;
-            $round_2a_AI_3_contribution = $row["round_2a_AI_3_contribution"];
-        }
-    }
-    else {
-        throw new Exception("Could not fetch data");
-    }
-}
-
-function display_initial_ECU($round_name) {
+function display_initial_ECU($round_name, $player_1_initial_ECU, $player_2_initial_ECU, $player_3_initial_ECU, $player_4_initial_ECU) {
     $round_number = substr($round_name, 0, 1);
     echo("
     <body>
@@ -56,27 +43,40 @@ function display_initial_ECU($round_name) {
     
     <h3>Initial State:</h3>
     <ul>
-        <li>You entered the round with 20 ECUs</li>
-        <li>Player 2 entered the round with 20 ECUs</li>
-        <li>Player 3 entered the round with 20 ECUs</li>
-        <li>Player 4 entered the round with 20 ECUs</li>
+        <li>You entered the round with $player_1_initial_ECU ECUs</li>
+        <li>Player 2 entered the round with $player_2_initial_ECU ECUs</li>
+        <li>Player 3 entered the round with $player_3_initial_ECU ECUs</li>
+        <li>Player 4 entered the round with $player_4_initial_ECU ECUs</li>
     </ul>
     <br>
     ");
 }
 
-function display_contributions($round_2a_player_contribution, $round_2a_AI_1_contribution, $round_2a_AI_2_contribution, $round_2a_AI_3_contribution) {
+function display_contributions($player_1_contribution, $player_2_contribution, $player_3_contribution, $player_4_contribution) {
     echo("
     <h3>Donations:</h3>
     <ul>
-        <li>You donated $round_2a_player_contribution ECUs to the common pool</li>
-        <li>Player 2 donated $round_2a_AI_1_contribution ECUs to the common pool</li>
-        <li>Player 3 donated $round_2a_AI_2_contribution ECUs to the common pool</li>
-        <li>Player 4 donated $round_2a_AI_3_contribution ECUs to the common pool</li>
+        <li>You donated $player_1_contribution ECUs to the common pool</li>
+        <li>Player 2 donated $player_2_contribution ECUs to the common pool</li>
+        <li>Player 3 donated $player_3_contribution ECUs to the common pool</li>
+        <li>Player 4 donated $player_4_contribution ECUs to the common pool</li>
     </ul>
     <br>
     ");
 }
+
+//function display_rewards($target_player, $player_1_reward, $player_2_reward, $player_3_reward, $player_4_reward) {
+//    echo("
+//    <h3>Player $target_player rewards:</h3>
+//    <ul>
+//        <li>You donated $target_player ECUs to the common pool</li>
+//        <li>Player 2 donated $player_2_reward ECUs to the common pool</li>
+//        <li>Player 3 donated $player_3_reward ECUs to the common pool</li>
+//        <li>Player 4 donated $player_4_reward ECUs to the common pool</li>
+//    </ul>
+//    <br>
+//    ");
+//}
 
 ?>
 
@@ -102,7 +102,7 @@ function display_contributions($round_2a_player_contribution, $round_2a_AI_1_con
                 player_name_text.className = "noEmptyLine";
                 form.appendChild(player_name_text);
 
-                var punish_or_reward_dropdown = document.createElement("select")
+                var punish_or_reward_dropdown = document.createElement("select");
                 punish_or_reward_dropdown.id = "punish_or_reward_dropdown_player_" + i;
                 punish_or_reward_dropdown.name = "punish_or_reward_dropdown_player_" + i;
                 form.appendChild(punish_or_reward_dropdown);
@@ -122,7 +122,7 @@ function display_contributions($round_2a_player_contribution, $round_2a_AI_1_con
                 option_punish.innerHTML = "Punish";
                 punish_or_reward_dropdown.appendChild(option_punish);
 
-                var amount_dropdown = document.createElement("select")
+                var amount_dropdown = document.createElement("select");
                 amount_dropdown.id = "amount_dropdown_player_" + i;
                 amount_dropdown.name = "amount_dropdown_player_" + i;
                 form.appendChild(amount_dropdown);
@@ -175,9 +175,9 @@ function display_contributions($round_2a_player_contribution, $round_2a_AI_1_con
 </div>
 
 <script>
-    var random_time = Math.floor((Math.random() * 60) + 5)
+    var random_time = Math.floor((Math.random() * 60) + 5);
     setTimeout(load_page, random_time * 10);
-    //setTimeout(load_page, random_time * 1000);
+    //setTimeout(load_page, random_time * 1000);    TODO: switch on
 
     function load_page() {
         document.getElementById("display_before_load").style.display = "none";
@@ -223,9 +223,8 @@ if (isset($_POST['submit'])) {
     $userID = $_SESSION["user_id"];
     upload_player_rewards($player_count, $userID, $round_name);
     upload_AI_rewards($player_count, $userID, $round_name);
-    global $round_2a_total_contribution;
     update_total_ECU($player_count, $userID, $round_name);
-    //echo("<script>window.open('round_2a_results.php', '_self')</script>");
+    //echo("<script>window.open('round_2a_results.php', '_self')</script>");    //TODO: turn on
 }
 ?>
 

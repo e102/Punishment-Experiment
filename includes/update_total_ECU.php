@@ -2,38 +2,9 @@
 include("connection.php");
 function update_total_ECU($player_count, $user_ID, $round_name) {
 
-    function get_previous_round_name($current_round) {
-        $round_letter = substr($current_round, -1);
+    include_once("get_previous_round_name.php");
 
-        if ($round_letter == "a") {
-            throw new Exception("This is the first round in this game. Cannot fetch previous round");
-        }
-        else {
-            return substr($current_round, 0, -1) . chr(ord($round_letter) - 1);
-        }
-    }
-
-    function get_starting_ECU($round_name, $player, $user_ID) {
-        if (substr($round_name, -1) == "a") {
-            return 20;
-        }
-
-        if ($player == 1) {
-            $contribution_field = "round_" . get_previous_round_name($round_name) . "_player_ECU_at_end";
-        }
-        else {
-            $contribution_field = "round_" . get_previous_round_name($round_name) . "_AI_" . $player . "_ECU_at_end";
-        }
-
-        global $con;
-        $sql_query = "select $contribution_field from users where user_ID = '$user_ID'";
-        $run_query = mysqli_query($con, $sql_query);
-
-
-        while ($row = mysqli_fetch_array($run_query)) {
-            return $row[$contribution_field];
-        }
-    }
+    include_once("get_starting_ECU.php");
 
     function get_total_rewards_given($round_name, $player, $user_ID, $player_count) {
         $player_rewards_given = 0;
