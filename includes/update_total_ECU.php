@@ -33,6 +33,7 @@ function update_total_ECU($player_count, $userID, $round_name, $total_contributi
 
     function get_total_rewards_given($round_name, $current_player, $run_query, $player_count) {
         $player_rewards_given = 0;
+        mysqli_data_seek($run_query, 0);
         while ($row = mysqli_fetch_array($run_query)) {
             if ($current_player == 1) {
                 for ($target_player = 2; $target_player <= $player_count; $target_player++) {
@@ -59,15 +60,16 @@ function update_total_ECU($player_count, $userID, $round_name, $total_contributi
     function get_total_reward_received($round_name, $current_player, $run_query, $player_count) {
         $player_rewards_received = 0;
         echo("<h2>Running get rewards for player " . $current_player . "</h2>");
+        mysqli_data_seek($run_query, 0);
         while ($row = mysqli_fetch_array($run_query)) {
             if ($current_player == 1) {
-                echo("Rewards received player branch running");
+                echo("Rewards received player branch running<br>");
                 for ($target_player = 2; $target_player <= $player_count; $target_player++) {
                     $player_rewards_received += $row["round_" . $round_name . "_AI_" . ($target_player - 1) . "_reward_player"];
                 }
             }
             else {
-                echo("Rewards received AI branch running");
+                echo("Rewards received AI branch running<br>");
                 for ($target_player = 1; $target_player <= $player_count; $target_player++) {
                     if ($target_player == $current_player) {
                         continue;
@@ -76,7 +78,7 @@ function update_total_ECU($player_count, $userID, $round_name, $total_contributi
                         $player_rewards_received += $row["round_" . $round_name . "_player_reward_AI_" . ($current_player - 1)];
                     }
                     else {
-                        $player_rewards_received += $row["round_" . $round_name . "_AI_" . ($target_player - 1) . "_reward_AI" . ($current_player - 1)];
+                        $player_rewards_received += $row["round_" . $round_name . "_AI_" . ($target_player - 1) . "_reward_AI_" . ($current_player - 1)];
                     }
                 }
             }
@@ -104,7 +106,7 @@ function update_total_ECU($player_count, $userID, $round_name, $total_contributi
     for ($current_player = 1; $current_player <= $player_count; $current_player++) {
         try {
             $player_starting_ECU = get_starting_ECU($round_name, $current_player, $run_query);
-            $player_contribution = get_contribution($round_name, $current_player);
+            $player_contribution = get_contribution($round_name, $current_player, $run_query);
             $player_rewards_given = get_total_rewards_given($round_name, $current_player, $run_query, $player_count);
             $player_rewards_received = get_total_reward_received($round_name, $current_player, $run_query, $player_count);  //TODO: fix bug
             $total_ECU = $player_starting_ECU + ($total_contribution * 0.4) - $player_contribution - ($player_rewards_given / 2) + $player_rewards_received;

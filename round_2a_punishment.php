@@ -216,8 +216,8 @@ if (isset($_POST['submit'])) {
     upload_player_rewards($player_count, $userID, "2a");
     upload_AI_rewards($player_count, $userID, "2a");
     global $round_2a_total_contribution;
-    update_total_ECU($player_count, $userID, "2a", $round_2a_total_contribution);   //bug
-    //echo("<script>window.open('round_2a_results.php', '_self')</script>");
+    update_total_ECU($player_count, $userID, "2a", $round_2a_total_contribution);
+    echo("<script>window.open('round_2a_results.php', '_self')</script>");
 }
 ?>
 

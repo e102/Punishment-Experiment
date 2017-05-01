@@ -100,13 +100,13 @@ function upload_AI_rewards($player_count, $userID, $round_name) {
     try {
         for ($current_AI = 2; $current_AI <= $player_count; $current_AI++) {
             include_once("get_contribution.php");
-            $current_AI_contribution = get_contribution($round_name, $current_AI);
+            $current_AI_contribution = get_contribution($round_name, $current_AI, $run_query);
             for ($target_player = 1; $target_player <= $player_count; $target_player++) {
                 if ($target_player == $current_AI) {
                     continue;
                 }
 
-                $target_player_contribution = get_contribution($round_name, $target_player);
+                $target_player_contribution = get_contribution($round_name, $target_player, $run_query);
 
                 if ($current_AI == 2) {
                     $AI_type = "lazy";
