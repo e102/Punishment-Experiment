@@ -1,90 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <?php include("templates/header.php");
 include("includes/connection.php");
 session_start();
 ?>
 <head>
-    <title>Game 2: Round 1 Results</title>
+    <title>Game 2: Round 1 Final Results</title>
     <link rel="stylesheet" href="styles/default.css" media="all"/>
 </head>
 
 <body>
 
 <?php
-get_previous_round_contributions($_SESSION["user_id"]);
-display_round_2a_results($round_2a_player_contribution, $round_2a_AI_1_contribution, $round_2a_AI_2_contribution, $round_2a_AI_3_contribution);
-
 $player_count = 4;
-echo("<script>var player_starting_ECU = (20 - $round_2a_player_contribution) + 0.4*($round_2a_player_contribution + $round_2a_AI_1_contribution + $round_2a_AI_2_contribution + $round_2a_AI_3_contribution)</script>");
-
 echo("<script>var player_count = $player_count;</script>");
+$round_name = "2a";
 
-function get_previous_round_contributions($user_ID) {
-    global $con;
-    $sql_query = "select * from users where user_ID = '$user_ID'";
-    $run_query = mysqli_query($con, $sql_query);
-    $check_query = mysqli_num_rows($run_query);
+include_once("includes/get_starting_ECU.php");
+include_once("includes/display_initial_ECU.php");
+$player_initial_ECU = get_starting_ECU($round_name, 1, $_SESSION["user_id"]);
+$AI_1_initial_ECU = get_starting_ECU($round_name, 2, $_SESSION["user_id"]);
+$AI_2_initial_ECU = get_starting_ECU($round_name, 3, $_SESSION["user_id"]);
+$AI_3_initial_ECU = get_starting_ECU($round_name, 4, $_SESSION["user_id"]);
+display_initial_ECU($round_name, $player_initial_ECU, $AI_1_initial_ECU, $AI_2_initial_ECU, $AI_3_initial_ECU);
 
-    if ($check_query == 1) {
-        while ($row = mysqli_fetch_array($run_query)) {
-            global $round_2a_player_contribution;
-            $round_2a_player_contribution = $row["round_2a_player_contribution"];
-            global $round_2a_AI_1_contribution;
-            $round_2a_AI_1_contribution = $row["round_2a_AI_1_contribution"];
-            global $round_2a_AI_2_contribution;
-            $round_2a_AI_2_contribution = $row["round_2a_AI_2_contribution"];
-            global $round_2a_AI_3_contribution;
-            $round_2a_AI_3_contribution = $row["round_2a_AI_3_contribution"];
-            global $round_2a_total_contribution;
-            $round_2a_total_contribution = $round_2a_player_contribution + $round_2a_AI_1_contribution + $round_2a_AI_2_contribution + $round_2a_AI_3_contribution;
-        }
-    }
-    else {
-        throw new Exception("Could not fetch data");
-    }
+include_once("includes/get_contribution.php");
+include_once("includes/display_contributions.php");
+$player_contribution = get_contribution($round_name, 1, $_SESSION["user_id"]);
+$AI_1_contribution = get_contribution($round_name, 2, $_SESSION["user_id"]);
+$AI_2_contribution = get_contribution($round_name, 3, $_SESSION["user_id"]);
+$AI_3_contribution = get_contribution($round_name, 4, $_SESSION["user_id"]);
+display_contributions($player_contribution, $AI_1_contribution, $AI_2_contribution, $AI_3_contribution);
+
+include_once("includes/get_reward.php");
+include_once("includes/display_rewards.php");
+for ($rewarded_player = 1; $rewarded_player <= $player_count; $rewarded_player++) {
+    $players_array = array(1, 2, 3, 4);
+    unset($players_array[$rewarded_player - 1]);
+    $players_array = array_values($players_array);
+
+    $reward_1 = get_reward($round_name, $players_array[0], $rewarded_player, $_SESSION["user_id"]);
+    $reward_2 = get_reward($round_name, $players_array[1], $rewarded_player, $_SESSION["user_id"]);
+    $reward_3 = get_reward($round_name, $players_array[2], $rewarded_player, $_SESSION["user_id"]);
+
+    display_rewards($rewarded_player, $reward_1, $reward_2, $reward_3);
 }
 
-function display_round_2a_results($round_2a_player_contribution, $round_2a_AI_1_contribution, $round_2a_AI_2_contribution, $round_2a_AI_3_contribution) {
-    echo("
-    <body>
-    <h1>Round 1 results:</h1>
-    
-    <h3>Initial State:</h3>
-    <ul>
-        <li>You entered the round with 20 ECUs</li>
-        <li>Player 2 entered the round with 20 ECUs</li>
-        <li>Player 3 entered the round with 20 ECUs</li>
-        <li>Player 4 entered the round with 20 ECUs</li>
-    </ul>
-    <br>
-    
-    <h3>Donations:</h3>
-    <ul>
-        <li>You donated $round_2a_player_contribution ECUs to the common pool</li>
-        <li>Player 2 donated $round_2a_AI_1_contribution ECUs to the common pool</li>
-        <li>Player 3 donated $round_2a_AI_2_contribution ECUs to the common pool</li>
-        <li>Player 4 donated $round_2a_AI_3_contribution ECUs to the common pool</li>
-    </ul>
-    <br>
-    
-    <h3>Punishments:</h3>
-    <ul>
-        <li>You were rewarded X by AI 1, Y by AI 2 and Z by AI 3</li>
-    </ul>
-    <br>
-    
-    <h3>Final ECU</h3>
-    <ul>
-        <li>You donated $round_2a_player_contribution ECUs to the common pool</li>
-        <li>Player 2 donated $round_2a_AI_1_contribution ECUs to the common pool</li>
-        <li>Player 3 donated $round_2a_AI_2_contribution ECUs to the common pool</li>
-        <li>Player 4 donated $round_2a_AI_3_contribution ECUs to the common pool</li>
-    </ul>
-    <br>
-    ");
-}
+include_once ("includes/get_final_ECU.php");
+include_once ("includes/display_final_ECU.php");
+$player_final_ECU = get_final_ECU($round_name, 1, $_SESSION["user_id"]);
+$AI_1_final_ECU = get_final_ECU($round_name, 2, $_SESSION["user_id"]);
+$AI_2_final_ECU = get_final_ECU($round_name, 3, $_SESSION["user_id"]);
+$AI_3_final_ECU = get_final_ECU($round_name, 4, $_SESSION["user_id"]);
+display_final_ECU($player_final_ECU,$AI_1_final_ECU,$AI_2_final_ECU, $AI_3_final_ECU);
 ?>
+
+<form action="" method="post">
+    <button name='submit'>Submit</button>
+</form>
 
 </body>
 

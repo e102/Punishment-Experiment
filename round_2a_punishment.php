@@ -17,6 +17,7 @@ echo("<script>var player_count = $player_count;</script>");
 $round_name = "2a";
 
 include_once("includes/get_starting_ECU.php");
+include_once("includes/display_initial_ECU.php");
 $player_initial_ECU = get_starting_ECU($round_name, 1, $_SESSION["user_id"]);
 $AI_1_initial_ECU = get_starting_ECU($round_name, 2, $_SESSION["user_id"]);
 $AI_2_initial_ECU = get_starting_ECU($round_name, 3, $_SESSION["user_id"]);
@@ -24,84 +25,16 @@ $AI_3_initial_ECU = get_starting_ECU($round_name, 4, $_SESSION["user_id"]);
 display_initial_ECU($round_name, $player_initial_ECU, $AI_1_initial_ECU, $AI_2_initial_ECU, $AI_3_initial_ECU);
 
 include_once("includes/get_contribution.php");
+include_once ("includes/display_contributions.php");
 $player_1_contribution = get_contribution($round_name, 1, $_SESSION["user_id"]);
 $AI_1_contribution = get_contribution($round_name, 2, $_SESSION["user_id"]);
 $AI_2_contribution = get_contribution($round_name, 3, $_SESSION["user_id"]);
 $AI_3_contribution = get_contribution($round_name, 4, $_SESSION["user_id"]);
 display_contributions($player_1_contribution, $AI_1_contribution, $AI_2_contribution, $AI_3_contribution);
 
-include_once("includes/get_reward.php");    //TODO You're in the middle of using your new get_reward function to auto_generate rewards
-//for ($current_player = 1; $current_player <= $player_count; $current_player++) {
-//    display_rewards($current_player,1,1,1,-1);
-//}
-
 $player_starting_ECU = (20 - $player_1_contribution) + 0.4 * ($player_1_contribution + $AI_1_contribution + $AI_2_contribution + $AI_3_contribution);
 
 echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
-
-
-function display_initial_ECU($round_name, $player_1_initial_ECU, $player_2_initial_ECU, $player_3_initial_ECU, $player_4_initial_ECU) {
-    $round_number = substr($round_name, 0, 1);
-    echo("
-    <body>
-    <h1>Round $round_number results:</h1>
-    
-    <h3>Initial State:</h3>
-    <ul>
-        <li>You entered the round with $player_1_initial_ECU ECUs</li>
-        <li>Player 2 entered the round with $player_2_initial_ECU ECUs</li>
-        <li>Player 3 entered the round with $player_3_initial_ECU ECUs</li>
-        <li>Player 4 entered the round with $player_4_initial_ECU ECUs</li>
-    </ul>
-    <br>
-    ");
-}
-
-function display_contributions($player_1_contribution, $player_2_contribution, $player_3_contribution, $player_4_contribution) {
-    echo("
-    <h3>Donations:</h3>
-    <ul>
-        <li>You donated $player_1_contribution ECUs to the common pool</li>
-        <li>Player 2 donated $player_2_contribution ECUs to the common pool</li>
-        <li>Player 3 donated $player_3_contribution ECUs to the common pool</li>
-        <li>Player 4 donated $player_4_contribution ECUs to the common pool</li>
-    </ul>
-    <br>
-    ");
-}
-
-function display_rewards($target_player, $player_1_reward, $player_2_reward, $player_3_reward, $player_4_reward) {
-    if ($target_player == 1) {
-        echo("
-        <h3>Your rewards:</h3>
-        <ul>");
-    }
-    else {
-        echo("
-        <h3>Player $target_player rewards:</h3>
-        <ul>");
-    }
-
-    for($i = 1; $i < count(func_get_args()); $i++) {
-        if ($target_player == $i) {
-            continue;
-        }
-
-        $args_array = func_get_args();
-        $current_reward = $args_array[$i];
-        if ($current_reward >= 0) {
-            echo("<li>Player $i rewarded player $target_player for $current_reward ECU's</li>");
-        }
-        elseif ($current_reward < 0) {
-            echo("<li>Player $i punished player $target_player for $current_reward ECU's</li>");
-        }
-    }
-    echo("
-    </ul>
-    <br>
-    ");
-}
-
 ?>
 
 <h1>Punish/Reward</h1>
@@ -200,8 +133,7 @@ function display_rewards($target_player, $player_1_reward, $player_2_reward, $pl
 
 <script>
     var random_time = Math.floor((Math.random() * 60) + 5);
-    setTimeout(load_page, random_time * 10);
-    //setTimeout(load_page, random_time * 1000);    TODO: switch on
+    setTimeout(load_page, random_time * 1000);
 
     function load_page() {
         document.getElementById("display_before_load").style.display = "none";
@@ -248,7 +180,7 @@ if (isset($_POST['submit'])) {
     upload_player_rewards($player_count, $userID, $round_name);
     upload_AI_rewards($player_count, $userID, $round_name);
     update_total_ECU($player_count, $userID, $round_name);
-    //echo("<script>window.open('round_2a_results.php', '_self')</script>");    //TODO: turn on
+    echo("<script>window.open('round_2a_results.php', '_self')</script>");
 }
 ?>
 

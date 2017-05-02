@@ -9,7 +9,7 @@ function get_starting_ECU($round_name, $player, $user_ID) {
         $contribution_field = "round_" . get_previous_round_name($round_name) . "_player_ECU_at_end";
     }
     else {
-        $contribution_field = "round_" . get_previous_round_name($round_name) . "_AI_" . $player . "_ECU_at_end";
+        $contribution_field = "round_" . get_previous_round_name($round_name) . "_AI_" . ($player - 1) . "_ECU_at_end";
     }
 
     global $con;
