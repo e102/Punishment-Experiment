@@ -1,6 +1,6 @@
 <?php
 function display_initial_ECU($round_name, $player_1_initial_ECU, $player_2_initial_ECU, $player_3_initial_ECU, $player_4_initial_ECU) {
-    $round_number = substr($round_name, 0, 1);
+    $round_number = ord(substr($round_name, -1)) - 96;
     echo("
     <body>
     <h1>Round $round_number results:</h1>

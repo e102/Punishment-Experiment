@@ -3,18 +3,20 @@
 <?php include("templates/header.php");
 include("includes/connection.php");
 session_start();
-?>
-<head>
-    <title>Game 2: Round 1 Final Results</title>
-    <link rel="stylesheet" href="styles/default.css" media="all"/>
-</head>
 
-<body>
-
-<?php
 $player_count = 4;
 echo("<script>var player_count = $player_count;</script>");
 $round_name = "2a";
+$game_number = substr($round_name, 0, 1);
+$round_number = ord(substr($round_name, -1)) - 96;
+echo("
+<head>
+    <title>Game $game_number: Round $round_number</title>
+    <link rel='stylesheet' href='styles/default.css' media='all'/>
+</head>
+
+<body>
+");
 
 include_once("includes/get_starting_ECU.php");
 include_once("includes/display_initial_ECU.php");
@@ -56,7 +58,7 @@ display_final_ECU($player_final_ECU,$AI_1_final_ECU,$AI_2_final_ECU, $AI_3_final
 ?>
 
 <form action="" method="post">
-    <button name='submit'>Submit</button>
+    <button name='submit'>Continue</button>
 </form>
 
 </body>

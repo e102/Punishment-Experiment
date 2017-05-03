@@ -62,19 +62,20 @@ function update_total_ECU($player_count, $user_ID, $round_name) {
 
             $total_ECU = max(0, $player_starting_ECU + ($total_contribution * 0.4) - $player_contribution - ($player_rewards_given / 2) + $player_rewards_received);
 
-            echo("<h2>player " . $current_player . "</h2>");
-            echo("player starting ECU = " . $player_starting_ECU);
-            echo("<br>");
-            echo("total_contribution = " . $total_contribution);
-            echo("<br>");
-            echo("player_contribution = " . $player_contribution);
-            echo("<br>");
-            echo("player_rewards_given = " . $player_rewards_given);
-            echo("<br>");
-            echo("player_rewards_received = " . $player_rewards_received);
-            echo("<br>");
-            echo("player total ECU = " . $total_ECU);
-            echo("<br><br>");
+            //For debugging
+            //echo("<h2>player " . $current_player . "</h2>");
+            //echo("player starting ECU = " . $player_starting_ECU);
+            //echo("<br>");
+            //echo("total_contribution = " . $total_contribution);
+            //echo("<br>");
+            //echo("player_contribution = " . $player_contribution);
+            //echo("<br>");
+            //echo("player_rewards_given = " . $player_rewards_given);
+            //echo("<br>");
+            //echo("player_rewards_received = " . $player_rewards_received);
+            //echo("<br>");
+            //echo("player total ECU = " . $total_ECU);
+            //echo("<br><br>");
         } catch (Exception $e) {
             echo($e . "<br>");
         }

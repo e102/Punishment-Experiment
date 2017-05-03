@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
-<?php include("templates/header.php");
+<?php
+include("templates/header.php");
 include("includes/connection.php");
 session_start();
-?>
 
-<?php
 $round_name = "2a";
 $game_number = substr($round_name, 0, 1);
 $round_number = ord(substr($round_name, -1)) - 96;
-echo($round_number);
 echo("
 <head>
     <title>Game $game_number: Round $round_number</title>
@@ -35,9 +33,9 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
     <p id='ECUs_kept'>ECUs remaining after your contribution</p>
     <form action='' method='post'>
         <p>Contribution to common pool:</p>
-        <select id='r2a_contribution' name='r2a_contribution' onchange='update_ECU_Count()'>
+        <select id='contribution_dropdown' name='contribution_dropdown' onchange='update_ECU_Count()'>
             <script>
-                var contribution_dropdown = document.getElementById("r2a_contribution");
+                var contribution_dropdown = document.getElementById("contribution_dropdown");
                 for (var i = 0; i <= player_starting_ECU; i++) {
                     var option = document.createElement("option");
                     if (i == 0) {
@@ -67,7 +65,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
     }
 
     function update_ECU_Count() {
-        var contribution = document.getElementById("r2a_contribution");
+        var contribution = document.getElementById("contribution_dropdown");
         var x = contribution.options[contribution.selectedIndex].value;
         document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + (player_starting_ECU - x).toString();
     }
@@ -79,7 +77,7 @@ if (isset($_POST['submit'])) {
 }
 
 function submit_choices($round_name, $user_ID) {
-    $current_round_player_contribution = (int)htmlspecialchars($_POST["r2a_contribution"]);
+    $current_round_player_contribution = (int)htmlspecialchars($_POST["contribution_dropdown"]);
 
     include_once("includes/get_previous_round_name.php");
     include_once("includes/get_contribution.php");
