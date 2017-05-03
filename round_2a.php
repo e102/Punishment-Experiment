@@ -4,19 +4,28 @@
 include("includes/connection.php");
 session_start();
 ?>
+
+<?php
+$round_name = "2a";
+$game_number = substr($round_name, 0, 1);
+$round_number = ord(substr($round_name, -1)) - 96;
+echo($round_number);
+echo("
 <head>
-    <title>Game 2: Round 1</title>
-    <link rel="stylesheet" href="styles/default.css" media="all"/>
+    <title>Game $game_number: Round $round_number</title>
+    <link rel='stylesheet' href='styles/default.css' media='all'/>
 </head>
 
 <body>
-<h1>Welcome to Round 1</h1>
-<div id="display_before_load">
-    <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
+<h1>Welcome to Round $round_number</h1>
+<div id='display_before_load'>
+    <p id='intro_text'>Please wait for other players to connect. This should not take more than 60 seconds.</p>
 </div>
+");
 
-<?php
-echo("<script>var player_starting_ECU = 20</script>");
+include_once("includes/get_starting_ECU.php");
+$player_starting_ECU = get_starting_ECU($round_name, 1, $_SESSION["user_id"]);
+echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 ?>
 
 <div id="display_after_load" style="display:none">
@@ -46,8 +55,9 @@ echo("<script>var player_starting_ECU = 20</script>");
 </div>
 
 <script>
-    var random_time = Math.floor((Math.random() * 60) + 5)
-    setTimeout(load_page, random_time * 1000);
+    var random_time = Math.floor((Math.random() * 60) + 5);
+    setTimeout(load_page, random_time * 10);
+    //setTimeout(load_page, random_time * 1000); //TODO Change
 
     function load_page() {
         document.getElementById("display_before_load").style.display = "none";
@@ -64,52 +74,35 @@ echo("<script>var player_starting_ECU = 20</script>");
 </script>
 
 <?php
-
-
 if (isset($_POST['submit'])) {
-    get_last_round_behaviour($_SESSION["user_id"]);
-    submit_choices($_SESSION["user_id"]);
+    submit_choices($round_name, $_SESSION["user_id"]);
 }
 
-function get_last_round_behaviour($userID) {
-    global $con;
+function submit_choices($round_name, $user_ID) {
+    $current_round_player_contribution = (int)htmlspecialchars($_POST["r2a_contribution"]);
 
-    $sql_query = "select * from users where user_ID = '$userID'";
-    $run_query = mysqli_query($con, $sql_query);
-    $check_query = mysqli_num_rows($run_query);
+    include_once("includes/get_previous_round_name.php");
+    include_once("includes/get_contribution.php");
+    $previous_round_player_contribution = get_contribution(get_previous_round_name($round_name), 1, $user_ID);
 
-    if ($check_query == 1) {
-        while ($row = mysqli_fetch_array($run_query)) {
-            global $round_1c_player_contribution;
-            $round_1c_player_contribution = $row["round_1c_player_contribution"];
-        }
-    }
-    elseif ($check_query == 0) {
-        throw new Exception("No user found with this id");
-    }
-    elseif ($check_query > 1) {
-        throw new Exception("Multiple users found with this id");
-    }
-    else {
-        throw new Exception("Unexpected error");
-    }
-}
+    include_once("includes/get_starting_ECU.php");
+    $current_round_AI_1_contribution = calculate_AI_contribution($previous_round_player_contribution, get_starting_ECU($round_name, 2, $user_ID));
+    $current_round_AI_2_contribution = calculate_AI_contribution($previous_round_player_contribution, get_starting_ECU($round_name, 3, $user_ID));
+    $current_round_AI_3_contribution = calculate_AI_contribution($previous_round_player_contribution, get_starting_ECU($round_name, 4, $user_ID));
 
-function submit_choices($userID) {
-    $round_2a_player_contribution = (int)htmlspecialchars($_POST["r2a_contribution"]);
-    global $round_1c_player_contribution;
-    $round_2a_AI_1_contribution = calculate_AI_contribution($round_1c_player_contribution, 20);
-    $round_2a_AI_2_contribution = calculate_AI_contribution($round_1c_player_contribution, 20);
-    $round_2a_AI_3_contribution = calculate_AI_contribution($round_1c_player_contribution, 20);
-
-    $sql1 = "UPDATE users SET round_2a_player_contribution = $round_2a_player_contribution WHERE user_id =$userID";
-    $sql2 = "UPDATE users SET round_2a_AI_1_contribution = $round_2a_AI_1_contribution WHERE user_id =$userID";
-    $sql3 = "UPDATE users SET round_2a_AI_2_contribution = $round_2a_AI_2_contribution WHERE user_id =$userID";
-    $sql4 = "UPDATE users SET round_2a_AI_3_contribution = $round_2a_AI_3_contribution WHERE user_id =$userID";
+    $sql_1_field = "round_" . $round_name . "_player_contribution";
+    $sql1 = "UPDATE users SET $sql_1_field= $current_round_player_contribution WHERE user_id =$user_ID";
+    $sql_2_field = "round_" . $round_name . "_AI_1_contribution";
+    $sql2 = "UPDATE users SET $sql_2_field = $current_round_AI_1_contribution WHERE user_id =$user_ID";
+    $sql_3_field = "round_" . $round_name . "_AI_2_contribution";
+    $sql3 = "UPDATE users SET $sql_3_field = $current_round_AI_2_contribution WHERE user_id =$user_ID";
+    $sql_4_field = "round_" . $round_name . "_AI_3_contribution";
+    $sql4 = "UPDATE users SET $sql_4_field = $current_round_AI_3_contribution WHERE user_id =$user_ID";
 
     global $con;
     if (mysqli_query($con, $sql1) && mysqli_query($con, $sql2) && mysqli_query($con, $sql3) && mysqli_query($con, $sql4)) {
-        echo("<script>window.open('round_2a_punishment.php', '_self')</script>");
+        $destination = "round_" . $round_name . "_punishment.php";
+        echo("<script>window.open('$destination', '_self')</script>");
     }
     else {
         echo("<script>alert('Could not connect to server')</script>");

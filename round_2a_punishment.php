@@ -25,14 +25,14 @@ $AI_3_initial_ECU = get_starting_ECU($round_name, 4, $_SESSION["user_id"]);
 display_initial_ECU($round_name, $player_initial_ECU, $AI_1_initial_ECU, $AI_2_initial_ECU, $AI_3_initial_ECU);
 
 include_once("includes/get_contribution.php");
-include_once ("includes/display_contributions.php");
+include_once("includes/display_contributions.php");
 $player_1_contribution = get_contribution($round_name, 1, $_SESSION["user_id"]);
 $AI_1_contribution = get_contribution($round_name, 2, $_SESSION["user_id"]);
 $AI_2_contribution = get_contribution($round_name, 3, $_SESSION["user_id"]);
 $AI_3_contribution = get_contribution($round_name, 4, $_SESSION["user_id"]);
 display_contributions($player_1_contribution, $AI_1_contribution, $AI_2_contribution, $AI_3_contribution);
 
-$player_starting_ECU = (20 - $player_1_contribution) + 0.4 * ($player_1_contribution + $AI_1_contribution + $AI_2_contribution + $AI_3_contribution);
+$player_starting_ECU = (get_starting_ECU($round_name, 1, $_SESSION["user_id"]) - $player_1_contribution) + 0.4 * ($player_1_contribution + $AI_1_contribution + $AI_2_contribution + $AI_3_contribution);
 
 echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 ?>
@@ -180,7 +180,9 @@ if (isset($_POST['submit'])) {
     upload_player_rewards($player_count, $userID, $round_name);
     upload_AI_rewards($player_count, $userID, $round_name);
     update_total_ECU($player_count, $userID, $round_name);
-    echo("<script>window.open('round_2a_results.php', '_self')</script>");
+
+    $next_round_address = "round_" . $round_name . "_results.php";
+    echo("<script>window.open($next_round_address, '_self')</script>");
 }
 ?>
 
