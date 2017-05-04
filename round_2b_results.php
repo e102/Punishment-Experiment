@@ -6,7 +6,7 @@ session_start();
 
 $player_count = 4;
 echo("<script>var player_count = $player_count;</script>");
-$round_name = "2a";
+$round_name = "2b";
 $game_number = substr($round_name, 0, 1);
 $round_number = ord(substr($round_name, -1)) - 96;
 echo("

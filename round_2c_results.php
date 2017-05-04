@@ -6,7 +6,7 @@ session_start();
 
 $player_count = 4;
 echo("<script>var player_count = $player_count;</script>");
-$round_name = "2a";
+$round_name = "2c";
 $game_number = substr($round_name, 0, 1);
 $round_number = ord(substr($round_name, -1)) - 96;
 echo("
@@ -66,8 +66,7 @@ display_final_ECU($player_final_ECU,$AI_1_final_ECU,$AI_2_final_ECU, $AI_3_final
 <?php
 if (isset($_POST['submit'])) {
     include_once ("includes/get_next_round_name.php");
-    $next_round_address = "round_" . get_next_round_name($round_name) . ".php";
-    echo("<script>window.open('$next_round_address', '_self')</script>");
+    echo("<script>window.open('round_2_final_results.php', '_self')</script>");
 }
 ?>
 
