@@ -22,6 +22,9 @@ function get_reward($round_name, $rewarding_player, $rewarded_player, $user_ID) 
 
     $contribution_field = $contribution_field_1 . $contribution_field_2 . $contribution_field_3;
 
+    echo $contribution_field;
+    echo("<br>");
+
     global $con;
     $sql_query = "select $contribution_field from users where user_ID = '$user_ID'";
     $run_query = mysqli_query($con, $sql_query);
