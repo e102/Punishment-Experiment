@@ -54,8 +54,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 
 <script>
     var random_time = Math.floor((Math.random() * 60) + 5);
-    setTimeout(load_page, random_time * 10);
-    //setTimeout(load_page, random_time * 1000); //TODO Change
+    setTimeout(load_page, random_time * 1000);
 
     function load_page() {
         document.getElementById("display_before_load").style.display = "none";

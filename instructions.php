@@ -102,7 +102,7 @@ session_start();
 </form>
 <?php
 if (isset($_POST['submit'])) {
-    if (validate_answers_test() == true) {
+    if (validate_answers() == true) {
         $userID = $_SESSION["user_id"];
         $sql = "UPDATE users SET passed_comprehension_quiz = 1 WHERE user_id =$userID";
         if (mysqli_query($con, $sql)) {
@@ -130,10 +130,6 @@ function validate_answers() {
 
     //IMPORTANT: Answer to question 4 is wrong.
     return (($question_1_answer == 8) && ($question_2_answer == 28) && ($question_3_answer == 32) && ($question_4_answer == 24) && ($question_5_answer == 8) && ($question_6_answer == 20) && ($question_7_answer == 28));
-}
-
-function validate_answers_test(){
-    return true;
 }
 
 ?>

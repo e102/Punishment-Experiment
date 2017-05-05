@@ -25,5 +25,4 @@ function upload_player_rewards($player_count, $userID, $round_name) {
         }
     }
 }
-
 ?>
