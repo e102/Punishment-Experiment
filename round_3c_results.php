@@ -65,7 +65,7 @@ display_final_ECU($player_final_ECU, $AI_1_final_ECU, $AI_2_final_ECU, $AI_3_fin
 <?php
 if (isset($_POST['submit'])) {
     include_once("includes/get_next_round_name.php");
-    $next_round_address = "final_results.php";
+    $next_round_address = "round_3_final_results.php";
     echo("<script>window.open('$next_round_address', '_self')</script>");
 }
 ?>
