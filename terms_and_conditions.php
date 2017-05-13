@@ -5,14 +5,14 @@ include("templates/header.php");
 ?>
 
 <html>
-<head>
-    <title>Terms and Conditions</title>
-    <link rel="stylesheet" href="styles/default.css" media="all"/>
-</head>
+<?php
+include("templates/bootstrap_head.php");
+echo_head("Terms and Conditions");
+?>
 
 <body>
 <!--Container starts-->
-<div class="container">
+<div class="container-fluid">
     <h3>Welcome </h3>
     <p>Thank you for agreeing to participate in today’s experiment. You are now about to take part in a decision-making
         experiment which serves as a part of an independent research project, for which you will be paid by entering a
@@ -32,11 +32,12 @@ include("templates/header.php");
         Treiber (CONTACT DETAILS HERE).
         Please refrain from communicating with the other participants (current or former) for the duration of the
         experiment and make all decisions independently, without discussing them with others.</p>
-    <form action="" method="post">
-        <input type="checkbox" name="agrees_to_terms_checkbox" value="agreed_to_t&c" required="required"> I have read
-        and understood the
-        above<br>
-        <button name="proceed">Proceed</button>
+    <form action="" method="post" class="form-vertical">
+        <div class="form-group">
+            <label><input type="checkbox" name="agrees_to_terms_checkbox" value="agreed_to_t&c" required="required"> I
+                have read and understood the above</label>
+            <br><button name="proceed" class="btn btn-default">Proceed</button>
+            <div class="form-group">
     </form>
     <?php
     include("includes/connection.php");

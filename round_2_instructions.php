@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <?php include("templates/header.php");
+include("templates/bootstrap_head.php");
+echo_head("Game 2 Instructions");
 ?>
-<head>
-    <title>Game 2 Instructions</title>
-    <link rel='stylesheet' href='styles/default.css' media='all'/>
-</head>
+<body>
+<div class="container-fluid">
 <h1>Game 2 Instructions</h1>
 <p>You will now play game 2. The rules are the same as game 1 with one addition. You can now punish or reward other
     participants. Punishing a player removes their ECU's. Rewarding them gives them ECU's. It costs you 0.5 ECU's to
@@ -21,8 +21,10 @@
 </ul>
 
 <form action='' method='post'>
-    <button name='submit'>Continue</button>
+    <button name='submit' class="btn btn-default">Continue</button>
 </form>
+</div>
+</body>
 <?php
 if (isset($_POST['submit'])) {
     echo("<script>window.open('round_2_comprehension_quiz.php', '_self')</script>");

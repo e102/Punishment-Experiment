@@ -9,16 +9,12 @@ echo("<script>var player_count = $player_count;</script>");
 $round_name = "2a";
 $game_number = substr($round_name, 0, 1);
 $round_number = ord(substr($round_name, -1)) - 96;
+include("templates/bootstrap_head.php");
+echo_head("Game " . $game_number . ": Round " . $round_number);
 echo("
-<head>
-    <title>Game $game_number: Round $round_number</title>
-    <link rel='stylesheet' href='styles/default.css' media='all'/>
-</head>
-
 <body>
+<div class=\"container-fluid\">
 ");
-
-
 
 include_once("includes/get_starting_ECU.php");
 include_once("includes/display_initial_ECU.php");
@@ -36,11 +32,10 @@ $AI_2_contribution = get_contribution($round_name, 3, $_SESSION["user_id"]);
 $AI_3_contribution = get_contribution($round_name, 4, $_SESSION["user_id"]);
 display_contributions($player_1_contribution, $AI_1_contribution, $AI_2_contribution, $AI_3_contribution);
 
-$player_starting_ECU = (get_starting_ECU($round_name, 1, $_SESSION["user_id"]) - $player_1_contribution) + 0.4 * ($player_1_contribution + $AI_1_contribution + $AI_2_contribution + $AI_3_contribution);
+$player_starting_ECU = intval((get_starting_ECU($round_name, 1, $_SESSION["user_id"]) - $player_1_contribution) + 0.4 * ($player_1_contribution + $AI_1_contribution + $AI_2_contribution + $AI_3_contribution));
 
 echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 ?>
-
 <h1>Punish/Reward</h1>
 <div id="display_before_load">
     <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
@@ -131,9 +126,11 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
             }
         </script>
         <br><br>
-        <button name='submit'>Submit</button>
+        <button name='submit' class="btn btn-default">Submit</button>
     </form>
 </div>
+</div>
+</body>
 
 <script>
     var random_time = Math.floor((Math.random() * 60) + 5);
@@ -173,7 +170,6 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
         }
     }
 </script>
-</body>
 
 <?php
 include("includes/upload_player_rewards.php");

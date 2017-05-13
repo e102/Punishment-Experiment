@@ -3,60 +3,58 @@
 <?php include("templates/header.php");
 include("includes/connection.php");
 session_start();
+include("templates/bootstrap_head.php");
+echo_head("Game 1: Round 3");
 ?>
-<head>
-    <title>Game 1: Round 3</title>
-    <link rel="stylesheet" href="styles/default.css" media="all"/>
-</head>
-
 <body>
-<h1>Welcome to round 3</h1>
-<br>
+<div class="container-fluid">
+    <h1>Welcome to round 3</h1>
+    <br>
 
-<?php
-$userID = $_SESSION["user_id"];
-display_round_1b_results($userID);
+    <?php
+    $userID = $_SESSION["user_id"];
+    display_round_1b_results($userID);
 
-function display_round_1b_results($user_ID) {
-    global $con;
-    $sql_query = "select * from users where user_ID = '$user_ID'";
-    $run_query = mysqli_query($con, $sql_query);
-    $check_query = mysqli_num_rows($run_query);
+    function display_round_1b_results($user_ID) {
+        global $con;
+        $sql_query = "select * from users where user_ID = '$user_ID'";
+        $run_query = mysqli_query($con, $sql_query);
+        $check_query = mysqli_num_rows($run_query);
 
-    if ($check_query == 1) {
-        while ($row = mysqli_fetch_array($run_query)) {
-            global $round_1b_player_contribution;
-            $round_1b_player_contribution = $row["round_1b_player_contribution"];
-            $round_1b_AI_1_contribution = $row["round_1b_AI_1_contribution"];
-            $round_1b_AI_2_contribution = $row["round_1b_AI_2_contribution"];
-            $round_1b_AI_3_contribution = $row["round_1b_AI_3_contribution"];
+        if ($check_query == 1) {
+            while ($row = mysqli_fetch_array($run_query)) {
+                global $round_1b_player_contribution;
+                $round_1b_player_contribution = $row["round_1b_player_contribution"];
+                $round_1b_AI_1_contribution = $row["round_1b_AI_1_contribution"];
+                $round_1b_AI_2_contribution = $row["round_1b_AI_2_contribution"];
+                $round_1b_AI_3_contribution = $row["round_1b_AI_3_contribution"];
 
-            global $round_1b_player_ECU_at_end;
-            $round_1b_player_ECU_at_end = $row["round_1b_player_ECU_at_end"];
-            global $round_1b_AI_1_ECU_at_end;
-            $round_1b_AI_1_ECU_at_end = $row["round_1b_AI_1_ECU_at_end"];
-            global $round_1b_AI_2_ECU_at_end;
-            $round_1b_AI_2_ECU_at_end = $row["round_1b_AI_2_ECU_at_end"];
-            global $round_1b_AI_3_ECU_at_end;
-            $round_1b_AI_3_ECU_at_end = $row["round_1b_AI_3_ECU_at_end"];
+                global $round_1b_player_ECU_at_end;
+                $round_1b_player_ECU_at_end = $row["round_1b_player_ECU_at_end"];
+                global $round_1b_AI_1_ECU_at_end;
+                $round_1b_AI_1_ECU_at_end = $row["round_1b_AI_1_ECU_at_end"];
+                global $round_1b_AI_2_ECU_at_end;
+                $round_1b_AI_2_ECU_at_end = $row["round_1b_AI_2_ECU_at_end"];
+                global $round_1b_AI_3_ECU_at_end;
+                $round_1b_AI_3_ECU_at_end = $row["round_1b_AI_3_ECU_at_end"];
 
-            $round_1a_player_ECU_at_end = $row["round_1a_player_ECU_at_end"];
-            $round_1a_AI_1_ECU_at_end = $row["round_1a_AI_1_ECU_at_end"];
-            $round_1a_AI_2_ECU_at_end = $row["round_1a_AI_2_ECU_at_end"];
-            $round_1a_AI_3_ECU_at_end = $row["round_1a_AI_3_ECU_at_end"];
+                $round_1a_player_ECU_at_end = $row["round_1a_player_ECU_at_end"];
+                $round_1a_AI_1_ECU_at_end = $row["round_1a_AI_1_ECU_at_end"];
+                $round_1a_AI_2_ECU_at_end = $row["round_1a_AI_2_ECU_at_end"];
+                $round_1a_AI_3_ECU_at_end = $row["round_1a_AI_3_ECU_at_end"];
+            }
         }
-    }
-    elseif ($check_query == 0) {
-        throw new Exception("No user found with this id");
-    }
-    elseif ($check_query > 1) {
-        throw new Exception("Multiple users found with this id");
-    }
-    else {
-        throw new Exception("Unexpected error");
-    }
+        elseif ($check_query == 0) {
+            throw new Exception("No user found with this id");
+        }
+        elseif ($check_query > 1) {
+            throw new Exception("Multiple users found with this id");
+        }
+        else {
+            throw new Exception("Unexpected error");
+        }
 
-    echo("
+        echo("
     <body>
     <h1>Round 2 results:</h1>
     
@@ -86,41 +84,42 @@ function display_round_1b_results($user_ID) {
     </ul>
     <br>
     ");
-    echo("<script>var player_starting_ECU = $round_1b_player_ECU_at_end</script>");
-}
+        echo("<script>var player_starting_ECU = $round_1b_player_ECU_at_end</script>");
+    }
 
-?>
+    ?>
 
-<div id="display_before_load">
-    <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
-</div>
+    <div id="display_before_load">
+        <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
+    </div>
 
-<div id="display_after_load" style="display:none">
-    <p>All players have connected. Please enter your contribution below</p>
-    <br>
-    <p id="starting_ECUs"></p>
-    <p id='ECUs_kept'>ECUs remaining after your contribution</p>
-    <form action='' method='post'>
-        <p>Contribution to common pool:</p>
-        <select id='r1c_contribution' name='r1c_contribution' onchange='update_ECU_Count()'>
-            <script>
-                var contribution_dropdown = document.getElementById("r1c_contribution");
-                for (var i = 0; i <= player_starting_ECU; i++) {
-                    var option = document.createElement("option");
-                    if (i == 0) {
-                        option.selected = "selected";
+    <div id="display_after_load" style="display:none">
+        <p>All players have connected. Please enter your contribution below</p>
+        <br>
+        <p id="starting_ECUs"></p>
+        <p id='ECUs_kept'>ECUs remaining after your contribution</p>
+        <form action='' method='post'>
+            <p>Contribution to common pool:</p>
+            <select id='r1c_contribution' name='r1c_contribution' onchange='update_ECU_Count()'>
+                <script>
+                    var contribution_dropdown = document.getElementById("r1c_contribution");
+                    for (var i = 0; i <= player_starting_ECU; i++) {
+                        var option = document.createElement("option");
+                        if (i == 0) {
+                            option.selected = "selected";
+                        }
+                        option.text = i;
+                        option.value = i;
+                        contribution_dropdown.add(option);
                     }
-                    option.text = i;
-                    option.value = i;
-                    contribution_dropdown.add(option);
-                }
-            </script>
-        </select>
-        <br><br>
-        <button name='submit'>Submit</button>
-    </form>
+                </script>
+            </select>
+            <br><br>
+            <button name='submit' class="btn btn-default">Submit</button>
+        </form>
+    </div>
 </div>
-
+</body>
 <?php
 if (isset($_POST['submit'])) {
     $round_1c_player_contribution = (int)htmlspecialchars($_POST["r1c_contribution"]);
@@ -185,6 +184,5 @@ function calculate_AI_contribution($player_contribution, $AI_ECU_available) {
         document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + (player_starting_ECU - x).toString();
     }
 </script>
-</body>
 <?php include("templates/footer.php") ?>
 </html>

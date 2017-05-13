@@ -7,8 +7,10 @@ include("includes/connection.php");
 ?>
 
 <html>
-<?php include_once ("templates/head.html")?>
-
+<?php
+include("templates/bootstrap_head.php");
+echo_head("login");
+?>
 <body>
 <div class="container-fluid">
     <h2>Sign In</h2>
@@ -23,6 +25,7 @@ include("includes/connection.php");
 </div>
 </body>
 </html>
+
 <?php
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());

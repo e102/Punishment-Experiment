@@ -3,14 +3,11 @@
 <?php include("templates/header.php");
 include("includes/connection.php");
 session_start();
+include("templates/bootstrap_head.php");
+echo_head("Game 1 Final Results");
 ?>
-
-<head>
-    <title>Game 1: Results</title>
-    <link rel="stylesheet" href="styles/default.css" media="all"/>
-</head>
-
 <body>
+<div class="container-fluid">
 <?php
 $userID = $_SESSION["user_id"];
 display_round_1c_results($userID);
@@ -114,9 +111,9 @@ function display_game_1_final_results($userID) {
 ?>
 
 <form action='' method='post'>
-    <button name='submit'>Continue to game 2</button>
+    <button name='submit' class="btn btn-default">Continue to game 2</button>
 </form>
-
+</div>
 </body>
 
 <?php
