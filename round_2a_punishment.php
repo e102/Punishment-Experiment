@@ -13,7 +13,7 @@ include("templates/bootstrap_head.php");
 echo_head("Game " . $game_number . ": Round " . $round_number);
 echo("
 <body>
-<div class=\"container-fluid\">
+<div class='container-fluid'>
 ");
 
 include_once("includes/get_starting_ECU.php");

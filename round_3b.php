@@ -8,16 +8,14 @@ session_start();
 $round_name = "3b";
 $game_number = substr($round_name, 0, 1);
 $round_number = ord(substr($round_name, -1)) - 96;
+include("templates/bootstrap_head.php");
+echo_head("Game $game_number: Round $round_number");
 echo("
-<head>
-    <title>Game $game_number: Round $round_number</title>
-    <link rel='stylesheet' href='styles/default.css' media='all'/>
-</head>
-
 <body>
+<div class='container-fluid'>
 <h1>Welcome to Round $round_number</h1>
 <div id='display_before_load'>
-    <p id='intro_text'>Please wait for other players to make their decisions. This should not take more than 60 seconds.</p>
+    <p id='intro_text'>Please wait for other players to connect. This should not take more than 60 seconds.</p>
 </div>
 ");
 
@@ -29,7 +27,7 @@ $player_starting_ECU = get_starting_ECU($round_name, 1, $_SESSION["user_id"]);
     <p>All players have made their contributions</p>
     <br>
     <form action='' method='post'>
-        <button name='submit'>Continue</button>
+        <button name='submit' class="btn btn-default">Continue</button>
     </form>
 </div>
 
@@ -42,6 +40,8 @@ $player_starting_ECU = get_starting_ECU($round_name, 1, $_SESSION["user_id"]);
         document.getElementById("display_after_load").style.display = "inline";
     }
 </script>
+</div>
+</body>
 
 <?php
 if (isset($_POST['submit'])) {
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 function submit_choices($round_name, $user_ID) {
     include_once("includes/get_previous_round_name.php");
     include_once("includes/get_contribution.php");
-    $avg_player_contribution_round_2 = (int)((get_contribution("2a",1,$user_ID) + get_contribution("2b",1,$user_ID)  + get_contribution("2c",1,$user_ID))/3);
+    $avg_player_contribution_round_2 = (int)((get_contribution("2a", 1, $user_ID) + get_contribution("2b", 1, $user_ID) + get_contribution("2c", 1, $user_ID)) / 3);
 
     include_once("includes/get_starting_ECU.php");
     $current_round_AI_1_contribution = calculate_AI_contribution($avg_player_contribution_round_2, get_starting_ECU($round_name, 2, $user_ID));
@@ -84,7 +84,5 @@ function calculate_AI_contribution($player_contribution, $AI_ECU_available) {
     return $AI_contribution;
 }
 
-?>
-</body>
-<?php include("templates/footer.php") ?>
+include("templates/footer.php") ?>
 </html>

@@ -8,13 +8,11 @@ $player_count = 4;
 echo("<script>var player_count = $player_count;</script>");
 $round_name = "2c";
 $game_number = substr($round_name, 0, 1);
+include("templates/bootstrap_head.php");
+echo_head("Game " . $game_number . " Final Results");
 echo("
-<head>
-    <title>Game $game_number: Final Results</title>
-    <link rel='stylesheet' href='styles/default.css' media='all'/>
-</head>
-
 <body>
+<div class='container-fluid'>
 ");
 
 include_once ("includes/get_final_ECU.php");
@@ -31,13 +29,15 @@ echo("
         <li>Player 4 finished the game with $AI_3_final_ECU ECUs</li>
     </ul>
     <br>
+    
+    <p> These ECU's have been added to your bank. After you have finished 3 games, the ECU in your bank will determine your reward</p>
     ");
 ?>
 
 <form action="" method="post">
     <button name='submit'>Continue</button>
 </form>
-
+</div>
 </body>
 
 <?php

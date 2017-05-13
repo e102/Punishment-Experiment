@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <?php include("templates/header.php");
 include("includes/connection.php");
 session_start();
@@ -9,15 +9,12 @@ echo("<script>var player_count = $player_count;</script>");
 $round_name = "3c";
 $game_number = substr($round_name, 0, 1);
 $round_number = ord(substr($round_name, -1)) - 96;
+include("templates/bootstrap_head.php");
+echo_head("Game " . $game_number . ": Round " . $round_number);
 echo("
-<head>
-    <title>Game $game_number: Round $round_number</title>
-    <link rel='stylesheet' href='styles/default.css' media='all'/>
-</head>
-
 <body>
+<div class='container-fluid'>
 ");
-
 
 include_once("includes/get_starting_ECU.php");
 include_once("includes/display_initial_ECU.php");
@@ -129,7 +126,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
             }
         </script>
         <br><br>
-        <button name='submit'>Submit</button>
+        <button name='submit' class="btn btn-default">Submit</button>
     </form>
 </div>
 
@@ -171,6 +168,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
         }
     }
 </script>
+</div>
 </body>
 
 <?php
@@ -184,7 +182,5 @@ if (isset($_POST['submit'])) {
     $next_round_address = "round_" . $round_name . "_results.php";
     echo("<script>window.open('$next_round_address', '_self')</script>");
 }
-?>
-
-<?php include("templates/footer.php") ?>
+include("templates/footer.php") ?>
 </html>

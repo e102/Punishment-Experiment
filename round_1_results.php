@@ -103,7 +103,6 @@ function display_game_1_final_results($userID) {
     echo("
 <h1>Final results for Game 1:</h1>
 
-<p>You have finished the game and have $round_1c_player_ECU_at_end ECU's</p>
 <p> These ECU's have been added to your bank. After you have finished 3 games, the ECU in your bank will determine your reward</p>
 ");
 }

@@ -4,17 +4,14 @@
 include("templates/header.php");
 include("includes/connection.php");
 session_start();
-
 $round_name = "2c";
 $game_number = substr($round_name, 0, 1);
 $round_number = ord(substr($round_name, -1)) - 96;
+include("templates/bootstrap_head.php");
+echo_head("Game " . $game_number . ": Round " . $round_number);
 echo("
-<head>
-    <title>Game $game_number: Round $round_number</title>
-    <link rel='stylesheet' href='styles/default.css' media='all'/>
-</head>
-
 <body>
+<div class='container-fluid'>
 <h1>Welcome to Round $round_number</h1>
 <div id='display_before_load'>
     <p id='intro_text'>Please wait for other players to connect. This should not take more than 60 seconds.</p>
@@ -48,10 +45,11 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
             </script>
         </select>
         <br><br>
-        <button name='submit'>Submit</button>
+        <button name='submit' class="btn btn-default">Submit</button>
     </form>
 </div>
-
+</div>
+</body>
 <script>
     var random_time = Math.floor((Math.random() * 60) + 5);
     setTimeout(load_page, random_time * 1000);
@@ -115,7 +113,5 @@ function calculate_AI_contribution($player_contribution, $AI_ECU_available) {
     return $AI_contribution;
 }
 
-?>
-</body>
-<?php include("templates/footer.php") ?>
+include("templates/footer.php") ?>
 </html>
