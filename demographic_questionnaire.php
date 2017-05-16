@@ -2,63 +2,59 @@
 <html>
 <?php
 include("templates/header.php");
-include ("includes/connection.php");
+include("includes/connection.php");
 session_start();
+
+include("templates/bootstrap_head.php");
+echo_head("Demographic Questionnaire");
 ?>
-<head>
-    <title>Demographic Questionnaire</title>
-    <link rel="stylesheet" href="styles/default.css" media="all"/>
-</head>
 
 <body>
-<form action="" method="post">
-    <h4>Round 1</h4>
-    <p> In round 1, you contribute 20 ECU’s to the Social Good. The other participants contribute 0.</p>
-    <p> What is your total payoff for round 1?</p>
-    <input type="radio" name="question_1" value="1" checked="checked"><label for="1">1</label><br>
-    <input type="radio" name="question_1" value="5"><label for="5">5</label><br>
-    <input type="radio" id="question_1_correct_answer" name="question_1" value="8"><label for="8">8</label><br>
-    <input type="radio" name="question_1" value="14"><label for="14">12</label><br>
-    <input type="radio" name="question_1" value="20"><label for="20">20</label><br>
+<div class="container-fluid">
+    <h4>Demographic Questionnaire</h4>
+    <form action="" method="post">
 
-    <p>What is the <b>other participants</b> total payoff for round 1?</p>
-    <input type="radio" name="question_2" value="0" checked="checked"><label for="0">0</label><br>
-    <input type="radio" name="question_2" value="14"><label for="14">14</label><br>
-    <input type="radio" name="question_2" value="20"><label for="20">20</label><br>
-    <input type="radio" id="question_2_correct_answer" name="question_2" value="28"><label for="28">28</label><br>
-    <input type="radio" name="question_2" value="32"><label for="32">32</label><br>
-
-    <h4>Round 2</h4>
-    <p> In round 2, you contribute 20 ECU’s to the Social Good. The other 3 players also contribute
-        20 ECU’s. What is <b>your</b> total payoff for round 2?</p>
-    <input type="radio" name="question_3" value="1" checked="checked"><label for=">1">1</label><br>
-    <input type="radio" name="question_3" value="11"><label for="11">11</label><br>
-    <input type="radio" id="question_3_correct_answer" name="question_3" value="32"><label for="32">32</label><br>
-    <input type="radio" name="question_2" value="38"><label for="38">38</label><br>
-    <input type="radio" name="question_3" value="40"><label for="40">40</label><br>
-
-    <h4>Round 3</h4>
-    <p>In round 3, you contribute 4 ECU’s to the Social Good, player Green contributes 0,
-        player Red contributes 8 and player Blue contributes 20.</p>
-
-    <p>What is <b>your</b> total payoff for round 3?.</p>
-    <input type="text" name="question_4" required="required"><label>ECU's</label>
-    <p><br>What is Blue's total payoff for round 3?</p>
-    <input type="text" name="question_5" required="required"><label>ECU's</label>
-    <p><br>What is Red's total payoff for round 3?</p>
-    <input type="text" name="question_6" required="required"><label>ECU's</label>
-    <p><br>What is the total payoff of Green for this round? (answer: 28).</p>
-    <input type="text" name="question_7" required="required"><label>ECU's</label>
-    <br>
-    <button name="submit">Submit (Dev testing. Will always work.)</button>
-</form>
+        <p>What is your age?</p>
+        <select name="age">
+            <?php
+            echo("<option value = 'please select an age'>Please select an age</option>");
+            for ($i = 16; $i < 100; $i++) {
+                echo("<option value = '$i'>$i</option>");
+            }
+            ?>
+        </select>
+        <p><br>What is your gender?</p>
+        <input type="radio" name="gender" value="male" checked="checked"><label>male</label><br>
+        <input type="radio" name="gender" value="female"><label>female</label><br>
+        <input type="radio" name="gender" value="other"><label>other</label><br>
+        <p><br>What is your nationality?</p>
+        <select name="nationality">
+            <?php
+            $countries = ["United Kingdom", "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegowina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Congo, the Democratic Republic of the", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia (Hrvatska)", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "France Metropolitan", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard and Mc Donald Islands", "Holy See (Vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran (Islamic Republic of)", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic of", "Korea, Republic of", "Kuwait", "Kyrgyzstan", "Lao, People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia, The Former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Moldova, Republic of", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"];
+            echo("<option value = 'please select a country'>Please select a country</option>");
+            foreach ($countries as $country) {
+                echo("<option value = '$country'>$country</option>");
+            }
+            ?>
+        </select>
+        <br><br>
+        <button name="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+</body>
 <?php
 if (isset($_POST['submit'])) {
     if (validate_answers() == true) {
         $userID = $_SESSION["user_id"];
-        $sql = "UPDATE users SET passed_comprehension_quiz = 1 WHERE user_id =$userID";
-        if (mysqli_query($con, $sql)) {
-            echo("<script>alert('You have passed the quiz')</script>");
+        $age = htmlspecialchars($_POST['age']);
+        $gender = htmlspecialchars($_POST['gender']);
+        $nationality = htmlspecialchars($_POST['nationality']);
+
+        $sql1 = "UPDATE users SET user_age = '$age' WHERE user_id =$userID";
+        $sql2 = "UPDATE users SET user_gender = '$gender' WHERE user_id =$userID";
+        $sql3 = "UPDATE users SET user_nationality = '$nationality' WHERE user_id =$userID";
+
+        if (mysqli_query($con, $sql1) && mysqli_query($con, $sql2) && mysqli_query($con, $sql3)) {
             echo("<script>window.open('round_0.php', '_self')</script>");
         }
         else {
@@ -67,24 +63,21 @@ if (isset($_POST['submit'])) {
         }
     }
     else {
-        echo("<script>alert('Answers incorrect. Please try again')</script>");
+        echo("<script>alert('Please fill in every field')</script>");
     }
 }
 
 function validate_answers() {
-    $question_1_answer = htmlspecialchars($_POST['question_1']);
-    $question_2_answer = htmlspecialchars($_POST['question_2']);
-    $question_3_answer = htmlspecialchars($_POST['question_3']);
-    $question_4_answer = htmlspecialchars($_POST['question_4']);
-    $question_5_answer = htmlspecialchars($_POST['question_5']);
-    $question_6_answer = htmlspecialchars($_POST['question_6']);
-    $question_7_answer = htmlspecialchars($_POST['question_7']);
+    $age = htmlspecialchars($_POST['age']);
+    $gender = htmlspecialchars($_POST['gender']);
+    $nationality = htmlspecialchars($_POST['nationality']);
 
-    //IMPORTANT: Answer to question 4 is wrong.
-    return (($question_1_answer == 8) && ($question_2_answer == 28) && ($question_3_answer == 32) && ($question_4_answer == 24) && ($question_5_answer == 8) && ($question_6_answer == 20) && ($question_7_answer == 28));
+    if ($age == "please select an age" || $nationality == "please select a country") {
+        return false;
+    }
+
+    return true;
 }
 
-?>
-</body>
-<?php include("templates/footer.php") ?>
+include("templates/footer.php") ?>
 </html>
