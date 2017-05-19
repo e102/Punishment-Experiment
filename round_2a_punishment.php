@@ -32,7 +32,7 @@ $AI_2_contribution = get_contribution($round_name, 3, $_SESSION["user_id"]);
 $AI_3_contribution = get_contribution($round_name, 4, $_SESSION["user_id"]);
 display_contributions($player_1_contribution, $AI_1_contribution, $AI_2_contribution, $AI_3_contribution);
 
-$player_starting_ECU = intval((get_starting_ECU($round_name, 1, $_SESSION["user_id"]) - $player_1_contribution) + 0.4 * ($player_1_contribution + $AI_1_contribution + $AI_2_contribution + $AI_3_contribution));
+$player_starting_ECU = intval((get_starting_ECU($round_name, 1, $_SESSION["user_id"]) - $player_1_contribution) + 0.5 * ($player_1_contribution + $AI_1_contribution + $AI_2_contribution + $AI_3_contribution));
 
 echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 ?>

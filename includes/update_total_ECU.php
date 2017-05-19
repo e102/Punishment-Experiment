@@ -60,7 +60,7 @@ function update_total_ECU($player_count, $user_ID, $round_name) {
                 $total_contribution += get_contribution($round_name, $i, $user_ID);
             }
 
-            $total_ECU = max(0, $player_starting_ECU + ($total_contribution * 0.4) - $player_contribution - ($player_rewards_given / 2) + $player_rewards_received);
+            $total_ECU = max(0, $player_starting_ECU + ($total_contribution * 0.5) - $player_contribution - ($player_rewards_given / 2) + $player_rewards_received);
         } catch (Exception $e) {
             echo($e . "<br>");
         }

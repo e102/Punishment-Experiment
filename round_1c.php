@@ -134,13 +134,13 @@ if (isset($_POST['submit'])) {
     $total_contribution = $round_1c_player_contribution + $round_1c_AI_1_contribution + $round_1c_AI_2_contribution + $round_1c_AI_3_contribution;
 
     global $round_1b_player_ECU_at_end;
-    $round_1c_player_ECU_at_end = ($round_1b_player_ECU_at_end - $round_1c_player_contribution) + (0.4 * $total_contribution);
+    $round_1c_player_ECU_at_end = ($round_1b_player_ECU_at_end - $round_1c_player_contribution) + (0.5 * $total_contribution);
     global $round_1b_AI_1_ECU_at_end;
-    $round_1c_AI_1_ECU_at_end = ($round_1b_AI_1_ECU_at_end - $round_1c_AI_1_contribution) + (0.4 * $total_contribution);
+    $round_1c_AI_1_ECU_at_end = ($round_1b_AI_1_ECU_at_end - $round_1c_AI_1_contribution) + (0.5 * $total_contribution);
     global $round_1b_AI_2_ECU_at_end;
-    $round_1c_AI_2_ECU_at_end = ($round_1b_AI_2_ECU_at_end - $round_1c_AI_2_contribution) + (0.4 * $total_contribution);
+    $round_1c_AI_2_ECU_at_end = ($round_1b_AI_2_ECU_at_end - $round_1c_AI_2_contribution) + (0.5 * $total_contribution);
     global $round_1b_AI_3_ECU_at_end;
-    $round_1c_AI_3_ECU_at_end = ($round_1b_AI_3_ECU_at_end - $round_1c_AI_3_contribution) + (0.4 * $total_contribution);
+    $round_1c_AI_3_ECU_at_end = ($round_1b_AI_3_ECU_at_end - $round_1c_AI_3_contribution) + (0.5 * $total_contribution);
 
     $userID = $_SESSION["user_id"];
     $sql1 = "UPDATE users SET round_1c_player_contribution = $round_1c_player_contribution, round_1c_player_ECU_at_end = $round_1c_player_ECU_at_end WHERE user_id =$userID";

@@ -14,7 +14,7 @@ echo_head("Game 1 Instructions");
         <li>There are three rounds in the game</li>
         <li>You start with 20 ECUs</li>
         <li>You can contribute ECUs to the common pool</li>
-        <li>Your ECU's are the sum of your leftover ECUs and the total donated to the common pool times 0.4</li>
+        <li>Your ECU's are the sum of your leftover ECUs and the total donated to the common pool times 0.5</li>
     </ul>
 
     <form action='' method='post'>

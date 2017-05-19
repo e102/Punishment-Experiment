@@ -17,12 +17,12 @@ echo_head("Practice Round");
     <ul>
         <li>You start with 20 ECUs</li>
         <li>You can donate any number of these ECUs to the common pool</li>
-        <li>Your final income is the sum of any ECUs you keep + 0.4 x the
+        <li>Your final income is the sum of any ECUs you keep + 0.5 x the
             total contribution of all 4 group members to the common pool.
         </li>
     </ul>
     <br>
-    <p>In total: payout = (20 - your contribution to the project) + 0.4*(total contributions to the project)</p>
+    <p>In total: payout = (20 - your contribution to the project) + 0.5*(total contributions to the project)</p>
     <br>
 
     <p>Your starting ECU's: 20</p>
@@ -31,27 +31,18 @@ echo_head("Practice Round");
     <form action="" method="post">
         <p>Contribution to common pool:</p>
         <select id="r0_contribution" name="r0_contribution" onchange="update_ECU_Count()">
-            <option value="0" selected="selected">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
+            <script>
+                var contribution_dropdown = document.getElementById("r0_contribution");
+                for (var i = 0; i <= 20; i++) {
+                    var option = document.createElement("option");
+                    if (i == 0) {
+                        option.selected = 'selected';
+                    }
+                    option.text = i;
+                    option.value = i;
+                    contribution_dropdown.add(option);
+                }
+            </script>
         </select>
         <br><br>
         <button name="submit" class="btn btn-default">Submit</button>

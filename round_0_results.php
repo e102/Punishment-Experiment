@@ -13,10 +13,10 @@ $test_round_AI_3_contribution = rand(0, 10);
 
 $total_contribution = $test_round_player_contribution + $test_round_AI_1_contribution + $test_round_AI_2_contribution + $test_round_AI_3_contribution;
 
-$test_round_player_payoff = intval((20 - $test_round_player_contribution) + (0.4 * $total_contribution));
-$test_round_AI_1_payoff = intval((20 - $test_round_AI_1_contribution) + (0.4 * $total_contribution));
-$test_round_AI_2_payoff = intval((20 - $test_round_AI_2_contribution) + (0.4 * $total_contribution));
-$test_round_AI_3_payoff = intval((20 - $test_round_AI_3_contribution) + (0.4 * $total_contribution));
+$test_round_player_payoff = intval((20 - $test_round_player_contribution) + (0.5 * $total_contribution));
+$test_round_AI_1_payoff = intval((20 - $test_round_AI_1_contribution) + (0.5 * $total_contribution));
+$test_round_AI_2_payoff = intval((20 - $test_round_AI_2_contribution) + (0.5 * $total_contribution));
+$test_round_AI_3_payoff = intval((20 - $test_round_AI_3_contribution) + (0.5 * $total_contribution));
 
 $userID = $_SESSION["user_id"];
 $sql1 = "UPDATE users SET test_round_AI_1_contribution = $test_round_AI_1_contribution WHERE user_id =$userID";
