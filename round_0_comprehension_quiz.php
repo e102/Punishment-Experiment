@@ -17,25 +17,25 @@ echo_head("Comprehension Quiz");
     <form action="" method="post">
         <p> In round one of the experiment you have contributed 20 ECUs to the Public Good. The other participants have
             contributed 0. How many ECU do you get for this round in the end?</p>
-        <input type="radio" name="question_1" value="5" checked="checked"><label for="5">5</label><br>
+        <input type="radio" name="question_1" value="5" required="required"><label for="5">5</label><br>
         <input type="radio" name="question_1" value="10"><label for="10">10</label><br>
         <input type="radio" name="question_1" value="20"><label for="20">20</label><br>
         <input type="radio" name="question_1" value="30"><label for="30">30</label><br>
 
         <p>How much money do the other participants get for this round? </p>
-        <input type="radio" name="question_2" value="5" checked="checked"><label for="5">5</label><br>
+        <input type="radio" name="question_2" value="5" required="required"><label for="5">5</label><br>
         <input type="radio" name="question_2" value="10"><label for="10">10</label><br>
         <input type="radio" name="question_2" value="20"><label for="20">20</label><br>
         <input type="radio" name="question_2" value="30"><label for="30">30</label><br>
 
         <p> Does everybody get the same amount of money from the Public Good no matter whether they have contributed or
             not?</p>
-        <input type="radio" name="question_3" value="true" checked="checked"><label for="yes">yes</label><br>
+        <input type="radio" name="question_3" value="true" required="required"><label for="yes">yes</label><br>
         <input type="radio" name="question_3" value="false"><label for="no">no</label><br>
 
         <p>If you had 20 ECU and are the only person who has contributed to the Social Good, how much money will you
             have in the end?</p>
-        <input type="radio" name="question_4" value="20+" checked="checked"><label for="More than 20">More than 20</label><br>
+        <input type="radio" name="question_4" value="20+" required="required"><label for="More than 20">More than 20</label><br>
         <input type="radio" name="question_4" value="20"><label for="More than 20">Exactly 20</label><br>
         <input type="radio" name="question_4" value="20-"><label for="More than 20">Less than 20</label><br>
 
@@ -69,7 +69,7 @@ function validate_answers() {
     $question_2_answer = htmlspecialchars($_POST['question_2']);
     $question_3_answer = htmlspecialchars($_POST['question_3']);
     $question_4_answer = htmlspecialchars($_POST['question_4']);
-    
+
     return (($question_1_answer == 10) && ($question_2_answer == 30) && ($question_3_answer == "true") && ($question_4_answer == "20-"));
 }
 

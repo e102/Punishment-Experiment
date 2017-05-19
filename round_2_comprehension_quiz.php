@@ -11,39 +11,27 @@ echo_head("Game 2 Comprehension Quiz");
 <body>
 <div class="container-fluid">
     <h1>Game 2 Comprehension Quiz</h1>
-    <p>These questions are designed to check if you have understood the instructions. The programme will not allow you
-        to
-        continue to the start of the game unless each of the questions have been answered correctly.</p>
-    <p>Remember, this game's rules are identical to those of the previous game. The only difference is that you can
-        punish
-        or reward other participants.<br> By giving up 1 of your ECU's, you can give/remove 2 ECU's from another player.
-    </p>
+    <p>Welcome to part two of the game! You will play with the same people you have played with before, however, they
+        have different colours now. Your incomes have been cleared and every participant starts with 20 ECU regardless
+        of their results in the previous game. The general rules of the game remain the same with one addition. In this
+        game all participants gain a possibility to punish or reward any member of the group after every round.</p>
+    <p>
+        You punish by taking somebody’s ECU away and reward by giving somebody ECU. There is no limit, but there is a
+        price for you. For every two ECU that you decide to reward or punish the other participants for, you lose one.
+        So for every amount you wish you either reward or punish the other players you have to pay half of that sum. You
+        cannot, however, go below zero.</p>
 
     <form action="" method="post">
-        <h4>Round 1</h4>
-        <p> In round 1, you start all start with 60 ECU's. You contribute 50 ECU’s to the Social Good. The other
-            participants
-            contribute 0.<br>What is <b>your</b> total payoff for the round?</p>
-        <input type="radio" name="question_1" value="60" checked="checked"><label for="60">60</label><br>
-        <input type="radio" name="question_1" value="50"><label for="50">50</label><br>
-        <input type="radio" id="question_1_correct_answer" name="question_1" value="30"><label for="30">30</label><br>
-        <input type="radio" name="question_1" value="20"><label for="20">20</label><br>
-        <input type="radio" name="question_1" value="10"><label for="10">10</label><br>
+        <p> In round one of the second part of the experiment you have contributed 20 ECUs to the Social Good. Can you
+            still reward or punish the other participants? (answer: no).</p>
+        <input type="radio" name="question_1" value="yes" required="required"><label for="yes">yes</label><br>
+        <input type="radio" name="question_1" value="no"><label for="no">no</label><br>
 
-        <p>What is the <b>other participants</b> total payoff for round 1?</p>
-        <input type="radio" name="question_2" value="0" checked="checked"><label for="0">0</label><br>
-        <input type="radio" name="question_2" value="30"><label for="30">30</label><br>
-        <input type="radio" name="question_2" value="60"><label for="60">60</label><br>
-        <input type="radio" id="question_2_correct_answer" name="question_2" value="80"><label for="80">80</label><br>
-        <input type="radio" name="question_2" value="90"><label for="90">90</label><br>
 
-        <h4>Punishment</h4>
-        <p> After round 1, you have the opportunity to reward or punish other players. You choose to punish player 2,
-            removing 6 of their ECU's.<br>. How many ECU's does it cost you to do this?</p>
-        <input type="radio" name="question_3" value="0" checked="checked"><label for="0">0</label><br>
-        <input type="radio" id="question_3_correct_answer" name="question_3" value="3"><label for="3">3</label><br>
-        <input type="radio" name="question_3" value="6"><label for="6">6</label><br>
-        <input type="radio" name="question_2" value="12"><label for="12">12</label><br>
+        <p>In round one of the second part of the experiment you have contributed 4 ECUs to the Public Good. You have
+            also decided to reward player Blue with 4 ECU and punish player Green by 2 ECU. How many ECUs will you be
+            spending in this round?</p>
+        <input type="text" name="question_2" required="required"><br>
 
         <button name="submit" class="btn btn-default">Submit</button>
     </form>
@@ -71,10 +59,8 @@ if (isset($_POST['submit'])) {
 function validate_answers() {
     $question_1_answer = htmlspecialchars($_POST['question_1']);
     $question_2_answer = htmlspecialchars($_POST['question_2']);
-    $question_3_answer = htmlspecialchars($_POST['question_3']);
 
-    //IMPORTANT: Answer to question 4 is wrong.
-    return (($question_1_answer == 30) && ($question_2_answer == 80) && ($question_3_answer == 3));
+    return (($question_1_answer == "no") && ($question_2_answer == 7));
 }
 
 include("templates/footer.php") ?>
