@@ -5,15 +5,14 @@
         <div class="col-sm-6">
             <p>
                 Evelyn Svingen<br>
-                poopypoop@poop.poop<br>
+                es707@cam.ac.uk<br>
                 4935043-460
             </p>
         </div>
         <div class="col-sm-6">
             <p>
-                Kyle<br>
-                short@tiny.mini<br>
-                sdf0
+                Dr. Kyle Treiber<br>
+                kht25@cam.ac.uk<br>
             </p>
         </div>
     </div>
