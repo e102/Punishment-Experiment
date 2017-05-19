@@ -6,16 +6,18 @@ include("includes/connection.php");
 session_start();
 
 include("templates/bootstrap_head.php");
-echo_head("Comprehension Questionnaire");
+echo_head("Environment Questionnaire");
 ?>
 
 <head>
-<link rel = 'stylesheet' type = 'text/css' href = 'styles/likert_scale.css' >
+    <link rel='stylesheet' type='text/css' href='styles/likert_scale.css'>
 </head>
 
 <body>
 <div class="container-fluid">
-    <h4>Comprehension Questionnaire</h4>
+    <h4>Environment Questionnaire</h4>
+    <p>All the information with which you could be identified will be kept in strict confidentiality. These answers do
+        not influence your chances to win the prize and will not be communicated to other participants. </p>
 
     <form action="" method="post">
         <div class="form-group">
@@ -24,15 +26,15 @@ echo_head("Comprehension Questionnaire");
         </div>
 
         <div class="form-group">
-        <?php
-        include_once("includes/echo_likert_scale.php");
-        echo_likert_scale("I felt I knew a lot of the purpose of this study", "goal");
-        echo_likert_scale("I could understand the instructions clearly", "understand_instructions");
-        echo_likert_scale("I have put a lot of thought into every decision", "thought");
-        echo_likert_scale("I felt that my decisions did not matter in the game", "felt_decisions_matter");
-        echo_likert_scale("The other participants in the game have behaved in the way I expected them to behave", "others_behaved_as_expected");
-        echo_likert_scale("I have felt cheated in the game", "felt_cheated");
-        ?>
+            <?php
+            include_once("includes/echo_likert_scale.php");
+            echo_likert_scale("I felt I knew a lot of the purpose of this study", "goal");
+            echo_likert_scale("I could understand the instructions clearly", "understand_instructions");
+            echo_likert_scale("I have put a lot of thought into every decision", "thought");
+            echo_likert_scale("I felt that my decisions did not matter in the game", "felt_decisions_matter");
+            echo_likert_scale("The other participants in the game have behaved in the way I expected them to behave", "others_behaved_as_expected");
+            echo_likert_scale("I have felt cheated in the game", "felt_cheated");
+            ?>
         </div>
 
         <div class="form-group">
@@ -69,7 +71,7 @@ if (isset($_POST['submit'])) {
     $sql .= generate_sql("user_felt_cheated", $felt_cheated, $userID);
     $sql .= generate_sql("user_comment", $comment, $userID);
 
-    if (mysqli_multi_query ($con, $sql)) {
+    if (mysqli_multi_query($con, $sql)) {
         echo("<script>window.open('raffle.php', '_self')</script>");
     }
     else {

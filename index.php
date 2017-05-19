@@ -42,7 +42,6 @@ if (isset($_POST['sign_up'])) {
         echo "<script>alert('Your ID has not been recognized.')</script>";
         echo "<script>window.open('index.php','_self')</script>";
     }
-
     else {
         try {
             createUser($user_payment_id);
