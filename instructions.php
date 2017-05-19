@@ -12,143 +12,60 @@ echo_head("Instructions");
 <body>
 <div class="container-fluid">
     <h1>Instructions</h1>
-    <p>You are now entering the decision-making game, commonly referred to as the Public Goods Game, which will consist
-        of
-        one practice round and three parts. Every part will consist of three rounds in total and is a slightly different
-        variation of the initial game. It is important that you read these instructions carefully as the decisions that
-        you
-        make in the experiment will affect which lottery you will be able to enter. Your total payoff for the experiment
-        will be the results of one of the parts of the experiment chosen at random by the computer. In this experiment
-        we
-        use Experiment Currency Units (ECU’s)s, which will be later transformed into payments
-        according to the following rate:</p>
-
-    <p>10 ECU = 1£</p>
-
-    <p>You have been grouped with three other participants and will remain playing with them for the entirety of the
-        game.
-        They have been given the same instructions that you are reading now and play by exactly the same rules. In the
-        beginning of the experiment you and all the other participants will be endowed with 20 ECU, which you can choose
-        to
-        either contribute to the Social Good, or keep for yourself. For every ECU contributed to the Social Good every
-        participant will receive 0.4 ECU’s. That makes the social return of every contributed ECU equal to 4*0.4 = 1.6.
-        Every ECU that has not been contributed to the social good remains at your disposal.</p>
-
-    <p>The number of the period appears in the top left corner of the screen. In the top right corner you can see how
-        many
-        more seconds remain for you to decide on the distribution of your points. Your decision must be made before the
-        time
-        displayed is 0 seconds, otherwise the programme will automatically contribute 0 to the Social Good. Your
-        endowment
-        in the beginning of each part is 20 ECUs. The amount of ECU in the next round depends on your decisions in the
-        previous round. You have to decide how many points you want to contribute to the project by typing a number
-        between
-        0 and 20 in the input field. This field can be reached by clicking it with the mouse. As soon as you have
-        decided
-        how many points to contribute to the project, you have also decided how many ECUS you keep for yourself: this is
-        (20
-        - your contribution) ECUs. After entering your contribution you must press the O.K. button (either with the
-        mouse,
-        or by pressing the Enter - key). Once you have done this your decision can no longer be revised.</p>
-
-    <p>After all members of your group have made their decision the following income screen will show you the total
-        amount
-        of points contributed by all four group members to the project (including your contribution). Also this screen
-        shows
-        you how many ECUs you have earned at the first stage. The income for the other players will be calculated in the
-        same way as yours.</p>
-
-    <p>Your income for the round will consist of:</p>
+    <p>You are now entering a game which you will play with other people with fake currency, Experiment Currency Units
+        (ECU’s) also referred to as tokens. There are three parts to the game, each part has three rounds, making it a
+        total of 9 rounds. It is important that you read these instructions carefully as the decisions that you make in
+        the experiment will affect your chances of winning the prize. They may appear to be hard to understand, however,
+        are much easier once the actual game is played.</p>
+    <p>You play with three other participants and will play in the same group for the whole game. They have been given
+        the same instructions that you are reading now and play by exactly the same rules. You and all the other
+        participants start the game with 20 ECU. You can do two things with those ECU - you can keep them or you can
+        invest them into a Social Good. What the Public Good does is it takes all the money that has been put into it
+        and
+        multiplies them by two. Then it takes that money and shares them equally between all the participants. For
+        example, if everyone contributes 1 ECU to the Public Good, that means that 4 ECU have been contributed in total.
+        The Social Good makes it into 8 ECU and then shares them equally between all participants. In the end, every
+        player (including you) receives 8/4 = 2 ECU. You keep the ECU received from the Public Good as well as the ECU
+        you have decided not to contribute.</p>
+    <p>That means that:</p>
     <ul>
-        <li>the ECUs which you have kept for yourself (“Income from ECU kept”);</li>
-        <li>the “income from the project”. This income is calculated as follows: your income from the project = 0.4 x
-            the
-            total contribution of all 4 group members to the project.
+        <li>If all players contribute to the Social Good, everybody is getting more money in the end because the Public
+            Good doubles all contributions.
+        </li>
+        <li>If nobody contributes, everybody only has their starting money and will not earn more from the Public
+            Good.
+        </li>
+        <li>Everyone gets the same amount of ECU from the Public Good, it does not matter who contributed and who did
+            not. Therefore, you will always earn more money if you contribute less than others.
         </li>
     </ul>
-    <br>
-    <p>In total: payout = (20 - your contribution to the project) + 0.4*(total contributions to the project)</p>
+    <p>The number of the part as well as the round appear in the top left corner of the screen. In the top right corner
+        you can see how many more seconds remain for you to decide on the distribution of your tokens. Your decision
+        must be made before the time displayed is 0 seconds, otherwise the programme will automatically contribute 0 to
+        the Social Good. You start with 20 ECU in the beginning of every part, and then for next rounds the number
+        depends on how much money you have had in the previous round.
+        After all players have made their decision, you will reach a results page in which all the contributions
+        (including yours) will be shown. It shows you how many ECUs you have earned at the first stage. The income for
+        the other players will be calculated in the same way as yours.
 
-
-    <h1>Comprehension Quiz</h1>
-    <p>These questions are designed to check if you have understood the instructions. The programme will not allow you
-        to
-        continue to the start of the game unless each of the questions have been answered correctly.</p>
+        Your income for the round will consist of:</p>
+    <ul>
+        <li>The tokens which you have kept for yourself (not invested into the Public Good)</li>
+        <li>The money you get from the Public Good (0.5 * how many tokens the 4 group members have contributed to the
+            project).</li>
+    </ul>
+    <p>
+        In sum:
+        (20 - your contribution to the project) + 0.5*(total contributions to the project)</p>
 
     <form action="" method="post">
-        <h4>Round 1</h4>
-        <p> In round 1, you contribute 20 ECU’s to the Social Good. The other participants contribute 0.</p>
-        <p> What is your total payoff for round 1?</p>
-        <input type="radio" name="question_1" value="1" checked="checked"><label for="1">1</label><br>
-        <input type="radio" name="question_1" value="5"><label for="5">5</label><br>
-        <input type="radio" id="question_1_correct_answer" name="question_1" value="8"><label for="8">8</label><br>
-        <input type="radio" name="question_1" value="14"><label for="14">12</label><br>
-        <input type="radio" name="question_1" value="20"><label for="20">20</label><br>
-
-        <p>What is the <b>other participants</b> total payoff for round 1?</p>
-        <input type="radio" name="question_2" value="0" checked="checked"><label for="0">0</label><br>
-        <input type="radio" name="question_2" value="14"><label for="14">14</label><br>
-        <input type="radio" name="question_2" value="20"><label for="20">20</label><br>
-        <input type="radio" id="question_2_correct_answer" name="question_2" value="28"><label for="28">28</label><br>
-        <input type="radio" name="question_2" value="32"><label for="32">32</label><br>
-
-        <h4>Round 2</h4>
-        <p> In round 2, you contribute 20 ECU’s to the Social Good. The other 3 players also contribute
-            20 ECU’s. What is <b>your</b> total payoff for round 2?</p>
-        <input type="radio" name="question_3" value="1" checked="checked"><label for=">1">1</label><br>
-        <input type="radio" name="question_3" value="11"><label for="11">11</label><br>
-        <input type="radio" id="question_3_correct_answer" name="question_3" value="32"><label for="32">32</label><br>
-        <input type="radio" name="question_2" value="38"><label for="38">38</label><br>
-        <input type="radio" name="question_3" value="40"><label for="40">40</label><br>
-
-        <h4>Round 3</h4>
-        <p>In round 3, you contribute 4 ECU’s to the Social Good, player Green contributes 0,
-            player Red contributes 8 and player Blue contributes 20.</p>
-
-        <p>What is <b>your</b> total payoff for round 3?.</p>
-        <input type="text" name="question_4" required="required"><label>ECU's</label>
-        <p><br>What is Blue's total payoff for round 3?</p>
-        <input type="text" name="question_5" required="required"><label>ECU's</label>
-        <p><br>What is Red's total payoff for round 3?</p>
-        <input type="text" name="question_6" required="required"><label>ECU's</label>
-        <p><br>What is the total payoff of Green for this round? (answer: 28).</p>
-        <input type="text" name="question_7" required="required"><label>ECU's</label>
-        <br>
-        <button name="submit" class="btn btn-default">Submit</button>
+        <button name="submit" class="btn btn-default">Continue</button>
     </form>
 </div>
 </body>
 <?php
 if (isset($_POST['submit'])) {
-    if (validate_answers() == true) {
-        $userID = $_SESSION["user_id"];
-        $sql = "UPDATE users SET passed_comprehension_quiz = 1 WHERE user_id =$userID";
-        if (mysqli_query($con, $sql)) {
-            echo("<script>alert('You have passed the quiz')</script>");
-            echo("<script>window.open('round_0.php', '_self')</script>");
-        }
-        else {
-            echo("<script>alert('Could not connect to server')</script>");
-            echo "Error: " . $sql . "<br>" . mysqli_error($con);
-        }
-    }
-    else {
-        echo("<script>alert('Answers incorrect. Please try again')</script>");
-    }
+    echo("<script>window.open('round_0_comprehension_quiz.php', '_self')</script>");
 }
-
-function validate_answers() {
-    $question_1_answer = htmlspecialchars($_POST['question_1']);
-    $question_2_answer = htmlspecialchars($_POST['question_2']);
-    $question_3_answer = htmlspecialchars($_POST['question_3']);
-    $question_4_answer = htmlspecialchars($_POST['question_4']);
-    $question_5_answer = htmlspecialchars($_POST['question_5']);
-    $question_6_answer = htmlspecialchars($_POST['question_6']);
-    $question_7_answer = htmlspecialchars($_POST['question_7']);
-
-    //IMPORTANT: Answer to question 4 is wrong.
-    return (($question_1_answer == 8) && ($question_2_answer == 28) && ($question_3_answer == 32) && ($question_4_answer == 24) && ($question_5_answer == 8) && ($question_6_answer == 20) && ($question_7_answer == 28));
-}
-
 include("templates/footer.php") ?>
 </html>
