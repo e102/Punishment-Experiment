@@ -4,6 +4,8 @@ session_start();
 include("templates/header.php");
 include("templates/bootstrap_head.php");
 echo_head("Terms and Conditions");
+include_once ("includes/check_referring_page.php");
+check_referring_page("https://punishment-game-cambridge.herokuapp.com/")
 ?>
 <html>
 <body>
@@ -34,31 +36,33 @@ echo_head("Terms and Conditions");
     <form action="" method="post" class="form-vertical">
         <div class="form-group">
             <div class="checkbox">
-            <label><input type="checkbox" name="checkbox_1" value="checkbox_1_value" required="required">I
-                have read and understood the instructions above. All the questions that I had were answered. I have had
-                enough time to consider my decision.</label>
-            <br>
+                <label><input type="checkbox" name="checkbox_1" value="checkbox_1_value" required="required">I
+                    have read and understood the instructions above. All the questions that I had were answered. I have
+                    had
+                    enough time to consider my decision.</label>
+                <br>
             </div>
 
             <div class="checkbox">
-            <label><input type="checkbox" name="checkbox_2" value="checkbox_2_value" required="required">I
-                understand that participation in this experiment is fully anonymised and the researcher has no way of
-                connecting my answers back to me.
-            </label>
-            <br>
+                <label><input type="checkbox" name="checkbox_2" value="checkbox_2_value" required="required">I
+                    understand that participation in this experiment is fully anonymised and the researcher has no way
+                    of
+                    connecting my answers back to me.
+                </label>
+                <br>
             </div>
 
             <div class="checkbox">
-            <label><input type="checkbox" name="checkbox_3" value="checkbox_3_value" required="required">I
-                consent to the storage and use of my answers in this experiment for research purposes.</label>
-            <br>
+                <label><input type="checkbox" name="checkbox_3" value="checkbox_3_value" required="required">I
+                    consent to the storage and use of my answers in this experiment for research purposes.</label>
+                <br>
             </div>
 
             <div class="checkbox">
-            <label><input type="checkbox" name="checkbox_4" value="checkbox_4_value" required="required">I
-                understand that my participation in this experiment is voluntary and that I can withdraw at any
-                point.</label>
-            <br>
+                <label><input type="checkbox" name="checkbox_4" value="checkbox_4_value" required="required">I
+                    understand that my participation in this experiment is voluntary and that I can withdraw at any
+                    point.</label>
+                <br>
             </div>
 
             <button name="proceed" class="btn btn-default">Proceed</button>

@@ -1,13 +1,8 @@
 <!DOCTYPE html>
-<title>Login</title>
 <?php
 session_start();
 include("templates/header.php");
 include("includes/connection.php");
-?>
-
-<html>
-<?php
 include("templates/bootstrap_head.php");
 echo_head("login");
 ?>
