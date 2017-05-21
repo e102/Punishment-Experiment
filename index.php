@@ -5,8 +5,6 @@ include("templates/header.php");
 include("includes/connection.php");
 include("templates/bootstrap_head.php");
 echo_head("login");
-
-$_SESSION["current_page"] = "index.php"
 ?>
 <body>
 <div class="container-fluid">
@@ -43,6 +41,7 @@ if (isset($_POST['sign_up'])) {
         try {
             createUser($user_payment_id);
             $_SESSION['user_id'] = getUserID($user_payment_id);
+            $_SESSION["current_page"] = "index.php";
             echo "<script>window.open('terms_and_conditions.php','_self')</script>";
         } catch (Exception $e) {
             echo($e->getMessage());
