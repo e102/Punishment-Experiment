@@ -28,9 +28,9 @@ echo("
     <h3>Final ECU totals:</h3>
     <ul>
         <li>You finish the game with $player_final_ECU ECUs</li>
-        <li>Player 2 finished the game with $AI_1_final_ECU ECUs</li>
-        <li>Player 3 finished the game with $AI_2_final_ECU ECUs</li>
-        <li>Player 4 finished the game with $AI_3_final_ECU ECUs</li>
+        <li><span style='color: green'>Green</span> finished the game with $AI_1_final_ECU ECUs</li>
+        <li><span style='color: blue'>Blue</span> finished the game with $AI_2_final_ECU ECUs</li>
+        <li><span style='color: red'>Red</span>finished the game with $AI_3_final_ECU ECUs</li>
     </ul>
     <br>
     

@@ -38,18 +38,18 @@ echo("
     <h3>Donations:</h3>
     <ul>
         <li>You donated $test_round_player_contribution ECUs to the common pool</li>
-        <li>Player 2 donated $test_round_AI_1_contribution ECUs to the common pool</li>
-        <li>Player 3 donated $test_round_AI_2_contribution ECUs to the common pool</li>
-        <li>Player 4 donated $test_round_AI_3_contribution ECUs to the common pool</li>
+        <li><span style='color: green'>Green</span> donated $test_round_AI_1_contribution ECUs to the common pool</li>
+        <li><span style='color: blue'>Blue</span> donated $test_round_AI_2_contribution ECUs to the common pool</li>
+        <li><span style='color: red'>Red</span> donated $test_round_AI_3_contribution ECUs to the common pool</li>
     </ul>
     
     <br>
     <h1>The results:</h1>
     <ul>
         <li>You receive $test_round_player_payoff ECU's</li>
-        <li>Player 2 receives $test_round_AI_1_payoff ECU's</li>
-        <li>Player 3 receives $test_round_AI_2_payoff ECU's</li>
-        <li>Player 4 receives $test_round_AI_3_payoff ECU's</li>
+        <li><span style='color: green'>Green</span> receives $test_round_AI_1_payoff ECU's</li>
+        <li><span style='color: blue'>Blue</span> receives $test_round_AI_2_payoff ECU's</li>
+        <li><span style='color: red'>Red</span> receives $test_round_AI_3_payoff ECU's</li>
     </ul>
     <br>
     

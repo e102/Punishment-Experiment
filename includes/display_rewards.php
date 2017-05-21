@@ -7,14 +7,17 @@
  * @param $reward_3
  */
 function display_rewards($target_player, $reward_1, $reward_2, $reward_3) {
+    include_once "get_player_colour.php";
+
     if ($target_player == 1) {
         echo("
         <h3>Your rewards:</h3>
         <ul>");
     }
     else {
+        $player_colour = get_player_colour($target_player);
         echo("
-        <h3>Player $target_player rewards:</h3>
+        <h3><span style='color: $player_colour'>$player_colour</span> rewards:</h3>
         <ul>");
     }
 

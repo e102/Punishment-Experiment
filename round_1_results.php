@@ -57,26 +57,26 @@ function display_round_1c_results($user_ID) {
     <h3>Initial State:</h3>
     <ul>
         <li>You entered the round with $round_1b_player_ECU_at_end ECUs</li>
-        <li>Player 2 entered the round with $round_1b_AI_1_ECU_at_end ECUs</li>
-        <li>Player 3 entered the round with $round_1b_AI_2_ECU_at_end ECUs</li>
-        <li>Player 4 entered the round with $round_1b_AI_3_ECU_at_end ECUs</li>
+        <li><span style='color: green'>Green</span> entered the round with $round_1b_AI_1_ECU_at_end ECUs</li>
+        <li><span style='color: blue'>Blue</span> entered the round with $round_1b_AI_2_ECU_at_end ECUs</li>
+        <li><span style='color: red'>Red</span> entered the round with $round_1b_AI_3_ECU_at_end ECUs</li>
     </ul>
     
     <h3>Donations:</h3>
     <ul>
         <li>You donated $round_1c_player_contribution ECUs to the common pool</li>
-        <li>Player 2 donated $round_1c_AI_1_contribution ECUs to the common pool</li>
-        <li>Player 3 donated $round_1c_AI_2_contribution ECUs to the common pool</li>
-        <li>Player 4 donated $round_1c_AI_3_contribution ECUs to the common pool</li>
+        <li><span style='color: green'>Green</span> donated $round_1c_AI_1_contribution ECUs to the common pool</li>
+        <li><span style='color: blue'>Blue</span> donated $round_1c_AI_2_contribution ECUs to the common pool</li>
+        <li><span style='color: red'>Red</span> donated $round_1c_AI_3_contribution ECUs to the common pool</li>
     </ul>
     
     <br>
     <h3>Final ECU totals:</h3>
     <ul>
         <li>You have $round_1c_player_ECU_at_end ECU's</li>
-        <li>Player 2 has $round_1c_AI_1_ECU_at_end ECU's</li>
-        <li>Player 3 has $round_1c_AI_2_ECU_at_end ECU's</li>
-        <li>Player 4 has $round_1c_AI_3_ECU_at_end ECU's</li>
+        <li><span style='color: green'>Green</span> has $round_1c_AI_1_ECU_at_end ECU's</li>
+        <li><span style='color: blue'>Blue</span> has $round_1c_AI_2_ECU_at_end ECU's</li>
+        <li><span style='color: red'>Red</span> has $round_1c_AI_3_ECU_at_end ECU's</li>
     </ul>
     <br>
     ");

@@ -67,18 +67,18 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
     <h3>Donations:</h3>
     <ul>
         <li>You donated $round_1a_player_contribution ECUs to the common pool</li>
-        <li>Player 2 donated $round_1a_AI_1_contribution ECUs to the common pool</li>
-        <li>Player 3 donated $round_1a_AI_2_contribution ECUs to the common pool</li>
-        <li>Player 4 donated $round_1a_AI_3_contribution ECUs to the common pool</li>
+        <li><span style='color: green'>Green</span> donated $round_1a_AI_1_contribution ECUs to the common pool</li>
+        <li><span style='color: blue'>Blue</span> donated $round_1a_AI_2_contribution ECUs to the common pool</li>
+        <li><span style='color: red'>Red</span> donated $round_1a_AI_3_contribution ECUs to the common pool</li>
     </ul>
     
     <br>
     <h3>Final ECU totals:</h3>
     <ul>
         <li>You have $round_1a_player_ECU_at_end ECU's</li>
-        <li>Player 2 has $round_1a_AI_1_ECU_at_end ECU's</li>
-        <li>Player 3 has $round_1a_AI_2_ECU_at_end ECU's</li>
-        <li>Player 4 has $round_1a_AI_3_ECU_at_end ECU's</li>
+        <li><span style='color: green'>Green</span> has $round_1a_AI_1_ECU_at_end ECU's</li>
+        <li><span style='color: blue'>Blue</span> has $round_1a_AI_2_ECU_at_end ECU's</li>
+        <li><span style='color: red'>Red</span> has $round_1a_AI_3_ECU_at_end ECU's</li>
     </ul>
     <br>
     ");
