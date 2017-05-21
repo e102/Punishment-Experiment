@@ -4,8 +4,7 @@ session_start();
 include("templates/header.php");
 include("templates/bootstrap_head.php");
 echo_head("Terms and Conditions");
-include_once ("includes/check_referring_page.php");
-check_referring_page("https://punishment-game-cambridge.herokuapp.com/")
+$_SESSION["current_page"] = "terms_and_conditions.php"
 ?>
 <html>
 <body>

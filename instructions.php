@@ -7,6 +7,13 @@ session_start();
 
 include("templates/bootstrap_head.php");
 echo_head("Instructions");
+
+include("includes/check_referring_page.php");
+$this_page_name = "instructions.php";
+$previous_page_name_expected = "environment_questionnaire.php";
+$previous_page_name_actual = $_SESSION["current_page"];
+check_referring_page_is_valid($this_page_name, $previous_page_name_expected, $previous_page_name_actual);
+$_SESSION["current_page"] = $this_page_name
 ?>
 
 <body>
@@ -52,7 +59,8 @@ echo_head("Instructions");
     <ul>
         <li>The tokens which you have kept for yourself (not invested into the Public Good)</li>
         <li>The money you get from the Public Good (0.5 * how many tokens the 4 group members have contributed to the
-            project).</li>
+            project).
+        </li>
     </ul>
     <p>
         In sum:
