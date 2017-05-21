@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <?php include("templates/header.php");
+include("includes/connection.php");
+session_start();
 include("templates/bootstrap_head.php");
 echo_head("Game 1 Instructions");
 
