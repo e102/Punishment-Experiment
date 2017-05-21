@@ -5,6 +5,8 @@ include("templates/header.php");
 include("includes/connection.php");
 include("templates/bootstrap_head.php");
 echo_head("login");
+
+$_SESSION["current_page"] = "index.php"
 ?>
 <body>
 <div class="container-fluid">
