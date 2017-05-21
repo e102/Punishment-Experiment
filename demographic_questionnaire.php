@@ -7,6 +7,9 @@ session_start();
 
 include("templates/bootstrap_head.php");
 echo_head("Demographic Questionnaire");
+
+include_once("includes/Authenticator.php");
+authenticator::authenticate_access("demographic_questionnaire.php", "final_results.php");
 ?>
 
 <body>

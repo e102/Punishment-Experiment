@@ -10,6 +10,10 @@ $game_number = substr($round_name, 0, 1);
 $round_number = ord(substr($round_name, -1)) - 96;
 include("templates/bootstrap_head.php");
 echo_head("Game $game_number: Round $round_number");
+
+include_once("includes/Authenticator.php");
+authenticator::authenticate_access("round_" . $round_name . ".php", "round_".$game_number."_instructions.php");
+
 echo("
 <body>
 <div class='container-fluid'>

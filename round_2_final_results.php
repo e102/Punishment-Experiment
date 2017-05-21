@@ -12,7 +12,7 @@ include("templates/bootstrap_head.php");
 echo_head("Game " . $game_number . " Final Results");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("round_".$round_name."_final_results.php", "round_" . $round_name . "_results.php");
+authenticator::authenticate_access("round_".$game_number."_final_results.php", "round_" . $round_name . "_results.php");
 
 echo("
 <body>

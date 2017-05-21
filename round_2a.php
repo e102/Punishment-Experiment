@@ -11,7 +11,7 @@ include("templates/bootstrap_head.php");
 echo_head("Game " . $game_number . ": Round " . $round_number);
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("round_" . $round_name . ".php", "round_2_instructions.php");
+authenticator::authenticate_access("round_" . $round_name . ".php", "round_".$game_number."_instructions.php");
 
 echo("
 <body>

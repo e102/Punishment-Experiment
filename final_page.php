@@ -7,6 +7,9 @@ session_start();
 
 include("templates/bootstrap_head.php");
 echo_head("Thank You");
+
+include_once("includes/Authenticator.php");
+authenticator::authenticate_access("final_page.php", "raffle.php");
 ?>
 
 <body>

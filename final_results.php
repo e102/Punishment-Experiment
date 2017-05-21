@@ -9,6 +9,10 @@ echo("<script>var player_count = $player_count;</script>");
 $round_name = "3c";
 include("templates/bootstrap_head.php");
 echo_head("Final Results");
+
+include_once("includes/Authenticator.php");
+authenticator::authenticate_access("final_results.php", "round_3_final_results.php");
+
 echo("
 <body>
 <div class='container-fluid'>
