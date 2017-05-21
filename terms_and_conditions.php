@@ -5,8 +5,8 @@ include "templates/header.php";
 include "templates/bootstrap_head.php";
 echo_head("Terms and Conditions");
 
-include "includes/authentication/authenticate_access.php";
-authenticate_access("terms_and_conditions.php", "index.php")
+include_once("includes/Authenticator.php");
+authenticator::authenticate_access("terms_and_conditions.php","index.php");
 ?>
 <html>
 <body>
