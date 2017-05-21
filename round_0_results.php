@@ -6,6 +6,9 @@ session_start();
 include("templates/bootstrap_head.php");
 echo_head("Practice Round Results");
 
+include_once("includes/Authenticator.php");
+authenticator::authenticate_access("round_0_results.php", "round_0.php");
+
 $test_round_player_contribution = $_SESSION["test_round_player_contribution"];
 $test_round_AI_1_contribution = rand(0, 10);
 $test_round_AI_2_contribution = rand(0, 10);

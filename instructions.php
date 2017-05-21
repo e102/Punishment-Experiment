@@ -9,7 +9,7 @@ include("templates/bootstrap_head.php");
 echo_head("Instructions");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("instructions.php","environment_questionnaire.php");
+authenticator::authenticate_access("instructions.php", "environment_questionnaire.php");
 ?>
 
 <body>
@@ -24,8 +24,7 @@ authenticator::authenticate_access("instructions.php","environment_questionnaire
         the same instructions that you are reading now and play by exactly the same rules. You and all the other
         participants start the game with 20 ECU. You can do two things with those ECU - you can keep them or you can
         invest them into a Social Good. What the Public Good does is it takes all the money that has been put into it
-        and
-        multiplies them by two. Then it takes that money and shares them equally between all the participants. For
+        and multiplies them by two. Then it takes that money and shares them equally between all the participants. For
         example, if everyone contributes 1 ECU to the Public Good, that means that 4 ECU have been contributed in total.
         The Social Good makes it into 8 ECU and then shares them equally between all participants. In the end, every
         player (including you) receives 8/4 = 2 ECU. You keep the ECU received from the Public Good as well as the ECU

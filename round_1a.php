@@ -5,6 +5,9 @@ include("includes/connection.php");
 session_start();
 include("templates/bootstrap_head.php");
 echo_head("Game 1: Round 1");
+
+include_once("includes/Authenticator.php");
+authenticator::authenticate_access("round_1a.php", "round_1_instructions.php");
 ?>
 
 <body>

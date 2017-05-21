@@ -3,6 +3,10 @@
 <?php include("templates/header.php");
 include("templates/bootstrap_head.php");
 echo_head("Game 3 Instructions");
+
+include_once("includes/Authenticator.php");
+authenticator::authenticate_access("round_3_instructions.php", "round_2_final_results.php");
+
 echo("
 <body>
 <div class='container-fluid'>
