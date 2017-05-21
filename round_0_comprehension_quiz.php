@@ -61,7 +61,6 @@ if (isset($_POST['submit'])) {
         $userID = $_SESSION["user_id"];
         $sql = "UPDATE users SET passed_comprehension_quiz = 1 WHERE user_id =$userID";
         if (mysqli_query($con, $sql)) {
-            echo("<script>alert('You have passed the quiz')</script>");
             echo("<script>window.open('round_0.php', '_self')</script>");
         }
         else {
