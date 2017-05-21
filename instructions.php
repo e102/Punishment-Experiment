@@ -8,12 +8,8 @@ session_start();
 include("templates/bootstrap_head.php");
 echo_head("Instructions");
 
-include("includes/check_referring_page.php");
-$this_page_name = "instructions.php";
-$previous_page_name_expected = "environment_questionnaire.php";
-$previous_page_name_actual = $_SESSION["current_page"];
-check_referring_page_is_valid($this_page_name, $previous_page_name_expected, $previous_page_name_actual);
-$_SESSION["current_page"] = $this_page_name
+include "includes/authentication/authenticate_access.php";
+authenticate_access("instructions.php", "environment_questionnaire.php");
 ?>
 
 <body>

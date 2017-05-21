@@ -7,12 +7,8 @@ session_start();
 include("templates/bootstrap_head.php");
 echo_head("Environment Questionnaire");
 
-include("includes/check_referring_page.php");
-$this_page_name = "environment_questionnaire.php";
-$previous_page_name_expected = "terms_and_conditions.php";
-$previous_page_name_actual = $_SESSION["current_page"];
-check_referring_page_is_valid($this_page_name, $previous_page_name_expected, $previous_page_name_actual);
-$_SESSION["current_page"] = $this_page_name
+include "includes/authentication/authenticate_access.php";
+authenticate_access("environment_questionnaire.php", "terms_and_conditions.php");
 ?>
 
 <head>
