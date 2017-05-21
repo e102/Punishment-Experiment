@@ -120,7 +120,7 @@ function display_game_1_final_results($userID) {
 
 <?php
 if (isset($_POST['submit'])) {
-    echo("<script>window.open('round_2_instructions.php', '_self')</script>");
+    echo("<script>window.open('round_2_comprehension_quiz.php', '_self')</script>");
 }
 ?>
 

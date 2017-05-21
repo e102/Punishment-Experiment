@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
     $sql .= generate_sql("balance_of_things_society", $balance_of_things_society, $userID);
 
     if (mysqli_multi_query($con, $sql)) {
-        echo("<script>window.open('instructions.php', '_self')</script>");
+        echo("<script>window.open('round_0_comprehension_quiz.php', '_self')</script>");
     }
     else {
         echo("<script>alert('Could not connect to server')</script>");
