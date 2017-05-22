@@ -165,6 +165,9 @@ function calculate_AI_contribution($player_contribution, $AI_ECU_available) {
     if ($AI_contribution > $AI_ECU_available) {
         $AI_contribution = $AI_ECU_available;
     }
+    if ($AI_contribution < 0) {
+        $AI_contribution = 0;
+    }
     return $AI_contribution;
 }
 

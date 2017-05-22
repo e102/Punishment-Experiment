@@ -11,9 +11,6 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
 ?>
 <body>
 <div class="container-fluid">
-    <h1>Welcome to round 2</h1>
-    <br>
-
     <?php
     $userID = $_SESSION["user_id"];
     display_round_1a_results($userID);
@@ -159,6 +156,9 @@ function calculate_AI_contribution($player_contribution, $AI_ECU_available) {
     $AI_contribution = rand($player_contribution, $player_contribution + 10);
     if ($AI_contribution > $AI_ECU_available) {
         $AI_contribution = $AI_ECU_available;
+    }
+    if ($AI_contribution < 0) {
+        $AI_contribution = 0;
     }
     return $AI_contribution;
 }
