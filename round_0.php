@@ -13,8 +13,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
 <body>
 <div class="container-fluid">
     <h1>Welcome to the practice round</h1>
-    <p>You are now entering the practice round. In this round, you will be playing against a computer rather than real
-        people and any ECU's earned will not carry over to the real game.</p>
+    <p>You are now entering the practice round. Any ECU's earned will not carry over to the real game.</p>
 
     <p>Remember</p>
     <ul>

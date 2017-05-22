@@ -17,7 +17,6 @@ authenticator::authenticate_access("environment_questionnaire.php","terms_and_co
 
 <body>
 <div class="container-fluid">
-    <h4>Environment Questionnaire</h4>
     <p>All the information with which you could be identified will be kept in strict confidentiality. These answers do
         not influence your chances to win the prize and will not be communicated to other participants. </p>
 

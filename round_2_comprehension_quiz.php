@@ -34,7 +34,7 @@ authenticator::authenticate_access("round_2_comprehension_quiz.php", "round_1_re
     <h1>Game 2 Comprehension Quiz</h1>
     <form action="" method="post">
         <p> In round one of the second part of the experiment you have contributed 20 ECUs to the Social Good. Can you
-            still reward or punish the other participants? (answer: no).</p>
+            still reward or punish the other participants?</p>
         <input type="radio" name="question_1" value="yes" required="required"><label for="yes">yes</label><br>
         <input type="radio" name="question_1" value="no"><label for="no">no</label><br>
 
@@ -53,7 +53,6 @@ if (isset($_POST['submit'])) {
         $userID = $_SESSION["user_id"];
         $sql = "UPDATE users SET passed_comprehension_quiz_round_2 = 1 WHERE user_id =$userID";
         if (mysqli_query($con, $sql)) {
-            echo("<script>alert('You have passed the quiz')</script>");
             echo("<script>window.open('round_2a.php', '_self')</script>");
         }
         else {

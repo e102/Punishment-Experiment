@@ -9,7 +9,7 @@ echo("<script>var player_count = $player_count;</script>");
 $round_name = "2c";
 $game_number = substr($round_name, 0, 1);
 include("templates/bootstrap_head.php");
-echo_head("Game " . $game_number . " Final Results");
+echo_head("Part " . $game_number . " Final Results");
 
 include_once("includes/Authenticator.php");
 authenticator::authenticate_access("round_".$game_number."_final_results.php", "round_" . $round_name . "_results.php");

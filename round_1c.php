@@ -4,7 +4,7 @@
 include("includes/connection.php");
 session_start();
 include("templates/bootstrap_head.php");
-echo_head("Game 1: Round 3");
+echo_head("Part 1: Round 3");
 
 include_once("includes/Authenticator.php");
 authenticator::authenticate_access("round_1c.php", "round_1b.php");

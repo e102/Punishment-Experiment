@@ -4,7 +4,7 @@
 include("includes/connection.php");
 session_start();
 include("templates/bootstrap_head.php");
-echo_head("Game 1 Final Results");
+echo_head("Part 1 Final Results");
 
 include_once("includes/Authenticator.php");
 authenticator::authenticate_access("round_1_results.php", "round_1c.php");
@@ -104,16 +104,16 @@ function display_game_1_final_results($userID) {
     }
 
     echo("
-<h1>Final results for Game 1:</h1>
+<h1>Final results for Part 1:</h1>
 
-<p> These ECU's have been added to your bank. After you have finished 3 games, the ECU in your bank will determine your reward</p>
+<p> These ECU's have been added to your bank. After you have finished all 3 stages, the ECU in your bank will determine your reward</p>
 ");
 }
 
 ?>
 
 <form action='' method='post'>
-    <button name='submit' class="btn btn-default">Continue to game 2</button>
+    <button name='submit' class="btn btn-default">Continue to Part 2</button>
 </form>
 </div>
 </body>

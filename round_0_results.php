@@ -44,7 +44,6 @@ echo("
     </ul>
     
     <br>
-    <h1>The results:</h1>
     <ul>
         <li>You receive $test_round_player_payoff ECU's</li>
         <li><span style='color: green'>Green</span> receives $test_round_AI_1_payoff ECU's</li>
@@ -53,10 +52,7 @@ echo("
     </ul>
     <br>
     
-    <p>
-    Remember: As this was a practice round, you were playing with a computer and no ECU's will carry over to the next round.
-    In future rounds, you will be playing against real people.
-    </p>
+    <p>Remember: This was a practice round and no ECU's will carry over to the next round.</p>
     
     <form action='' method='post'>
         <button name='submit' class='btn btn-default'>Continue</button>

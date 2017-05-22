@@ -4,7 +4,7 @@
 include("includes/connection.php");
 session_start();
 include("templates/bootstrap_head.php");
-echo_head("Game 1 Instructions");
+echo_head("Part 1 Instructions");
 
 include_once("includes/Authenticator.php");
 authenticator::authenticate_access("round_1_instructions.php", "round_0_results.php");
@@ -12,11 +12,11 @@ authenticator::authenticate_access("round_1_instructions.php", "round_0_results.
 <body>
 <div class="container-fluid">
     <p>
-        You will now play game 1. The rules are the same as the practice game, but you will be playing with real people.<br>
+        You will now play Part 1. The rules are the same as the practice game, but you will be playing with real people.<br>
         Remember:
     </p>
     <ul>
-        <li>There are three rounds in the game</li>
+        <li>There are three rounds in this part</li>
         <li>You start with 20 ECUs</li>
         <li>You can contribute ECUs to the common pool</li>
         <li>Your ECU's are the sum of your leftover ECUs and the total donated to the common pool times 0.5</li>
