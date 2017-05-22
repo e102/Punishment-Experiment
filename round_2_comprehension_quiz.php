@@ -26,8 +26,8 @@ authenticator::authenticate_access("round_2_comprehension_quiz.php", "round_1_re
         cannot, however, go below zero.
     </p>
 
-    <h3>IMPORTANT: Player names have been changed. You are still playing with the same people, but their names have been
-        reassigned.</h3>
+    <p>Player names have been changed. You are still playing with the same people, but their names have been
+        reassigned.</p>
     <br>
 
 
