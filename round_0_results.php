@@ -16,10 +16,7 @@ $test_round_AI_3_contribution = rand(0, 10);
 
 $total_contribution = $test_round_player_contribution + $test_round_AI_1_contribution + $test_round_AI_2_contribution + $test_round_AI_3_contribution;
 
-$test_round_player_payoff = intval((20 - $test_round_player_contribution) + (0.5 * $total_contribution));
-$test_round_AI_1_payoff = intval((20 - $test_round_AI_1_contribution) + (0.5 * $total_contribution));
-$test_round_AI_2_payoff = intval((20 - $test_round_AI_2_contribution) + (0.5 * $total_contribution));
-$test_round_AI_3_payoff = intval((20 - $test_round_AI_3_contribution) + (0.5 * $total_contribution));
+$test_ECU_payoff = intval((20 - $test_round_player_contribution) + (0.5 * $total_contribution));
 
 $userID = $_SESSION["user_id"];
 $sql1 = "UPDATE users SET test_round_AI_1_contribution = $test_round_AI_1_contribution WHERE user_id =$userID";
@@ -45,10 +42,10 @@ echo("
     
     <br>
     <ul>
-        <li>You receive $test_round_player_payoff ECU's</li>
-        <li><span style='color: green'>Green</span> receives $test_round_AI_1_payoff ECU's</li>
-        <li><span style='color: blue'>Blue</span> receives $test_round_AI_2_payoff ECU's</li>
-        <li><span style='color: red'>Red</span> receives $test_round_AI_3_payoff ECU's</li>
+        <li>You receive $test_ECU_payoff ECU's</li>
+        <li><span style='color: green'>Green</span> receives $test_ECU_payoff ECU's</li>
+        <li><span style='color: blue'>Blue</span> receives $test_ECU_payoff ECU's</li>
+        <li><span style='color: red'>Red</span> receives $test_ECU_payoff ECU's</li>
     </ul>
     <br>
     
