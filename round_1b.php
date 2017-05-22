@@ -59,9 +59,9 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
     <h3>Initial State:</h3>
     <ul>
         <li>You entered the round with 20 ECUs</li>
-        <li>Player 2 entered the round with 20 ECUs</li>
-        <li>Player 3 entered the round with 20 ECUs</li>
-        <li>Player 4 entered the round with 20 ECUs</li>
+        <li><span style='color: green'>Green</span> entered the round with 20 ECUs</li>
+        <li><span style='color: blue'>Blue</span> entered the round with 20 ECUs</li>
+        <li><span style='color: red'>Red</span> entered the round with 20 ECUs</li>
     </ul>
     
     <h3>Donations:</h3>
@@ -96,7 +96,7 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
         <p id="starting_ECUs"></p>
         <p id='ECUs_kept'>ECUs remaining after your contribution</p>
         <form action='' method='post'>
-            <p>Contribution to common pool:</p>
+            <p>How much would you like to give to the public good?</p>
             <select id='r1b_contribution' name='r1b_contribution' onchange='update_ECU_Count()'>
                 <script>
                     var contribution_dropdown = document.getElementById("r1b_contribution");

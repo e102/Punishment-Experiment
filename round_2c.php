@@ -34,7 +34,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
     <p id="starting_ECUs"></p>
     <p id='ECUs_kept'>ECUs remaining after your contribution</p>
     <form action='' method='post'>
-        <p>Contribution to common pool:</p>
+        <p>How much would you like to give to the public good?</p>
         <select id='contribution_dropdown' name='contribution_dropdown' onchange='update_ECU_Count()'>
             <script>
                 var contribution_dropdown = document.getElementById("contribution_dropdown");

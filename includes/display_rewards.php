@@ -8,6 +8,7 @@
  */
 function display_rewards($target_player, $reward_1, $reward_2, $reward_3) {
     include_once "get_player_colour.php";
+    $target_player_colour = get_player_colour($target_player);
 
     if ($target_player == 1) {
         echo("
@@ -15,9 +16,8 @@ function display_rewards($target_player, $reward_1, $reward_2, $reward_3) {
         <ul>");
     }
     else {
-        $player_colour = get_player_colour($target_player);
         echo("
-        <h3><span style='color: $player_colour'>$player_colour</span> rewards:</h3>
+        <h3><span style='color: $target_player_colour'>$target_player_colour</span> rewards:</h3>
         <ul>");
     }
 
@@ -30,12 +30,13 @@ function display_rewards($target_player, $reward_1, $reward_2, $reward_3) {
     for ($i = 1; $i <= count($players_array); $i++) {
         $current_reward = $args_array[$i];
         $rewarding_player = $players_array[$i - 1];
+        $rewarding_player_colour = get_player_colour($rewarding_player);
         if ($current_reward >= 0) {
-            echo("<li>Player $rewarding_player rewarded player $target_player for $current_reward ECU's</li>");
+            echo("<li><span style='color: $rewarding_player_colour'>$rewarding_player_colour</span> rewarded <span style='color: $target_player_colour'>$target_player_colour</span> for $current_reward ECU's</li>");
         }
         elseif ($current_reward < 0) {
             $current_reward = abs($current_reward);
-            echo("<li>Player $rewarding_player punished player $target_player for $current_reward ECU's</li>");
+            echo("<li><span style='color: $rewarding_player_colour'>$rewarding_player_colour</span> punished <span style='color: $target_player_colour'>$target_player_colour</span> for $current_reward ECU's</li>");
         }
     }
     echo("

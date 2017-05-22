@@ -23,7 +23,7 @@ authenticator::authenticate_access("round_1a.php", "round_1_instructions.php");
         <p>You start with 20 ECU's</p>
         <p id='ECUs_kept'>ECUs remaining after your contribution:20</p>
         <form action='' method='post'>
-            <p>Contribution to common pool:</p>
+            <p>How much would you like to give to the public good?</p>
             <select id='r1a_contribution' name='r1a_contribution' onchange='update_ECU_Count()'>
                 <option value='0' selected='selected'>0</option>
                 <option value='1'>1</option>

@@ -31,7 +31,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
     <p id="tokens_kept">ECU's kept: 20</p>
 
     <form action="" method="post">
-        <p>Contribution to common pool:</p>
+        <p>How much would you like to give to the public good?</p>
         <select id="r0_contribution" name="r0_contribution" onchange="update_ECU_Count()">
             <script>
                 var contribution_dropdown = document.getElementById("r0_contribution");
