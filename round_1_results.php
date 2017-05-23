@@ -104,9 +104,8 @@ function display_game_1_final_results($userID) {
     }
 
     echo("
-<h1>Final results for Part 1:</h1>
 
-<p> These ECU's have been added to your bank. After you have finished all 3 stages, the ECU in your bank will determine your reward</p>
+<p>You have finished the round with $round_1c_player_ECU_at_end ECU's. These have been added to your bank. You will now proceed to round 2.</p>
 ");
 }
 

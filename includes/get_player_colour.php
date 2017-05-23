@@ -1,6 +1,9 @@
 <?php
 function get_player_colour($player_number){
-    if ($player_number == 2) {
+    if ($player_number == 1){
+        return "you";
+    }
+    elseif ($player_number == 2) {
         return"green";
     }
     elseif ($player_number == 3) {
