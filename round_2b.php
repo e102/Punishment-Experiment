@@ -12,7 +12,7 @@ echo_head("Part " . $game_number . ": Round " . $round_number);
 
 include_once("includes/Authenticator.php");
 include_once "includes/get_previous_round_name.php";
-authenticator::authenticate_access("round_" . $round_name . ".php", "round_" . get_previous_round_name($round_name) . "results.php");
+authenticator::authenticate_access("round_" . $round_name . ".php", "round_" . get_previous_round_name($round_name) . "_results.php");
 
 echo("
 <body>

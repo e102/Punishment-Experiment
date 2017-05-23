@@ -12,7 +12,8 @@ include("templates/bootstrap_head.php");
 echo_head("Part $game_number: Round $round_number");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("round_" . $round_name . ".php", "round_".$game_number."_instructions.php");
+include_once "includes/get_previous_round_name.php";
+authenticator::authenticate_access("round_" . $round_name . ".php", "round_".get_previous_round_name($round_name)."_results.php");
 
 echo("
 <body>
