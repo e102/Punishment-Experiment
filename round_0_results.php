@@ -41,11 +41,12 @@ echo("
     </ul>
     
     <br>
+    <h3>ECU Totals:</h3>
     <ul>
-        <li>You receive $test_ECU_payoff ECU's</li>
-        <li><span style='color: green'>Green</span> receives $test_ECU_payoff ECU's</li>
-        <li><span style='color: blue'>Blue</span> receives $test_ECU_payoff ECU's</li>
-        <li><span style='color: red'>Red</span> receives $test_ECU_payoff ECU's</li>
+        <li>You have $test_ECU_payoff ECU's</li>
+        <li><span style='color: green'>Green</span> has $test_ECU_payoff ECU's</li>
+        <li><span style='color: blue'>Blue</span> has $test_ECU_payoff ECU's</li>
+        <li><span style='color: red'>Red</span> has $test_ECU_payoff ECU's</li>
     </ul>
     <br>
     

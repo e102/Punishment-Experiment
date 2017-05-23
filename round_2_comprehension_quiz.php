@@ -35,8 +35,8 @@ authenticator::authenticate_access("round_2_comprehension_quiz.php", "round_1_re
     <form action="" method="post">
         <p> In round one of the second part of the experiment you have contributed 20 ECUs to the Social Good. Can you
             still reward or punish the other participants?</p>
-        <input type="radio" name="question_1" value="yes" required="required"><label for="yes">yes</label><br>
-        <input type="radio" name="question_1" value="no"><label for="no">no</label><br>
+        <label><input type="radio" name="question_1" value="yes" required="required">yes</label><br>
+        <label> <input type="radio" name="question_1" value="no">no</label><br>
 
         <p>In round one of the second part of the experiment you have contributed 4 ECUs to the Public Good. You have
             also decided to reward player Blue with 4 ECU and punish player Green by 2 ECU. How many ECUs will you be
