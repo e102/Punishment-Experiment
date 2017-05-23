@@ -11,9 +11,6 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
 ?>
 <body>
 <div class="container-fluid">
-    <h1>Welcome to round 3</h1>
-    <br>
-
     <?php
     $userID = $_SESSION["user_id"];
     display_round_1b_results($userID);
@@ -97,6 +94,8 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
     </div>
 
     <div id="display_after_load" style="display:none">
+        <h1>Welcome to round 3</h1>
+        <br>
         <p>All players have connected. Please enter your contribution below</p>
         <br>
         <p id="starting_ECUs"></p>

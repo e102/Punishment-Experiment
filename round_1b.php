@@ -88,6 +88,8 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
     </div>
 
     <div id="display_after_load" style="display:none">
+        <h1>Welcome to round 2</h1>
+        <br>
         <p>All players have connected. Please enter your contribution below</p>
         <br>
         <p id="starting_ECUs"></p>
