@@ -30,7 +30,7 @@ echo("
         <li>You finish the game with $player_final_ECU ECUs</li>
         <li><span style='color: green'>Green</span> finished the game with $AI_1_final_ECU ECUs</li>
         <li><span style='color: blue'>Blue</span> finished the game with $AI_2_final_ECU ECUs</li>
-        <li><span style='color: red'>Red</span>finished the game with $AI_3_final_ECU ECUs</li>
+        <li><span style='color: red'>Red</span> finished the game with $AI_3_final_ECU ECUs</li>
     </ul>
     <br>
     

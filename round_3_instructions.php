@@ -4,6 +4,7 @@
 include("templates/bootstrap_head.php");
 echo_head("Game 3 Instructions");
 
+session_start();
 include_once("includes/Authenticator.php");
 authenticator::authenticate_access("round_3_instructions.php", "round_2_final_results.php");
 
@@ -19,8 +20,8 @@ echo("
     of the TPP, however, TPP may choose to reward and punish any other player in the game in the same way they could in
     the previous game.</p>
 
-<h3>IMPORTANT: Player names have been changed. You are still playing with the same people, but their names have been
-    reassigned.</h3>
+<p>Note: Player names have been changed. You are still playing with the same people, but their names have been
+    reassigned.</p>
 <ul>
     <li>There are three rounds in the game</li>
     <li>You start with 20 ECUs</li>
