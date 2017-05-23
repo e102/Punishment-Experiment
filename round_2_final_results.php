@@ -34,12 +34,12 @@ echo("
     </ul>
     <br>
     
-    <p> These ECU's have been added to your bank. After you have finished 3 games, the ECU in your bank will determine your reward</p>
+    <p> These ECU's have been added to your bank.</p>
     ");
 ?>
 
 <form action="" method="post">
-    <button name='submit'>Continue</button>
+    <button name='submit'>Continue to part 3</button>
 </form>
 </div>
 </body>
