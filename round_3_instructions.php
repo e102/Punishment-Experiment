@@ -20,18 +20,9 @@ echo("
     of the TPP, however, TPP may choose to reward and punish any other player in the game in the same way they could in
     the previous game.</p>
 
-<p>Note: Player names have been changed. You are still playing with the same people, but their names have been
-    reassigned.</p>
-<ul>
-    <li>There are three rounds in the game</li>
-    <li>You start with 20 ECUs</li>
-    <li>Normal players can contribute ECUs to the common pool</li>
-    <li>The punisher can punish or reward other participants.</li>
-    <li>Normal Players start with 20 ECU's. Their ECU's are the sum of their leftover ECUs, the total donated to the
-        common pool times 0.4 and any reward/punishment they receive.
-    </li>
-    <li>The punisher starts with 10 ECU's and gains 10 per round.</li>
-</ul>
+<p>As in the previous part, you are playing with the same participants, although all colours have been changed again.
+    Your incomes have been cleared and every participant starts with 20 tokens regardless of their income in the
+    previous game.</p>
 
 <form action='' method='post'>
     <button name='submit'>Continue</button>
