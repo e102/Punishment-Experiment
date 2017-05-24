@@ -9,7 +9,7 @@ echo("<script>var player_count = $player_count;</script>");
 $round_name = "3c";
 $game_number = substr($round_name, 0, 1);
 include("templates/bootstrap_head.php");
-echo_head("Game " . $game_number . " Final Results");
+echo_head("Part " . $game_number . " Final Results");
 
 include_once("includes/Authenticator.php");
 authenticator::authenticate_access("round_".$game_number."_final_results.php", "round_" . $round_name . "_results.php");
@@ -27,14 +27,14 @@ $AI_3_final_ECU = get_final_ECU($round_name, 4, $_SESSION["user_id"]);
 echo("
     <h3>Round 3 Final ECU totals:</h3>
     <ul>
-        <li>You finish the game with $player_final_ECU ECUs</li>
-        <li><span style='color: green'>Green</span> finished the game with $AI_1_final_ECU ECUs</li>
-        <li><span style='color: blue'>Blue</span> finished the game with $AI_2_final_ECU ECUs</li>
-        <li><span style='color: red'>Red</span> finished the game with $AI_3_final_ECU ECUs</li>
+        <li>You finish the part with $player_final_ECU ECUs</li>
+        <li><span style='color: green'>Green</span> finished the part with $AI_1_final_ECU ECUs</li>
+        <li><span style='color: blue'>Blue</span> finished the part with $AI_2_final_ECU ECUs</li>
+        <li><span style='color: red'>Red</span> finished the part with $AI_3_final_ECU ECUs</li>
     </ul>
     <br>
     
-    <p> These ECU's have been added to your bank. After you have finished 3 games, the ECU in your bank will determine your reward</p>
+    <p> These ECU's have been added to your bank.</p>
     ");
 ?>
 
