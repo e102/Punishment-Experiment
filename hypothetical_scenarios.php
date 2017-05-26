@@ -31,9 +31,13 @@ if (isset($_POST['submit'])) {
     $nightclub_queue_answer = htmlspecialchars($_POST['question_2']);
     $dropped_wallet_answer = htmlspecialchars($_POST['question_3']);
 
+    include_once "includes/generate_sql.php";
 
+    $sql = generate_sql("bus_stop_answer", $bus_stop_answer, $userID);
+    $sql .= generate_sql("nightclub_queue_answer", $nightclub_queue_answer, $userID);
+    $sql .= generate_sql("dropped_wallet_answer", $dropped_wallet_answer, $userID);
 
-    if (mysqli_query($con, $sql1) && mysqli_query($con, $sql2) && mysqli_query($con, $sql3)) {
+    if (mysqli_multi_query($con,$sql)) {
         echo("<script>window.open('environment_questionnaire.php', '_self')</script>");
     }
     else {
