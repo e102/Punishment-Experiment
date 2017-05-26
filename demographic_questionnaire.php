@@ -9,7 +9,7 @@ include("templates/bootstrap_head.php");
 echo_head("Demographic Questionnaire");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("demographic_questionnaire.php", "final_results.php");
+authenticator::authenticate_access("demographic_questionnaire.php", "terms_and_conditions.php");
 ?>
 
 <body>
@@ -28,9 +28,9 @@ authenticator::authenticate_access("demographic_questionnaire.php", "final_resul
         </select>
 
         <p><br>What is your gender?</p>
-        <input type="radio" name="gender" value="male" required="required"><label>male</label><br>
-        <input type="radio" name="gender" value="female" required="required"><label>female</label><br>
-        <input type="radio" name="gender" value="other" required="required"><label>other</label><br>
+        <label><input type="radio" name="gender" value="male" required="required">male</label><br>
+        <label><input type="radio" name="gender" value="female" required="required">female</label><br>
+        <label><input type="radio" name="gender" value="other" required="required">other</label><br>
 
         <p><br>What is your nationality?</p>
         <select name="nationality" required="required">
@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
     $sql3 = "UPDATE users SET user_nationality = '$nationality' WHERE user_id =$userID";
 
     if (mysqli_query($con, $sql1) && mysqli_query($con, $sql2) && mysqli_query($con, $sql3)) {
-        echo("<script>window.open('comprehension_questionnaire.php', '_self')</script>");
+        echo("<script>window.open('hypothetical_scenarios.php', '_self')</script>");
     }
     else {
         echo("<script>alert('Could not connect to server')</script>");

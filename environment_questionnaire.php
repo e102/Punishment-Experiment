@@ -8,7 +8,7 @@ include("templates/bootstrap_head.php");
 echo_head("Environment Questionnaire");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("environment_questionnaire.php","terms_and_conditions.php");
+authenticator::authenticate_access("environment_questionnaire.php","hypothetical_scenarios.php");
 ?>
 
 <head>

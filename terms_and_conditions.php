@@ -79,7 +79,7 @@ authenticator::authenticate_access("terms_and_conditions.php","index.php");
         $userID = $_SESSION["user_id"];
         $sql = "UPDATE users SET agreed_to_conditions = 1 WHERE user_id =$userID";
         if (mysqli_query($con, $sql)) {
-            echo "<script>window.open('environment_questionnaire.php','_self')</script>";
+            echo "<script>window.open('demographic_questionnaire.php','_self')</script>";
         }
         else {
             echo "Error: " . $sql . "<br>" . mysqli_error($con);
