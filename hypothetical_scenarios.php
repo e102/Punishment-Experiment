@@ -85,14 +85,14 @@ function generate_questionnaire() {
 
 function echo_question($question_text, $question_name) {
     echo("
-    <p>$question_text</p><br>
+    <label>$question_text<br>
     <select name='$question_name', required = 'required'>
         <option disabled selected value>Please select an option</option>
         <option value='Very likely'>Very likely</option>
         <option value='Very likely'>Likely</option>
         <option value='Very likely'>Unikely</option>
         <option value='Very likely'>Very Unikely</option>
-    </select>
+    </select></label>
     <br><br>
     ");
 }

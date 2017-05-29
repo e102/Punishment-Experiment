@@ -38,7 +38,7 @@ echo("
 <?php
 if (isset($_POST['submit'])) {
     include_once("includes/get_next_round_name.php");
-    echo("<script>window.open('comprehension_questionnaire.php', '_self')</script>");
+    echo("<script>window.open('self_reported_criminality_questionnaire.php', '_self')</script>");
 }
 
 include("templates/footer.php") ?>

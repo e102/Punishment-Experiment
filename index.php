@@ -35,7 +35,6 @@ if (isset($_POST['sign_up'])) {
 
     if ($check_payment_id == 0) {
         echo "<script>alert('Your ID has not been recognized.')</script>";
-        echo "<script>window.open('index.php','_self')</script>";
     }
     else {
         try {
