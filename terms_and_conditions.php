@@ -13,12 +13,11 @@ authenticator::authenticate_access("terms_and_conditions.php","index.php");
 <div class="container-fluid">
     <h3>Welcome </h3>
     <p>Thank you for agreeing to participate in today’s research project. You will be asked to answer some questions
-        about yourself as well as well as play an interactive game involving virtual money. The study is designed to
-        test how people’s views of the environment affect their behaviour. Therefore, the questions will ask for your
-        views of the society as well as if you have been involved in anti-social behaviour. For participation today you
-        will be paid by entering a prize draw to win a 50£ Amazon voucher. The study should take you approximately 40
-        minutes to complete.</p>
-    <p>For the experiment you will not be asked to include your name at any stage, instead you will be riven a
+        about yourself as well as play an interactive game involving virtual money. The study is designed to
+        test how people’s views of the environment affect their behaviour. Therefore, the questions will ask for your thoughts 
+        about the world and behaviours. For participation today you will be paid by entering a prize draw to win a 50£ Amazon voucher. 
+        The study should take you approximately 40 minutes to complete.</p>
+    <p>For the experiment you will not be asked to include your name at any stage, instead you will be given a
         randomly-generated ID number. That means that there is no way to connect your answers to you. Please note that
         because your results are anonymised at all stages of the experiment, it will not be possible to withdraw your
         data after the experiment is complete. Any data which could be used to identify you (such as age, gender,
