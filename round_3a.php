@@ -59,9 +59,10 @@ function submit_choices($round_name, $user_ID) {
     $avg_player_contribution_round_2 = (int)((get_contribution("2a", 1, $user_ID) + get_contribution("2b", 1, $user_ID) + get_contribution("2c", 1, $user_ID)) / 3);
 
     include_once("includes/get_starting_ECU.php");
-    $current_round_AI_1_contribution = calculate_AI_contribution($avg_player_contribution_round_2, get_starting_ECU($round_name, 2, $user_ID));
-    $current_round_AI_2_contribution = calculate_AI_contribution($avg_player_contribution_round_2, get_starting_ECU($round_name, 3, $user_ID));
-    $current_round_AI_3_contribution = calculate_AI_contribution($avg_player_contribution_round_2, get_starting_ECU($round_name, 4, $user_ID));
+    include_once "includes/calculate_AI_contribution.php";
+    $current_round_AI_1_contribution = calculate_AI_contribution($avg_player_contribution_round_2, get_starting_ECU($round_name, 2, $user_ID), 2);
+    $current_round_AI_2_contribution = calculate_AI_contribution($avg_player_contribution_round_2, get_starting_ECU($round_name, 3, $user_ID), 3);
+    $current_round_AI_3_contribution = calculate_AI_contribution($avg_player_contribution_round_2, get_starting_ECU($round_name, 4, $user_ID), 4);
 
     $sql_2_field = "round_" . $round_name . "_AI_1_contribution";
     $sql2 = "UPDATE users SET $sql_2_field = $current_round_AI_1_contribution WHERE user_id =$user_ID";
@@ -79,14 +80,6 @@ function submit_choices($round_name, $user_ID) {
         echo("<script>alert('Could not connect to server')</script>");
         throw new Exception("Error: SQL did not execute");
     }
-}
-
-function calculate_AI_contribution($player_contribution, $AI_ECU_available) {
-    $AI_contribution = rand($player_contribution, $player_contribution + 10);
-    if ($AI_contribution > $AI_ECU_available) {
-        $AI_contribution = $AI_ECU_available;
-    }
-    return $AI_contribution;
 }
 
 include("templates/footer.php") ?>

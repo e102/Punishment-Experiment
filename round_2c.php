@@ -35,7 +35,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
     <p id='ECUs_kept'>ECUs remaining after your contribution</p>
     <form action='' method='post'>
         <p>How much would you like to give to the public good?</p>
-        <select id='contribution_dropdown' name='contribution_dropdown' onchange='update_ECU_Count()'>
+        <select id='contribution_dropdown' name='contribution_dropdown' onchange='update_ECU_Count()' class="form-control">
             <script>
                 var contribution_dropdown = document.getElementById("contribution_dropdown");
                 for (var i = 0; i <= player_starting_ECU; i++) {
@@ -86,9 +86,10 @@ function submit_choices($round_name, $user_ID) {
     $previous_round_player_contribution = get_contribution(get_previous_round_name($round_name), 1, $user_ID);
 
     include_once("includes/get_starting_ECU.php");
-    $current_round_AI_1_contribution = calculate_AI_contribution($previous_round_player_contribution, get_starting_ECU($round_name, 2, $user_ID));
-    $current_round_AI_2_contribution = calculate_AI_contribution($previous_round_player_contribution, get_starting_ECU($round_name, 3, $user_ID));
-    $current_round_AI_3_contribution = calculate_AI_contribution($previous_round_player_contribution, get_starting_ECU($round_name, 4, $user_ID));
+    include_once "includes/calculate_AI_contribution.php";
+    $current_round_AI_1_contribution = calculate_AI_contribution($previous_round_player_contribution, get_starting_ECU($round_name, 2, $user_ID), 2);
+    $current_round_AI_2_contribution = calculate_AI_contribution($previous_round_player_contribution, get_starting_ECU($round_name, 3, $user_ID), 3);
+    $current_round_AI_3_contribution = calculate_AI_contribution($previous_round_player_contribution, get_starting_ECU($round_name, 4, $user_ID), 4);
 
     $sql_1_field = "round_" . $round_name . "_player_contribution";
     $sql1 = "UPDATE users SET $sql_1_field= $current_round_player_contribution WHERE user_id =$user_ID";
@@ -108,14 +109,6 @@ function submit_choices($round_name, $user_ID) {
         echo("<script>alert('Could not connect to server')</script>");
         throw new Exception("Error: SQL did not execute");
     }
-}
-
-function calculate_AI_contribution($player_contribution, $AI_ECU_available) {
-    $AI_contribution = rand($player_contribution, $player_contribution + 10);
-    if ($AI_contribution > $AI_ECU_available) {
-        $AI_contribution = $AI_ECU_available;
-    }
-    return $AI_contribution;
 }
 
 include("templates/footer.php") ?>

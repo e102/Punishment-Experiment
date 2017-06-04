@@ -31,8 +31,9 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
     <p id="tokens_kept">ECU's kept: 20</p>
 
     <form action="" method="post">
-        <p>How much would you like to give to the public good?</p>
-        <select id="r0_contribution" name="r0_contribution" onchange="update_ECU_Count()">
+        <div class="form-group">
+        <label for="r0_contribution">How much would you like to give to the public good?</label>
+        <select id="r0_contribution" name="r0_contribution" onchange="update_ECU_Count()" class="form-control">
             <script>
                 var contribution_dropdown = document.getElementById("r0_contribution");
                 for (var i = 0; i <= 20; i++) {
@@ -46,7 +47,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
                 }
             </script>
         </select>
-        <br><br>
+        </div>
         <button name="submit" class="btn btn-default">Submit</button>
     </form>
     <?php

@@ -102,7 +102,7 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
         <p id='ECUs_kept'>ECUs remaining after your contribution</p>
         <form action='' method='post'>
             <p>How much would you like to give to the public good?</p>
-            <select id='r1c_contribution' name='r1c_contribution' onchange='update_ECU_Count()'>
+            <select id='r1c_contribution' name='r1c_contribution' onchange='update_ECU_Count()' >
                 <script>
                     var contribution_dropdown = document.getElementById("r1c_contribution");
                     for (var i = 0; i <= player_starting_ECU; i++) {
@@ -127,11 +127,12 @@ if (isset($_POST['submit'])) {
     $round_1c_player_contribution = (int)htmlspecialchars($_POST["r1c_contribution"]);
     global $round_1b_player_contribution;
     global $round_1b_AI_1_ECU_at_end;
-    $round_1c_AI_1_contribution = calculate_AI_contribution($round_1b_player_contribution, $round_1b_AI_1_ECU_at_end);
+    include_once "includes/calculate_AI_contribution.php";
+    $round_1c_AI_1_contribution = calculate_AI_contribution($round_1b_player_contribution, $round_1b_AI_1_ECU_at_end, 2);
     global $round_1b_AI_2_ECU_at_end;
-    $round_1c_AI_2_contribution = calculate_AI_contribution($round_1b_player_contribution, $round_1b_AI_2_ECU_at_end);
+    $round_1c_AI_2_contribution = calculate_AI_contribution($round_1b_player_contribution, $round_1b_AI_2_ECU_at_end, 3);
     global $round_1b_AI_2_ECU_at_end;
-    $round_1c_AI_3_contribution = calculate_AI_contribution($round_1b_player_contribution, $round_1b_AI_2_ECU_at_end);
+    $round_1c_AI_3_contribution = calculate_AI_contribution($round_1b_player_contribution, $round_1b_AI_2_ECU_at_end, 4);
 
     $total_contribution = $round_1c_player_contribution + $round_1c_AI_1_contribution + $round_1c_AI_2_contribution + $round_1c_AI_3_contribution;
 
@@ -158,18 +159,6 @@ if (isset($_POST['submit'])) {
         echo("<script>window.open('round_1_results.php', '_self')</script>");
     }
 }
-
-function calculate_AI_contribution($player_contribution, $AI_ECU_available) {
-    $AI_contribution = rand($player_contribution - 10, $player_contribution + 10);
-    if ($AI_contribution > $AI_ECU_available) {
-        $AI_contribution = $AI_ECU_available;
-    }
-    if ($AI_contribution < 0) {
-        $AI_contribution = 0;
-    }
-    return $AI_contribution;
-}
-
 ?>
 
 <script>

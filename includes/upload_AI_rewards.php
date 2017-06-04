@@ -108,20 +108,8 @@ function upload_AI_rewards($player_count, $user_ID, $round_name) {
 
                 $target_player_contribution = get_contribution($round_name, $target_player, $user_ID);
 
-                if ($current_AI == 2) {
-                    $AI_type = "lazy";
-                }
-                elseif ($current_AI == 3) {
-                    $AI_type = "normal";
-                }
-                elseif ($current_AI == 4) {
-                    $AI_type = "mean";
-                }
-                else {
-                    throw new Exception("Too many players for this version to handle.");
-                }
-
-
+                include_once "determine_AI_type.php";
+                $AI_type = determine_AI_type($current_AI);
                 $reward = calculate_reward($AI_type, $current_AI_contribution, $target_player_contribution, get_AI_ECU_available($current_AI - 1));
 
                 if ($target_player == 1) {
