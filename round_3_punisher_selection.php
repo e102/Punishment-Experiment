@@ -6,7 +6,7 @@ echo_head("Part 3 Punisher Selection");
 
 session_start();
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("round_3_punisher_selection.php", "terms_and_conditions#.php");
+authenticator::authenticate_access("round_3_punisher_selection.php", "round_3_instructions.php");
 
 echo("
 <body>
