@@ -14,8 +14,7 @@ authenticator::authenticate_access("round_2_comprehension_quiz.php", "round_1_re
 <body>
 <div class="container-fluid">
     <h1>Game 2 Instructions</h1>
-    <p>20. Instructions Part 2
-        Welcome to part two of the game! You will play with the same people you have played with before, however, they
+    <p>Welcome to part two of the game! You will play with the same people you have played with before, however, they
         have different colours now. Your incomes have been cleared and every participant starts with 20 ECU regardless
         of their results in the previous game. The general rules of the game remain the same with one addition. In this
         game all participants gain a possibility to punish or reward any member of the group after every round.</p>
