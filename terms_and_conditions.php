@@ -6,18 +6,25 @@ include "templates/bootstrap_head.php";
 echo_head("Terms and Conditions");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("terms_and_conditions.php","index.php");
+authenticator::authenticate_access("terms_and_conditions.php", "index.php");
 ?>
 <html>
 <body>
 <div class="container-fluid">
     <h3>Welcome </h3>
     <p>Thank you for agreeing to participate in today’s research project. You will be asked to answer some questions
-        about yourself as well as play an interactive game involving virtual money. The study is designed to
-        test how people’s views of the environment affect their behaviour. Therefore, the questions will ask for your thoughts 
-        about the world and behaviours. For participation today you will be paid by entering a prize draw to win a 50£ Amazon voucher. 
-        The study should take you approximately 40 minutes to complete.</p>
-    <p>For the experiment you will not be asked to include your name at any stage, instead you will be given a
+        about yourself as well as play an interactive game involving virtual money. The study is designed to test how
+        people’s views of the environment affect their behaviour. Therefore, the questions will ask for your thoughts
+        about the world and behaviours. For participation today you will be paid by entering a prize draw to win a £50
+        Amazon voucher.</p>
+
+    <?php
+    include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
+    $userID = $_SESSION["user_id"];
+    echo_if_pay_dependent_on_ECU($userID, "The more points (ECU's) you finish the game with, the greater your chances of winning the prize.")
+    ?>
+    <p>The study should take you approximately 40 minutes to complete.. For the experiment you will not be asked to
+        include your name at any stage, instead you will be given a
         randomly-generated ID number. That means that there is no way to connect your answers to you. Please note that
         because your results are anonymised at all stages of the experiment, it will not be possible to withdraw your
         data after the experiment is complete. Any data which could be used to identify you (such as age, gender,
@@ -30,9 +37,9 @@ authenticator::authenticate_access("terms_and_conditions.php","index.php");
         win the voucher. If you have any questions or concerns, feel free to contact the researcher at any time during
         or after the experiment using the contact details provided at the bottom of the page. In the unlikely event that
         the experimenter cannot answer your concerns, please contact the supervisor of this project, Dr. Kyle Treiber,
-        whose contact details are also listed.
-        Please make an effort to make all decisions independently, without discussing them with others, and not to share
-        anything about this experiment with other potential participants.</p>
+        whose contact details are also listed. Please make an effort to make all decisions independently, without
+        discussing them with others, and not to share anything about this experiment with other potential
+        participants.</p>
     <form action="" method="post" class="form-vertical">
         <div class="form-group">
             <div class="checkbox">

@@ -11,46 +11,46 @@ authenticator::authenticate_access("round_1_results.php", "round_1c.php");
 ?>
 <body>
 <div class="container-fluid">
-<?php
-$userID = $_SESSION["user_id"];
-display_round_1c_results($userID);
-display_game_1_final_results($userID);
+    <?php
+    $userID = $_SESSION["user_id"];
+    display_round_1c_results($userID);
+    display_game_1_final_results($userID);
 
-function display_round_1c_results($user_ID) {
-    global $con;
-    $sql_query = "select * from users where user_ID = '$user_ID'";
-    $run_query = mysqli_query($con, $sql_query);
-    $check_query = mysqli_num_rows($run_query);
+    function display_round_1c_results($user_ID) {
+        global $con;
+        $sql_query = "select * from users where user_ID = '$user_ID'";
+        $run_query = mysqli_query($con, $sql_query);
+        $check_query = mysqli_num_rows($run_query);
 
-    if ($check_query == 1) {
-        while ($row = mysqli_fetch_array($run_query)) {
-            $round_1c_player_contribution = $row["round_1c_player_contribution"];
-            $round_1c_AI_1_contribution = $row["round_1c_AI_1_contribution"];
-            $round_1c_AI_2_contribution = $row["round_1c_AI_2_contribution"];
-            $round_1c_AI_3_contribution = $row["round_1c_AI_3_contribution"];
+        if ($check_query == 1) {
+            while ($row = mysqli_fetch_array($run_query)) {
+                $round_1c_player_contribution = $row["round_1c_player_contribution"];
+                $round_1c_AI_1_contribution = $row["round_1c_AI_1_contribution"];
+                $round_1c_AI_2_contribution = $row["round_1c_AI_2_contribution"];
+                $round_1c_AI_3_contribution = $row["round_1c_AI_3_contribution"];
 
-            $round_1c_player_ECU_at_end = $row["round_1c_player_ECU_at_end"];
-            $round_1c_AI_1_ECU_at_end = $row["round_1c_AI_1_ECU_at_end"];
-            $round_1c_AI_2_ECU_at_end = $row["round_1c_AI_2_ECU_at_end"];
-            $round_1c_AI_3_ECU_at_end = $row["round_1c_AI_3_ECU_at_end"];
+                $round_1c_player_ECU_at_end = $row["round_1c_player_ECU_at_end"];
+                $round_1c_AI_1_ECU_at_end = $row["round_1c_AI_1_ECU_at_end"];
+                $round_1c_AI_2_ECU_at_end = $row["round_1c_AI_2_ECU_at_end"];
+                $round_1c_AI_3_ECU_at_end = $row["round_1c_AI_3_ECU_at_end"];
 
-            $round_1b_player_ECU_at_end = $row["round_1b_player_ECU_at_end"];
-            $round_1b_AI_1_ECU_at_end = $row["round_1b_AI_1_ECU_at_end"];
-            $round_1b_AI_2_ECU_at_end = $row["round_1b_AI_2_ECU_at_end"];
-            $round_1b_AI_3_ECU_at_end = $row["round_1b_AI_3_ECU_at_end"];
+                $round_1b_player_ECU_at_end = $row["round_1b_player_ECU_at_end"];
+                $round_1b_AI_1_ECU_at_end = $row["round_1b_AI_1_ECU_at_end"];
+                $round_1b_AI_2_ECU_at_end = $row["round_1b_AI_2_ECU_at_end"];
+                $round_1b_AI_3_ECU_at_end = $row["round_1b_AI_3_ECU_at_end"];
+            }
         }
-    }
-    elseif ($check_query == 0) {
-        throw new Exception("No user found with this id");
-    }
-    elseif ($check_query > 1) {
-        throw new Exception("Multiple users found with this id");
-    }
-    else {
-        throw new Exception("Unexpected error");
-    }
+        elseif ($check_query == 0) {
+            throw new Exception("No user found with this id");
+        }
+        elseif ($check_query > 1) {
+            throw new Exception("Multiple users found with this id");
+        }
+        else {
+            throw new Exception("Unexpected error");
+        }
 
-    echo("
+        echo("
     <body>
     <h1>Round 3 results:</h1>
     
@@ -80,40 +80,39 @@ function display_round_1c_results($user_ID) {
     </ul>
     <br>
     ");
-}
+    }
 
-function display_game_1_final_results($userID) {
-    global $con;
-    $sql_query = "select * from users where user_ID = '$userID'";
-    $run_query = mysqli_query($con, $sql_query);
-    $check_query = mysqli_num_rows($run_query);
+    function display_game_1_final_results($userID) {
+        global $con;
+        $sql_query = "select * from users where user_ID = '$userID'";
+        $run_query = mysqli_query($con, $sql_query);
+        $check_query = mysqli_num_rows($run_query);
 
-    if ($check_query == 1) {
-        while ($row = mysqli_fetch_array($run_query)) {
-            $round_1c_player_ECU_at_end = $row["round_1c_player_ECU_at_end"];
+        if ($check_query == 1) {
+            while ($row = mysqli_fetch_array($run_query)) {
+                $round_1c_player_ECU_at_end = $row["round_1c_player_ECU_at_end"];
+            }
         }
-    }
-    elseif ($check_query == 0) {
-        throw new Exception("No user found with this id");
-    }
-    elseif ($check_query > 1) {
-        throw new Exception("Multiple users found with this id");
-    }
-    else {
-        throw new Exception("Unexpected error");
+        elseif ($check_query == 0) {
+            throw new Exception("No user found with this id");
+        }
+        elseif ($check_query > 1) {
+            throw new Exception("Multiple users found with this id");
+        }
+        else {
+            throw new Exception("Unexpected error");
+        }
+
+        echo("<p>You have finished the part with $round_1c_player_ECU_at_end ECU's.");
+        include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
+        echo_if_pay_dependent_on_ECU($userID, "These ECU's have been added to your bank. The more ECU's in your bank after all three rounds, the greater your chance of winning the prize.");
     }
 
-    echo("
+    ?>
 
-<p>You have finished the part with $round_1c_player_ECU_at_end ECU's. These have been added to your bank. You will now proceed to part 2.</p>
-");
-}
-
-?>
-
-<form action='' method='post'>
-    <button name='submit' class="btn btn-default">Continue to Part 2</button>
-</form>
+    <form action='' method='post'>
+        <button name='submit' class="btn btn-default">Continue to Part 2</button>
+    </form>
 </div>
 </body>
 

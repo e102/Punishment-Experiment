@@ -16,9 +16,13 @@ authenticator::authenticate_access("round_0_comprehension_quiz.php", "hypothetic
     <h1>Instructions</h1>
     <p>You are now entering a game which you will play with other people with fake currency, Experiment Currency Units
         (ECU’s) also referred to as tokens. There are three parts to the game, each part has three rounds, making it a
-        total of 9 rounds. It is important that you read these instructions carefully as the decisions that you make in
-        the experiment will affect your chances of winning the prize. They may appear to be hard to understand, however,
-        are much easier once the actual game is played.</p>
+        total of 9 rounds.
+        <?php
+        include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
+        $userID = $_SESSION["user_id"];
+        echo_if_pay_dependent_on_ECU($userID, "It is important that you read these instructions carefully as the decisions that you make in
+        the experiment will affect your chances of winning the prize.")
+        ?>
     <p>You play with three other participants and will play in the same group for the whole game. They have been given
         the same instructions that you are reading now and play by exactly the same rules. You and all the other
         participants start the game with 20 ECU. You can do two things with those ECU - you can keep them or you can
@@ -28,18 +32,18 @@ authenticator::authenticate_access("round_0_comprehension_quiz.php", "hypothetic
         The Social Good makes it into 8 ECU and then shares them equally between all participants. In the end, every
         player (including you) receives 8/4 = 2 ECU. You keep the ECU received from the Public Good as well as the ECU
         you have decided not to contribute.</p>
+
     <p>That means that:</p>
-    <ul>
-        <li>If all players contribute to the Social Good, everybody is getting more money in the end because the Public
-            Good doubles all contributions.
+    <ul class="list-group">
+        <li class="list-group-item">If all players contribute to the Social Good, everybody gets more money in the
+            end because the Public Good doubles all contributions.
         </li>
-        <li>If nobody contributes, everybody only has their starting money and will not earn more from the Public
-            Good.
-        </li>
-        <li>Everyone gets the same amount of ECU from the Public Good, it does not matter who contributed and who did
-            not. Therefore, you will always earn more money if you contribute less than others.
+        <li class="list-group-item">If nobody contributes, everybody only keeps their starting money.</li>
+        <li class="list-group-item">Everyone gets the same amount of ECU from the Public Good, it does not matter who
+            contributed and who did not. Therefore, you will always earn more money if you contribute less than others.
         </li>
     </ul>
+
     <p>The number of the part as well as the round appear in the top left corner of the screen. In the top right corner
         you can see how many more seconds remain for you to decide on the distribution of your tokens. Your decision
         must be made before the time displayed is 0 seconds, otherwise the programme will automatically contribute 0 to
@@ -50,9 +54,10 @@ authenticator::authenticate_access("round_0_comprehension_quiz.php", "hypothetic
         the other players will be calculated in the same way as yours.
 
         Your income for the round will consist of:</p>
-    <ul>
-        <li>The tokens which you have kept for yourself (not invested into the Public Good)</li>
-        <li>The money you get from the Public Good (0.5 * how many tokens the 4 group members have contributed to the
+    <ul class="list-group">
+        <li class="list-group-item">The tokens which you have kept for yourself (not invested into the Public Good)</li>
+        <li class="list-group-item">The money you get from the Public Good (0.5 * how many tokens the 4 group members
+            have contributed to the
             project).
         </li>
     </ul>

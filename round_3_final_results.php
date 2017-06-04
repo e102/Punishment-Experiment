@@ -12,14 +12,14 @@ include("templates/bootstrap_head.php");
 echo_head("Part " . $game_number . " Final Results");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("round_".$game_number."_final_results.php", "round_" . $round_name . "_results.php");
+authenticator::authenticate_access("round_" . $game_number . "_final_results.php", "round_" . $round_name . "_results.php");
 
 echo("
 <body>
 <div class='container-fluid'>
 ");
 
-include_once ("includes/get_final_ECU.php");
+include_once("includes/get_final_ECU.php");
 $player_final_ECU = get_final_ECU($round_name, 1, $_SESSION["user_id"]);
 $AI_1_final_ECU = get_final_ECU($round_name, 2, $_SESSION["user_id"]);
 $AI_2_final_ECU = get_final_ECU($round_name, 3, $_SESSION["user_id"]);
@@ -33,9 +33,10 @@ echo("
         <li><span style='color: red'>Red</span> finished the part with $AI_3_final_ECU ECUs</li>
     </ul>
     <br>
-    
-    <p> These ECU's have been added to your bank.</p>
     ");
+include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
+$userID = $_SESSION["user_id"];
+echo_if_pay_dependent_on_ECU($userID, "These ECU's have been added to your bank. The more ECU's in your bank after all three rounds, the greater your chance of winning the prize.")
 ?>
 
 <form action="" method="post">
@@ -46,7 +47,7 @@ echo("
 
 <?php
 if (isset($_POST['submit'])) {
-    include_once ("includes/get_next_round_name.php");
+    include_once("includes/get_next_round_name.php");
     echo("<script>window.open('final_results.php', '_self')</script>");
 }
 

@@ -38,7 +38,9 @@ if (isset($_POST['sign_up'])) {
     }
     else {
         try {
-            createUser($user_payment_id);
+            if (!check_user_exists($user_payment_id)) {
+                createUser($user_payment_id);
+            }
             $_SESSION['user_id'] = getUserID($user_payment_id);
             $_SESSION["current_page"] = "index.php";
             echo "<script>window.open('terms_and_conditions.php','_self')</script>";
@@ -49,28 +51,42 @@ if (isset($_POST['sign_up'])) {
 }
 
 function createUser($user_payment_id) {
+    global $con;
+
+    $sql_create_user = "INSERT INTO users(user_payment_id) VALUES ('$user_payment_id')";
+    if (mysqli_query($con, $sql_create_user)) {
+        echo "<script>console.log('First time logging in. New user profile created successfully')</script>";
+    }
+    else {
+        throw new Exception(mysqli_error($con));
+    }
+
+    $payment_condition = rand(0, 1);
+    echo "<script>console.log('payment condition = $payment_condition')</script>";
+    $sql_update_payment_condition = "UPDATE users SET paid_based_on_ECU = '$payment_condition' WHERE user_payment_id = '$user_payment_id'";
+    if (mysqli_query($con, $sql_update_payment_condition)) {
+        echo "<script>console.log('Payment condition created successfully')</script>";
+    }
+    else {
+        throw new Exception(mysqli_error($con));
+    }
+}
+
+function check_user_exists($user_payment_id) {
     $get_id = "select * from users where user_payment_id = '$user_payment_id'";
     global $con;
     $run_id = mysqli_query($con, $get_id);
     $check_id = mysqli_num_rows($run_id);
 
     if ($check_id == 1) {
-        echo("<script>console.log('User already exists')</script>");
+        return true;
     }
     elseif ($check_id == 0) {
-        $sql = "INSERT INTO users(user_payment_id) VALUES ('$user_payment_id')";
-        if (mysqli_query($con, $sql)) {
-            echo "<script>console.log('New record created successfully')</script>";
-        }
-        else {
-            throw new Exception("SQL Error");
-        }
+        return false;
     }
-    elseif ($check_id > 1) {
-        throw new Exception("Serious error. Check user != 0 or 1");
+    else {
+        throw new Exception("more than 1 user with that payment id found in database");
     }
-
-
 }
 
 function getUserID($user_payment_id) {

@@ -15,8 +15,6 @@ function get_starting_ECU($round_name, $player, $user_ID) {
     global $con;
     $sql_query = "select $contribution_field from users where user_ID = '$user_ID'";
     $run_query = mysqli_query($con, $sql_query);
-
-
     while ($row = mysqli_fetch_array($run_query)) {
         return $row[$contribution_field];
     }

@@ -33,9 +33,10 @@ echo("
         <li><span style='color: red'>Red</span> finished the game with $AI_3_final_ECU ECUs</li>
     </ul>
     <br>
-    
-    <p> These ECU's have been added to your bank.</p>
     ");
+include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
+$userID = $_SESSION["user_id"];
+echo_if_pay_dependent_on_ECU($userID, "These ECU's have been added to your bank. The more ECU's in your bank after all three rounds, the greater your chance of winning the prize.")
 ?>
 
 <form action="" method="post">
