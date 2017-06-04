@@ -105,7 +105,7 @@ function display_game_1_final_results($userID) {
 
     echo("
 
-<p>You have finished the round with $round_1c_player_ECU_at_end ECU's. These have been added to your bank. You will now proceed to round 2.</p>
+<p>You have finished the part with $round_1c_player_ECU_at_end ECU's. These have been added to your bank. You will now proceed to part 2.</p>
 ");
 }
 

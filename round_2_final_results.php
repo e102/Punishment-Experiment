@@ -27,7 +27,7 @@ $AI_3_final_ECU = get_final_ECU($round_name, 4, $_SESSION["user_id"]);
 echo("
     <h3>Final ECU totals:</h3>
     <ul>
-        <li>You finish the game with $player_final_ECU ECUs</li>
+        <li>You finish the part with $player_final_ECU ECUs</li>
         <li><span style='color: green'>Green</span> finished the game with $AI_1_final_ECU ECUs</li>
         <li><span style='color: blue'>Blue</span> finished the game with $AI_2_final_ECU ECUs</li>
         <li><span style='color: red'>Red</span> finished the game with $AI_3_final_ECU ECUs</li>

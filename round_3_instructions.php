@@ -13,7 +13,7 @@ echo("
 <div class='container-fluid'>
 ")
 ?>
-<h1>Game 3 Instructions</h1>
+<h1>Part 3 Instructions</h1>
 <p>In this game you will be playing the same game you have been playing before, however, the ability to punish or reward
     other participants will be removed. Instead, one participants at random will be allocated a role of a third party
     punisher (TPP). The other three participants play the game. None of the decisions in the game influence the payoff

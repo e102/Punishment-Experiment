@@ -13,7 +13,7 @@ authenticator::authenticate_access("round_2_comprehension_quiz.php", "round_1_re
 
 <body>
 <div class="container-fluid">
-    <h1>Game 2 Instructions</h1>
+    <h1>Part 2 Instructions</h1>
     <p>Welcome to part two of the game! You will play with the same people you have played with before, however, they
         have different colours now. Your incomes have been cleared and every participant starts with 20 ECU regardless
         of their results in the previous game. The general rules of the game remain the same with one addition. In this
@@ -30,7 +30,7 @@ authenticator::authenticate_access("round_2_comprehension_quiz.php", "round_1_re
     <br>
 
 
-    <h1>Game 2 Comprehension Quiz</h1>
+    <h1>Part 2 Comprehension Quiz</h1>
     <form action="" method="post">
         <p> In round one of the second part of the experiment you have contributed 20 ECUs to the Social Good. Can you
             still reward or punish the other participants?</p>
