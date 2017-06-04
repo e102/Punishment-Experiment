@@ -27,10 +27,12 @@ authenticator::authenticate_access("demographic_questionnaire.php", "terms_and_c
             ?>
         </select>
 
-        <p><br>What is your gender?</p>
-        <label><input type="radio" name="gender" value="male" required="required">male</label><br>
-        <label><input type="radio" name="gender" value="female" required="required">female</label><br>
-        <label><input type="radio" name="gender" value="other" required="required">other</label><br>
+        <p><br>Which gender do you most identify with?</p>
+        <select name="gender" required="required">
+            <option disabled selected value>Please select an option</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
 
         <p><br>What is your nationality?</p>
         <select name="nationality" required="required">
