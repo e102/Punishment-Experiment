@@ -9,7 +9,7 @@ include("templates/bootstrap_head.php");
 echo_head("Hypothetical Scenarios");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("hypothetical_scenarios.php", "demographic_questionnaire.php");
+authenticator::authenticate_access("hypothetical_scenarios.php", "environment_questionnaire.php");
 ?>
 
 <body>
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
     $sql .= generate_sql("dropped_wallet_answer", $dropped_wallet_answer, $userID);
 
     if (mysqli_multi_query($con,$sql)) {
-        echo("<script>window.open('environment_questionnaire.php', '_self')</script>");
+        echo("<script>window.open('round_0_comprehension_quiz.php', '_self')</script>");
     }
     else {
         echo("<script>alert('Could not connect to server')</script>");
@@ -71,7 +71,7 @@ function generate_questionnaire() {
     elseif ($user_gender == "female") {
         $question_text_1 = "Lindsay is waiting for the bus at a bus stop. She is listening to his iPod. Suddenly a young female walks by and pushes her. When Lindsay asks why she pushed her the young female just ignores her. There are no other people at the bus stop. If you were Lindsay, how likely do you think it is that you would hit or push the young female that pushed you?";
         $question_text_2 = "Sarah is walking on a busy street past a queue for a nightclub on a Friday night. A young female walks up to Sarah and accuses her of queue jumping, and pushes her so that she falls over and hurts her arm. If you were Sarah, how likely do you think it is that you would hit the young female?";
-        $question_text_3 = "Helen is sitting in an empty room in a library when she sees that someone has dropped a wallet on the floor. She picks up the wallet and finds that it contains one hundred pounds. There is no one else around him, no one has seen Helen picking up the wallet. If you were Helen, how likely would you be take the money and keep it for yourself?";
+        $question_text_3 = "Helen is sitting in an empty room in a library when she sees that someone has dropped a wallet on the floor. She picks up the wallet and finds that it contains one hundred pounds. There is no one else around her, no one has seen Helen picking up the wallet. If you were Helen, how likely would you be take the money and keep it for yourself?";
 
     }
     else {
@@ -85,15 +85,16 @@ function generate_questionnaire() {
 
 function echo_question($question_text, $question_name) {
     echo("
-    <label>$question_text<br>
-    <select name='$question_name', required = 'required'>
+    <div class='form-group'>
+    <label for='$question_name'>$question_text</label>
+    <select name='$question_name' id='$question_name' required='required' class='form-control'>
         <option disabled selected value>Please select an option</option>
         <option value='Very likely'>Very likely</option>
         <option value='Very likely'>Likely</option>
         <option value='Very likely'>Unikely</option>
         <option value='Very likely'>Very Unikely</option>
-    </select></label>
-    <br><br>
+    </select>
+    </div>
     ");
 }
 

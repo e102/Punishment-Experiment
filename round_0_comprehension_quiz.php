@@ -8,7 +8,7 @@ include("templates/bootstrap_head.php");
 echo_head("Comprehension Quiz");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("round_0_comprehension_quiz.php", "environment_questionnaire.php");
+authenticator::authenticate_access("round_0_comprehension_quiz.php", "hypothetical_scenarios.php");
 ?>
 
 <body>
