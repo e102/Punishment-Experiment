@@ -102,7 +102,7 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
         <p id='ECUs_kept'>ECUs remaining after your contribution</p>
         <form action='' method='post'>
             <p>How much would you like to give to the public good?</p>
-            <select id='r1c_contribution' name='r1c_contribution' onchange='update_ECU_Count()' >
+            <select id='r1c_contribution' name='r1c_contribution' onchange='update_ECU_Count()' class="form-control">
                 <script>
                     var contribution_dropdown = document.getElementById("r1c_contribution");
                     for (var i = 0; i <= player_starting_ECU; i++) {
