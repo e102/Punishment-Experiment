@@ -83,9 +83,9 @@ function generate_questionnaire() {
     echo_question("damaged or destroyed things not belonging to you for fun or because you were bored or angry (for example, smashed windows or street lights, scratched the paint off cars, sprayed graffiti on a wall, damaged a bicycle).", "vandalism");
     echo_question("set fire to something you were not supposed to set fire to (for example, started a fire in a school/college/university, started a fire in an empty building, set fire to a house, started a fire in a playground, started a fire in a wood).", "arson");
     echo_question("used a weapon, hit or threatened to hurt someone, to take money or other things from them.", "robbery");
-    echo_question("mot counting events when you took money or other things from someone, beaten up or hit someone (for example punched, stabbed, kicked or head-butted someone). ", "assault");
+    echo_question("not counting events when you took money or other things from someone, beaten up or hit someone (for example punched, stabbed, kicked or head-butted someone). ", "assault");
     echo_question("committed a traffic offense such as speeding, driving without insurance, etc...", "traffic_offense");
-    echo_question("bought, or been given/passed on stolen property. (For example, handling, buying, or helping to sell stolen goods).", "bought_or_given_stolen_property");
+    echo_question("bought, or been given/passed on stolen property (for example, handling, buying, or helping to sell stolen goods).", "bought_or_given_stolen_property");
 
     echo_question("comitted fraud, such as evading tax, pretending to be someone else, or using/creating false documents?", "fraud");
 //    echo_question("evaded tax (e.g. not paying income tax when being paid cash-in-hand).", "tax_evasion");
@@ -96,7 +96,7 @@ function generate_questionnaire() {
 
     echo_question("tried drugs (cannabis, amphetamines, ecstasy, heroin, cocaine, crack, LSD, GBH, crystal meth, tranquilisers, magic mushrooms).", "tried_drugs");
     echo_question("sold drugs (cannabis, amphetamines, ecstasy, heroin, cocaine, crack, LSD, GBH, crystal meth, tranquilisers, magic mushrooms).", "sold_drugs");
-    echo_question("forced anyone into having sex.", "raped_someone");
+    echo_question("had sex with someone without their active consent.", "raped_someone");
 }
 
 function echo_question($question_text, $question_name) {
