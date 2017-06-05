@@ -23,7 +23,7 @@ authenticator::authenticate_access("terms_and_conditions.php", "index.php");
     $userID = $_SESSION["user_id"];
     echo_if_pay_dependent_on_ECU($userID, "The more points (ECU's) you finish the game with, the greater your chances of winning the prize.")
     ?>
-    <p>The study should take you approximately 40 minutes to complete.. For the experiment you will not be asked to
+    <p>The study should take you approximately 40 minutes to complete. For the experiment you will not be asked to
         include your name at any stage, instead you will be given a
         randomly-generated ID number. That means that there is no way to connect your answers to you. Please note that
         because your results are anonymised at all stages of the experiment, it will not be possible to withdraw your
