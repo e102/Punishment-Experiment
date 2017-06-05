@@ -6,19 +6,20 @@ include("includes/connection.php");
 session_start();
 
 include("templates/bootstrap_head.php");
-echo_head("Raffle");
+echo_head("Interviews");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("raffle.php", "comprehension_questionnaire.php");
+authenticator::authenticate_access("interviews.php", "comprehension_questionnaire.php");
 ?>
 
 <body>
 <div class="container-fluid">
-    <h4>Raffle</h4>
+    <h4>Interview</h4><br>
+    <p>This is a pilot study for a new method of studying human behaviour, which means that every input would be highly appreciated. if you feel that you would be willing to help the research by answering a few questions about your experiences while playing this game, please enter your email below. The researcher will have no access to your results or answers to the questionnaires.</p>
 
     <form action="" method="post">
         <div class="form-group">
-            <label for="opinion">Enter your email below if you want to be entered into the prize draw</label>
+            <label for="opinion">Enter your email below if you would like to be invited for an interview</label><br>
             <input type="text" required="required" id="user_email"/>
         </div>
         <br><br>
