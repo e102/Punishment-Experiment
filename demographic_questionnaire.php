@@ -39,7 +39,7 @@ authenticator::authenticate_access("demographic_questionnaire.php", "terms_and_c
         </div>
 
         <div class="form-group">
-        <label for="nationality">What is your nationality?</label>
+        <label for="nationality">What is your primary nationality?</label>
         <select name="nationality" id="nationality" required="required" class="form-control">
             <option disabled selected value>Please select an option</option>
             <?php
