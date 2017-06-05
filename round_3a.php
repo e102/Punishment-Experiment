@@ -20,7 +20,7 @@ echo("
 <div class='container-fluid'>
 <h1>Welcome to Round $round_number</h1>
 <div id='display_before_load'>
-    <p id='intro_text'>Please wait for other players to connect. This should not take more than 60 seconds.</p>
+    <p id='intro_text'>Please wait for other players to make their contributions. This should not take more than 60 seconds.</p>
 </div>
 ");
 
