@@ -52,6 +52,11 @@ authenticator::authenticate_access("round_1_results.php", "round_1c.php");
 
         echo("
     <body>
+        <div id='display_before_load'>
+        <p id='intro_text'>Please wait for other players to make their contributions</p>
+    </div>
+    
+    <div id='display_after_load' style='display:none'>
     <h1>Round 3 results:</h1>
     
     <h3>Initial State:</h3>
@@ -78,7 +83,6 @@ authenticator::authenticate_access("round_1_results.php", "round_1c.php");
         <li><span style='color: blue'>Blue</span> has $round_1c_AI_2_ECU_at_end ECU's</li>
         <li><span style='color: red'>Red</span> has $round_1c_AI_3_ECU_at_end ECU's</li>
     </ul>
-    <br>
     ");
     }
 
@@ -103,18 +107,31 @@ authenticator::authenticate_access("round_1_results.php", "round_1c.php");
             throw new Exception("Unexpected error");
         }
 
-        echo("<p>You have finished the part with $round_1c_player_ECU_at_end ECU's.");
+        echo("
+                <p>You have finished the part with $round_1c_player_ECU_at_end ECU's.</p>
+                <form action='' method='post'>
+                    <button name='submit' class=\"btn btn-default\">Continue to Part 2</button>
+                </form>
+                </div>
+            ");
         include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
         echo_if_pay_dependent_on_ECU($userID, "These ECU's have been added to your bank. The more ECU's in your bank after all three rounds, the greater your chance of winning the prize.");
     }
 
     ?>
-
-    <form action='' method='post'>
-        <button name='submit' class="btn btn-default">Continue to Part 2</button>
-    </form>
-</div>
 </body>
+
+<script>
+    function load_page() {
+        document.getElementById("display_before_load").style.display = "none";
+        document.getElementById("display_after_load").style.display = "inline";
+        document.getElementById("starting_ECUs").innerHTML = "ECUs this round:" + player_starting_ECU;
+        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + player_starting_ECU;
+    }
+
+    var random_time = Math.floor((Math.random() * 30) + 1)
+    setTimeout(load_page, random_time * 1000);
+</script>
 
 <?php
 if (isset($_POST['submit'])) {

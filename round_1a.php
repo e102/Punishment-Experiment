@@ -13,28 +13,19 @@ authenticator::authenticate_access("round_1a.php", "round_1_instructions.php");
 <body>
 <div class="container-fluid">
     <h1>Welcome to round 1</h1>
-    <div id="display_before_load">
-        <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
-    </div>
-
-    <div id="display_after_load" style="display:none">
-        <p>All players have connected. Please enter your contribution below</p>
-        <br>
-        <p>You start with 20 ECU's</p>
-        <p id='ECUs_kept'>ECUs remaining after your contribution:20</p>
-        <form action='' method='post'>
-            <p>How much would you like to give to the public good?</p>
-            <select id='r1a_contribution' name='r1a_contribution' onchange='update_ECU_Count()' class="form-control">
-                <?php
-                for ($i = 0; $i <= 20; $i++) {
-                    echo "<option value='$i'>$i</option>";
-                }
-                ?>
-            </select>
-            <br><br>
-            <button name='submit' class="btn btn-default">Submit</button>
-        </form>
-    </div>
+    <p class="bg-info">You start with 20 ECU's</p>
+    <form action='' method='post'>
+        <p>How much would you like to give to the public good?</p>
+        <select id='r1a_contribution' name='r1a_contribution' onchange='update_ECU_Count()' class="form-control">
+            <?php
+            for ($i = 0; $i <= 20; $i++) {
+                echo "<option value='$i'>$i</option>";
+            }
+            ?>
+        </select>
+        <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution:20</p>
+        <button name='submit' class="btn btn-default">Submit</button>
+    </form>
 </div>
 
 <?php
@@ -68,14 +59,6 @@ if (isset($_POST['submit'])) {
 ?>
 
 <script>
-    function load_page() {
-        document.getElementById("display_before_load").style.display = "none";
-        document.getElementById("display_after_load").style.display = "inline";
-    }
-
-    var random_time = Math.floor((Math.random() * 60) + 5)
-    setTimeout(load_page, random_time * 1000);
-
     function update_ECU_Count() {
         var contribution = document.getElementById("r1a_contribution");
         var x = contribution.options[contribution.selectedIndex].value;

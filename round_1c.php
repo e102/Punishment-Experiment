@@ -56,6 +56,11 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
 
         echo("
     <body>
+        <div id='display_before_load'>
+        <p id='intro_text'>Please wait for other players to make their contributions</p>
+    </div>
+    
+    <div id='display_after_load' style='display:none'>
     <h1>Round 2 results:</h1>
     
     <h3>Initial State:</h3>
@@ -88,18 +93,11 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
     }
 
     ?>
-
-    <div id="display_before_load">
-        <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
-    </div>
-
-    <div id="display_after_load" style="display:none">
         <h1>Welcome to round 3</h1>
         <br>
         <p>All players have connected. Please enter your contribution below</p>
         <br>
-        <p id="starting_ECUs"></p>
-        <p id='ECUs_kept'>ECUs remaining after your contribution</p>
+        <p id="starting_ECUs" class="bg-info"></p>
         <form action='' method='post'>
             <p>How much would you like to give to the public good?</p>
             <select id='r1c_contribution' name='r1c_contribution' onchange='update_ECU_Count()' class="form-control">
@@ -116,6 +114,7 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
                     }
                 </script>
             </select>
+            <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution</p>
             <br><br>
             <button name='submit' class="btn btn-default">Submit</button>
         </form>
@@ -169,7 +168,7 @@ if (isset($_POST['submit'])) {
         document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + player_starting_ECU;
     }
 
-    var random_time = Math.floor((Math.random() * 60) + 5)
+    var random_time = Math.floor((Math.random() * 30) + 1)
     setTimeout(load_page, random_time * 1000);
 
     function update_ECU_Count() {

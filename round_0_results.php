@@ -57,7 +57,7 @@ echo("
     <p>Remember: This was a practice round and no ECU's will carry over to the next round.</p>
     
     <form action='' method='post'>
-        <button name='submit' class='btn btn-default'>Continue</button>
+        <button name='submit' class='btn btn-default'>Continue to Part 1</button>
     </form>
 ");
 

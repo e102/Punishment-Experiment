@@ -16,10 +16,10 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
     <p>You are now entering the practice round. Any ECU's earned will not carry over to the real game.</p>
 
     <p>Remember</p>
-    <ul>
-        <li>You start with 20 ECUs</li>
-        <li>You can donate any number of these ECUs to the common pool</li>
-        <li>Your final income is the sum of any ECUs you keep + 0.5 x the
+    <ul class="list-group">
+        <li class="list-group-item">You start with 20 ECUs</li>
+        <li class="list-group-item">You can donate any number of these ECUs to the common pool</li>
+        <li class="list-group-item">Your final income is the sum of any ECUs you keep + 0.5 x the
             total contribution of all 4 group members to the common pool.
         </li>
     </ul>
@@ -27,8 +27,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
     <p>In total: payout = (20 - your contribution to the project) + 0.5*(total contributions to the project)</p>
     <br>
 
-    <p>Your starting ECU's: 20</p>
-    <p id="tokens_kept">ECU's kept: 20</p>
+    <p class="bg-info">You have 20 ECU's</p>
 
     <form action="" method="post">
         <div class="form-group">
@@ -48,6 +47,9 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
             </script>
         </select>
         </div>
+
+        <p id="tokens_kept" class="bg-info">ECU's remaining after contribution: 20</p>
+
         <button name="submit" class="btn btn-default">Submit</button>
     </form>
     <?php
@@ -70,7 +72,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
         function update_ECU_Count() {
             var contribution = document.getElementById("r0_contribution");
             var x = contribution.options[contribution.selectedIndex].value;
-            document.getElementById("tokens_kept").innerHTML = "ECUs kept: " + (20 - x).toString();
+            document.getElementById("tokens_kept").innerHTML = "ECU's remaining after contribution: " + (20 - x).toString();
         }
     </script>
 </div>
