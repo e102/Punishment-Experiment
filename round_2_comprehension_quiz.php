@@ -32,16 +32,20 @@ authenticator::authenticate_access("round_2_comprehension_quiz.php", "round_1_re
 
     <h1>Part 2 Comprehension Quiz</h1>
     <form action="" method="post">
+        <div class="form-group">
         <p> In round one of the second part of the experiment you have contributed 20 ECUs to the Social Good. Can you
             still reward or punish the other participants?</p>
         <label><input type="radio" name="question_1" value="yes" required="required">yes</label><br>
         <label> <input type="radio" name="question_1" value="no">no</label><br>
+        </div>
 
+        <div class="form-group">
         <p>In round one of the second part of the experiment you have contributed 4 ECUs to the Public Good. You have
             also decided to reward player Blue with 4 ECU and punish player Green by 2 ECU. How many ECUs will you be
             spending in this round?</p>
-        <input type="text" name="question_2" required="required"><br>
-
+        <input type="text" name="question_2" required="required">
+        </div>
+        <br>
         <button name="submit" class="btn btn-default">Submit</button>
     </form>
 </div>
