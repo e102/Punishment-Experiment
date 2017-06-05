@@ -13,14 +13,14 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
 <body>
 <div class="container-fluid">
     <h1>Welcome to the practice round</h1>
-    <p>You are now entering the practice round. Any ECU's earned will not carry over to the real game.</p>
+    <p>You are now entering the practice round. Please use it as an opportunity to get familiar with the interface of the game. Any ECU's earned will not carry over to the real game.</p>
 
     <p>Remember</p>
     <ul class="list-group">
         <li class="list-group-item">You start with 20 ECUs</li>
         <li class="list-group-item">You can donate any number of these ECUs to the common pool</li>
-        <li class="list-group-item">Your final income is the sum of any ECUs you keep + 0.5 x the
-            total contribution of all 4 group members to the common pool.
+        <li class="list-group-item">The common good doubles all contributions and then shares them equally amongst all four players</li>
+        <li class="list-group-item">Your final income is the sum of any ECUs you keep + your share of the money produced by the common good
         </li>
     </ul>
     <br>
