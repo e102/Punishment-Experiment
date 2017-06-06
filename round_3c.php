@@ -19,8 +19,8 @@ echo("
 <body>
 <div class='container-fluid'>
 <h1>Welcome to Round $round_number</h1>
-<div id='display_before_load'>
-    <p id='intro_text'>Please wait for other players to connect. This should not take more than 60 seconds.</p>
+<div class = 'display_before_load'>
+    <p id='intro_text'>Please wait for other players to make their contributions.</p>
 </div>
 ");
 
@@ -28,7 +28,7 @@ include_once("includes/get_starting_ECU.php");
 $player_starting_ECU = get_starting_ECU($round_name, 1, $_SESSION["user_id"]);
 ?>
 
-<div id="display_after_load" style="display:none">
+<div class = "display_after_load" style="display:none">
     <p>All players have made their contributions</p>
     <br>
     <form action='' method='post'>
@@ -37,13 +37,7 @@ $player_starting_ECU = get_starting_ECU($round_name, 1, $_SESSION["user_id"]);
 </div>
 
 <script>
-    var random_time = Math.floor((Math.random() * 60) + 5);
-    setTimeout(load_page, random_time * 1000);
-
-    function load_page() {
-        document.getElementById("display_before_load").style.display = "none";
-        document.getElementById("display_after_load").style.display = "inline";
-    }
+    load_page(1, 25);
 </script>
 </div>
 </body>
