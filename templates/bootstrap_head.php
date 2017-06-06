@@ -10,6 +10,7 @@ function echo_head($title_name) {
     <link rel = 'stylesheet' type = 'text/css' href = 'styles/custom.css' >
     
     <script type='text/javascript' src='js/load_page.js'></script>
+    <script type='text/javascript' src='js/generate_reward_dropdowns.js'></script>
 
 
     <meta name = 'viewport' content = 'width = device-width, initial-scale = 1.0' >

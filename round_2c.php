@@ -18,54 +18,36 @@ echo("
 <body>
 <div class='container-fluid'>
 <h1>Welcome to Round $round_number</h1>
-<div id='display_before_load'>
-    <p id='intro_text'>Please wait for other players to connect. This should not take more than 60 seconds.</p>
-</div>
 ");
 
 include_once("includes/get_starting_ECU.php");
 $player_starting_ECU = get_starting_ECU($round_name, 1, $_SESSION["user_id"]);
 echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
+echo "<p id='starting_ECUs' class='bg-info'>You have $player_starting_ECU ECU's</p>"
 ?>
-
-<div id="display_after_load" style="display:none">
-    <p>All players have connected. Please enter your contribution below</p>
-    <br>
-    <p id="starting_ECUs"></p>
-    <p id='ECUs_kept'>ECUs remaining after your contribution</p>
-    <form action='' method='post'>
-        <p>How much would you like to give to the public good?</p>
-        <select id='contribution_dropdown' name='contribution_dropdown' onchange='update_ECU_Count()' class="form-control">
-            <script>
-                var contribution_dropdown = document.getElementById("contribution_dropdown");
-                for (var i = 0; i <= player_starting_ECU; i++) {
-                    var option = document.createElement("option");
-                    if (i == 0) {
-                        option.selected = 'selected';
-                    }
-                    option.text = i;
-                    option.value = i;
-                    contribution_dropdown.add(option);
+<form action='' method='post'>
+    <p>How much would you like to give to the public good?</p>
+    <select id='contribution_dropdown' name='contribution_dropdown' onchange='update_ECU_Count()' class="form-control">
+        <script>
+            var contribution_dropdown = document.getElementById("contribution_dropdown");
+            for (var i = 0; i <= player_starting_ECU; i++) {
+                var option = document.createElement("option");
+                if (i == 0) {
+                    option.selected = 'selected';
                 }
-            </script>
-        </select>
-        <br><br>
-        <button name='submit' class="btn btn-default">Submit</button>
-    </form>
-</div>
+                option.text = i;
+                option.value = i;
+                contribution_dropdown.add(option);
+            }
+        </script>
+    </select>
+    <?php echo "<p id='ECUs_kept' class='bg-info'>ECUs remaining after your contribution: $player_starting_ECU</p>" ?>
+    <br>
+    <button name='submit' class="btn btn-default">Submit</button>
+</form>
 </div>
 </body>
 <script>
-    var random_time = Math.floor((Math.random() * 60) + 5);
-    setTimeout(load_page, random_time * 1000);
-
-    function load_page() {
-        document.getElementById("display_before_load").style.display = "none";
-        document.getElementById("display_after_load").style.display = "inline";
-        document.getElementById("starting_ECUs").innerHTML = "ECUs this round:" + player_starting_ECU;
-        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + player_starting_ECU;
-    }
-
     function update_ECU_Count() {
         var contribution = document.getElementById("contribution_dropdown");
         var x = contribution.options[contribution.selectedIndex].value;

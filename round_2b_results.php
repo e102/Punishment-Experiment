@@ -58,11 +58,15 @@ $AI_2_final_ECU = get_final_ECU($round_name, 3, $_SESSION["user_id"]);
 $AI_3_final_ECU = get_final_ECU($round_name, 4, $_SESSION["user_id"]);
 display_final_ECU($player_final_ECU,$AI_1_final_ECU,$AI_2_final_ECU, $AI_3_final_ECU);
 ?>
-
+<div class="display_after_load" style="display: none">
 <form action="" method="post">
     <button name='submit' class="btn btn-default">Continue</button>
 </form>
 </div>
+</div>
+<script>
+    load_page(1,25)
+</script>
 </body>
 
 <?php
