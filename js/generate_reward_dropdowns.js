@@ -1,8 +1,11 @@
 function generate_reward_dropdowns(form, player_count) {
     for (var i = 2; i <= player_count; i++) {
+        var player_colour = get_player_colour(i);
+
         var player_name_text = document.createElement("p");
-        player_name_text.innerHTML = "Player " + i;
+        player_name_text.innerHTML = player_colour;
         player_name_text.className = "noEmptyLine";
+        player_name_text.style.color = player_colour;
         form.appendChild(player_name_text);
 
         var punish_or_reward_dropdown = document.createElement("select");
@@ -34,7 +37,7 @@ function generate_reward_dropdowns(form, player_count) {
 
         for (var a = 0; a <= (player_starting_ECU * 2); a += 2) {
             var option = document.createElement("option");
-            if (a == 0) {
+            if (a === 0) {
                 option.selected = 'selected';
             }
             option.text = a;
@@ -65,12 +68,27 @@ function generate_reward_dropdowns(form, player_count) {
         var amount_dropdown = document.getElementById("amount_dropdown_player_" + current_player);
 
         var selection = punish_or_reward_dropdown.options[punish_or_reward_dropdown.selectedIndex].value;
-        if (selection == "punish" || selection == "reward") {
+        if (selection === "punish" || selection === "reward") {
             amount_dropdown.style.display = "inline";
         }
         else {
             amount_dropdown.style.display = "none";
             amount_dropdown.selectedIndex = 0;
+        }
+    }
+
+    function get_player_colour(player_number) {
+        if (player_number === 1) {
+            return "you";
+        }
+        else if (player_number === 2) {
+            return "green";
+        }
+        else if (player_number === 3) {
+            return "blue";
+        }
+        else if (player_number === 4) {
+            return "red";
         }
     }
 }

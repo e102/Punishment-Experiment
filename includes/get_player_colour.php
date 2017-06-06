@@ -4,13 +4,13 @@ function get_player_colour($player_number){
         return "you";
     }
     elseif ($player_number == 2) {
-        return"green";
+        return"Green";
     }
     elseif ($player_number == 3) {
-        return "blue";
+        return "Blue";
     }
     elseif ($player_number == 4) {
-        return "red";
+        return "Red";
     }
     else{
         throw new Exception("Player number not recognized");
