@@ -4,6 +4,7 @@ function display_contributions($player_1_contribution, $player_2_contribution, $
     <div class = 'display_before_load'>
         <p>Please wait for other players to make their contributions</p>
     </div>
+    
     <div class ='display_after_load' style='display:none'>
     <h3>Donations:</h3>
     <ul>

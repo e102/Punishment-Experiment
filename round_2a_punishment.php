@@ -44,13 +44,11 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 <div class="display_after_load" style="display:none">
     <p class="noEmptyLine">All players have connected. Please enter your rewards/punishments below</p>
     <br>
-    <h1>Punish/Reward</h1>
-    <br>
+    <h1>Punishments/Rewards</h1>
     <p id="starting_ECUs" class="bg-info"></p>
     <br>
     <form id="punish_reward_form" action='' method='post'
           onsubmit="return check_ECU_use(player_count, player_starting_ECU)">
-        <p>Would you like to want to punish or reward another player?</p>
         <script>
             form = document.getElementById("punish_reward_form");
             for (var i = 2; i <= player_count; i++) {
@@ -62,6 +60,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
                 var punish_or_reward_dropdown = document.createElement("select");
                 punish_or_reward_dropdown.id = "punish_or_reward_dropdown_player_" + i;
                 punish_or_reward_dropdown.name = "punish_or_reward_dropdown_player_" + i;
+                punish_or_reward_dropdown.className = "form-control";
                 form.appendChild(punish_or_reward_dropdown);
 
                 var option_no = document.createElement("option");
@@ -82,6 +81,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
                 var amount_dropdown = document.createElement("select");
                 amount_dropdown.id = "amount_dropdown_player_" + i;
                 amount_dropdown.name = "amount_dropdown_player_" + i;
+                amount_dropdown.className = "form-control";
                 form.appendChild(amount_dropdown);
 
                 for (var a = 0; a <= (player_starting_ECU * 2); a += 2) {
@@ -186,4 +186,4 @@ if (isset($_POST['submit'])) {
 ?>
 
 <?php include("templates/footer.php") ?>
-</html >
+</html>
