@@ -5,7 +5,7 @@ function display_contributions($player_1_contribution, $player_2_contribution, $
         <p>Please wait for other players to make their contributions</p>
     </div>
     
-    <div class ='display_after_load' style='display:none'>
+    <div class='display_after_load' style='display:none'>
     <h3>Donations:</h3>
     <ul>
         <li>You donated $player_1_contribution ECUs to the common pool</li>
