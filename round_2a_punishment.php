@@ -40,16 +40,13 @@ $player_starting_ECU = intval((get_starting_ECU($round_name, 1, $_SESSION["user_
 
 echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 ?>
-<h1>Punish/Reward</h1>
-<div id="display_before_load">
-    <p id="intro_text">Please wait for other players to connect. This should not take more than 60 seconds.</p>
-</div>
 
-<div id="display_after_load" style="display:none">
+<div class="display_after_load" style="display:none">
     <p class="noEmptyLine">All players have connected. Please enter your rewards/punishments below</p>
     <br>
-    <p id="starting_ECUs"></p>
-    <p id='ECUs_kept'>ECUs remaining after your contribution</p>
+    <h1>Punish/Reward</h1>
+    <br>
+    <p id="starting_ECUs" class="bg-info"></p>
     <br>
     <form id="punish_reward_form" action='' method='post'
           onsubmit="return check_ECU_use(player_count, player_starting_ECU)">
@@ -129,7 +126,9 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
                 }
             }
         </script>
-        <br><br>
+        <br>
+        <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution</p>
+        <br>
         <button name='submit' class="btn btn-default">Submit</button>
     </form>
 </div>
@@ -137,21 +136,15 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 </body>
 
 <script>
-    var random_time = Math.floor((Math.random() * 60) + 5);
-    setTimeout(load_page, random_time * 1000);
-
-    function load_page() {
-        document.getElementById("display_before_load").style.display = "none";
-        document.getElementById("display_after_load").style.display = "inline";
-        document.getElementById("starting_ECUs").innerHTML = "ECUs this round:" + player_starting_ECU;
-        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your punishments/rewards:" + player_starting_ECU;
-    }
+    load_page(1, 5);
 
     function update_ECU_Count(player_count, player_starting_ECU) {
-        var ECU_used = 0.00;
+        var
+            ECU_used = 0.00;
 
         for (var i = 2; i <= player_count; i++) {
-            var amount_dropdown = document.getElementById("amount_dropdown_player_" + i);
+            var
+                amount_dropdown = document.getElementById("amount_dropdown_player_" + i);
             ECU_used += parseInt(amount_dropdown.options[amount_dropdown.selectedIndex].value / 2);
         }
 
@@ -159,9 +152,11 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
     }
 
     function check_ECU_use(player_count, player_starting_ECU) {
-        var ECU_used = 0;
+        var
+            ECU_used = 0;
         for (var i = 2; i <= player_count; i++) {
-            var amount_dropdown = document.getElementById("amount_dropdown_player_" + i);
+            var
+                amount_dropdown = document.getElementById("amount_dropdown_player_" + i);
             ECU_used += parseInt(amount_dropdown.options[amount_dropdown.selectedIndex].value) / 2;
         }
 
@@ -191,4 +186,4 @@ if (isset($_POST['submit'])) {
 ?>
 
 <?php include("templates/footer.php") ?>
-</html>
+</html >
