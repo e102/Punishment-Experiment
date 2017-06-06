@@ -19,7 +19,7 @@ authenticator::authenticate_access("raffle.php", "comprehension_questionnaire.ph
     <form action="" method="post">
         <div class="form-group">
             <label for="opinion">Enter your email below if you want to be entered into the prize draw</label>
-            <input type="text" required="required" id="user_email"/>
+            <input type="email" id="user_email"/>
         </div>
         <br><br>
         <button name="submit" class="btn btn-default">Submit</button>
