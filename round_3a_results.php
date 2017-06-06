@@ -62,6 +62,9 @@ display_final_ECU($player_final_ECU, $AI_1_final_ECU, $AI_2_final_ECU, $AI_3_fin
     <button name='submit' class="btn btn-default">Continue</button>
 </form>
 </div>
+<script>
+    load_page(0, 0);
+</script>
 </body>
 
 <?php
