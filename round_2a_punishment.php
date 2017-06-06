@@ -136,7 +136,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 </body>
 
 <script>
-    load_page(1, 5);
+    load_page(1, 25);
 
     function update_ECU_Count(player_count, player_starting_ECU) {
         var

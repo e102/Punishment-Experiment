@@ -51,11 +51,11 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
 
         echo("
     <body>
-    <div id='display_before_load'>
+    <div class='display_before_load'>
         <p id='intro_text'>Please wait for other players to make their contributions</p>
     </div>
     
-    <div id='display_after_load' style='display:none'>
+    <div class='display_after_load' style='display:none'>
     <h1>Round 1 results:</h1>
     
     <h3>Initial State:</h3>
@@ -110,7 +110,7 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
                 </script>
             </select>
             <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution</p>
-            <br><br>
+            <br>
             <button name='submit' class="btn btn-default">Submit</button>
         </form>
     </div>
@@ -157,15 +157,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 <script>
-    function load_page() {
-        document.getElementById("display_before_load").style.display = "none";
-        document.getElementById("display_after_load").style.display = "inline";
-        document.getElementById("starting_ECUs").innerHTML = "ECUs this round:" + player_starting_ECU;
-        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + player_starting_ECU;
-    }
-
-    var random_time = Math.floor((Math.random() * 30) + 1);
-    setTimeout(load_page, random_time * 1000);
+    load_page(1,25);
 
     function update_ECU_Count() {
         var contribution = document.getElementById("r1b_contribution");

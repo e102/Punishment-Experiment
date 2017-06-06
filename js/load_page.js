@@ -7,7 +7,7 @@ function load_page(minDelayInSeconds, maxDelayInSeconds) {
         change_element_style("display_after_load", "inline");
 
         document.getElementById("starting_ECUs").innerHTML = "ECUs this round:" + player_starting_ECU;
-        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your punishments/rewards:" + player_starting_ECU;
+        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining:" + player_starting_ECU;
 
 
         function change_element_style(className, style) {

@@ -41,7 +41,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
             </script>
         </select>
         <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution: 20</p>
-        <br><br>
+        <br>
         <button name='submit' class="btn btn-default">Submit</button>
     </form>
 </div>
