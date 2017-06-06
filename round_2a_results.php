@@ -50,24 +50,28 @@ for ($rewarded_player = 1; $rewarded_player <= $player_count; $rewarded_player++
     display_rewards($rewarded_player, $reward_1, $reward_2, $reward_3);
 }
 
-include_once ("includes/get_final_ECU.php");
-include_once ("includes/display_final_ECU.php");
+include_once("includes/get_final_ECU.php");
+include_once("includes/display_final_ECU.php");
 $player_final_ECU = get_final_ECU($round_name, 1, $_SESSION["user_id"]);
 $AI_1_final_ECU = get_final_ECU($round_name, 2, $_SESSION["user_id"]);
 $AI_2_final_ECU = get_final_ECU($round_name, 3, $_SESSION["user_id"]);
 $AI_3_final_ECU = get_final_ECU($round_name, 4, $_SESSION["user_id"]);
-display_final_ECU($player_final_ECU,$AI_1_final_ECU,$AI_2_final_ECU, $AI_3_final_ECU);
+display_final_ECU($player_final_ECU, $AI_1_final_ECU, $AI_2_final_ECU, $AI_3_final_ECU);
 ?>
-
-<form action="" method="post">
-    <button name='submit' class="btn btn-default">Continue</button>
-</form>
+<div class="display_after_load" style="display: none">
+    <form action="" method="post">
+        <button name='submit' class="btn btn-default">Continue</button>
+    </form>
 </div>
+</div>
+<script>
+    load_page(1, 25);
+</script>
 </body>
 
 <?php
 if (isset($_POST['submit'])) {
-    include_once ("includes/get_next_round_name.php");
+    include_once("includes/get_next_round_name.php");
     $next_round_address = "round_" . get_next_round_name($round_name) . ".php";
     echo("<script>window.open('$next_round_address', '_self')</script>");
 }

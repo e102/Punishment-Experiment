@@ -10,6 +10,9 @@ function display_rewards($target_player, $reward_1, $reward_2, $reward_3) {
     include_once "get_player_colour.php";
     $target_player_colour = get_player_colour($target_player);
 
+    echo "
+    <div class = 'display_after_load' style='display: none'>
+    ";
     if ($target_player == 1) {
         echo("
         <h3>Your rewards:</h3>
@@ -41,6 +44,7 @@ function display_rewards($target_player, $reward_1, $reward_2, $reward_3) {
     }
     echo("
     </ul>
+    </div>
     <br>
     ");
 }
