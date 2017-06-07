@@ -9,7 +9,6 @@ function echo_if_pay_dependent_on_ECU($user_ID, $message){
 
 function is_paid_based_on_ECU($user_ID){
     global $con;
-    echo "<script>console.log('user ID = ' + $user_ID)</script>";
     $sql_query = "SELECT paid_based_on_ECU FROM users WHERE user_ID = '$user_ID'";
     $run_query = mysqli_query($con, $sql_query);
     while ($row = mysqli_fetch_array($run_query)) {
