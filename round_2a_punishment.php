@@ -66,7 +66,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 </body>
 
 <script>
-    load_page(1, 1);    //TODO change to 1,25
+    load_page(1, 25);
 
     function update_ECU_Count(player_count, player_starting_ECU) {
         var ECU_used = 0.00;
@@ -82,8 +82,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
     function check_ECU_use(player_count, player_starting_ECU) {
         var ECU_used = 0;
         for (var i = 2; i <= player_count; i++) {
-            var
-                amount_dropdown = document.getElementById("amount_dropdown_player_" + i);
+            var amount_dropdown = document.getElementById("amount_dropdown_player_" + i);
             ECU_used += parseInt(amount_dropdown.options[amount_dropdown.selectedIndex].value) / 2;
         }
 
