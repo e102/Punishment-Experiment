@@ -24,20 +24,20 @@ authenticator::authenticate_access("environment_questionnaire.php","demographic_
         <div class="form-group">
             <?php
             include_once("includes/echo_likert_scale.php");
-            echo_likert_scale("I feel I invest more in relationship with people then I receive in return", "invest_more_in_relationship");
-            echo_likert_scale("I feel I lay out myself too much in view of what I achieve", "I_lay_out_myself_too_much");
-            echo_likert_scale("I feel I give people a lot of time and attention, but meet with little appreciation", "meet_with_little_appreciation");
-            echo_likert_scale("I feel that I can count on people to distract me from worries when I am under stress", "people_to_distract_me_from_worries");
-            echo_likert_scale("I feel that I can count on people to help me feel more relaxed when I am under pressure or tense", "people_help_me_feel_relaxed");
+            echo_likert_scale("I feel I put more into relationships with people then I get out of them", "invest_more_in_relationship");
+            echo_likert_scale("I feel I put too much effort in contrast to what I get back", "I_lay_out_myself_too_much");
+            echo_likert_scale("I feel I give people a lot of time and attention, but get little thanks", "meet_with_little_appreciation");
+            echo_likert_scale("I feel that I can count on people to distract me when I am worried about something", "people_to_distract_me_from_worries");
+            echo_likert_scale("I feel that I can count on people to help me relax when I am stressed", "people_help_me_feel_relaxed");
             echo_likert_scale("I feel that people around me accept me totally including my best points and my worst points", "accept_me_totally");
-            echo_likert_scale("I feel that I can count on people to care about me, regardless of what is happening to me", "people_care_about_me_regardless");
-            echo_likert_scale("I feel that I can count on people to help me feel better when I am feeling generally unhappy", "people_help_me_feel_better");
-            echo_likert_scale("I feel that I can count on people to console me when I am very upset", "people_console_me");
+            echo_likert_scale("I feel that I can count on people to care about me, regardless of what is happening in my life", "people_care_about_me_regardless");
+            echo_likert_scale("I feel that I can count on people to help me feel better when I am unhappy", "people_help_me_feel_better");
+            echo_likert_scale("I feel that I can count on people to comfort me when I am very upset", "people_console_me");
             echo_likert_scale("I feel that I have someone that I can turn to", "someone_I_can_turn_to");
-            echo_likert_scale("I feel that I have people that stand by me", "people_stand_by_me");
+            echo_likert_scale("I feel that I have people who stand by me", "people_stand_by_me");
             echo_likert_scale("I feel that I can talk openly about my problems", "I_can_talk_openly");
             echo_likert_scale("I feel that it is safe for me to show my weaknesses", "safe_to_show_weaknesses");
-            echo_likert_scale("I am satisfied with the balance of the things I give to the society and the ones I get in return", "balance_of_things_society");
+            echo_likert_scale("I am satisfied with the balance of the things I give to the people around me and what I get in return", "balance_of_things_society");
             ?>
         </div>
         <button name="submit" class="btn btn-default">Submit</button>
