@@ -15,7 +15,7 @@ authenticator::authenticate_access("round_0_comprehension_quiz.php", "hypothetic
 <div class="container-fluid">
     <h1>Instructions</h1>
     <p>You are now entering a game which you will play with other people with fake currency, Experiment Currency Units
-        (ECU’s) also referred to as tokens. There are three parts to the game, each part has three rounds, making it a
+        (ECUs) also referred to as tokens. There are three parts to the game, each part has three rounds, making it a
         total of 9 rounds.
         <?php
         include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
@@ -44,10 +44,7 @@ authenticator::authenticate_access("round_0_comprehension_quiz.php", "hypothetic
         </li>
     </ul>
 
-    <p>The number of the part as well as the round appear in the top left corner of the screen. In the top right corner
-        you can see how many more seconds remain for you to decide on the distribution of your tokens. Your decision
-        must be made before the time displayed is 0 seconds, otherwise the programme will automatically contribute 0 to
-        the Social Good. You start with 20 ECU in the beginning of every part, and then for next rounds the number
+    <p>The number of the part as well as the round appear in the top left corner of the screen. The amount of time for you to make the decision is limited to 60 seconds. If you fail to make a decision by thet time, the computer will automatically contribute 0 to the Social Good. You start with 20 ECU in the beginning of every part, and then for next rounds the number
         depends on how much money you have had in the previous round.
         After all players have made their decision, you will reach a results page in which all the contributions
         (including yours) will be shown. It shows you how many ECUs you have earned at the first stage. The income for
