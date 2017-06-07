@@ -1,15 +1,21 @@
 <?php
-function display_final_ECU($player_1_final_ECU, $player_2_final_ECU, $player_3_final_ECU, $player_4_final_ECU) {
-    echo("
+function display_final_ECU($round_name, $user_ID) {
+    echo "
     <div class='display_after_load' style='display: none'>
         <h3>Final ECU totals:</h3>
-        <ul>
-            <li>You finish the round with $player_1_final_ECU ECUs</li>
-            <li><span style='color: green'>Green</span> finished the round with $player_2_final_ECU ECUs</li>
-            <li><span style='color: blue'>Blue</span> finished the round with $player_3_final_ECU ECUs</li>
-            <li><span style='color: red'>Red</span> finished the round with $player_4_final_ECU ECUs</li>
-        </ul>
+        <ul>";
+
+    include_once "get_player_colour.php";
+    include_once "get_final_ECU.php";
+    include_once "get_game_number.php";
+    for ($i = 1; $i <= 4; $i++) {
+        $player_colour = get_player_colour($i, get_game_number($round_name));
+        $player_ECU = get_final_ECU($round_name, $i, $user_ID);
+        echo "<li><span style='color: $player_colour'>$player_colour</span> finished the round with $player_ECU ECUs</li>";
+    }
+
+    echo "</ul>
         <br>
     </div>
-    ");
+    ";
 }
