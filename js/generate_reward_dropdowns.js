@@ -1,6 +1,7 @@
-function generate_reward_dropdowns(form, player_count) {
+function generate_reward_dropdowns(form, player_count, game_number) {
     for (var i = 2; i <= player_count; i++) {
-        var player_colour = get_player_colour(i);
+        var player_colour = get_player_colour(i, game_number);
+        console.log(player_colour);
 
         var player_name_text = document.createElement("p");
         player_name_text.innerHTML = player_colour;
@@ -77,18 +78,63 @@ function generate_reward_dropdowns(form, player_count) {
         }
     }
 
-    function get_player_colour(player_number) {
-        if (player_number === 1) {
-            return "you";
+    function get_player_colour(player_number, game_number) {
+        if (game_number === 1) {
+            if (player_number === 1) {
+                return "you";
+            }
+            else if (player_number === 2) {
+                return "Green";
+            }
+            else if (player_number === 3) {
+                return "Blue";
+            }
+            else if (player_number === 4) {
+                return "Red";
+            }
+            else {
+                throw "Player number not recognized";
+            }
         }
-        else if (player_number === 2) {
-            return "green";
+
+        else if (game_number === 2) {
+            if (player_number === 1) {
+                return "you";
+            }
+            else if (player_number === 2) {
+                return "Orange";
+            }
+            else if (player_number === 3) {
+                return "Black";
+            }
+            else if (player_number === 4) {
+                return "Purple";
+            }
+            else {
+                throw "Player number not recognized";
+            }
         }
-        else if (player_number === 3) {
-            return "blue";
+
+        else if (game_number === 3) {
+            if (player_number === 1) {
+                return "you";
+            }
+            else if (player_number === 2) {
+                return "Brown";
+            }
+            else if (player_number === 3) {
+                return "Grey";
+            }
+            else if (player_number === 4) {
+                return "Pink";
+            }
+            else {
+                throw "Player number not recognized";
+            }
         }
-        else if (player_number === 4) {
-            return "red";
+
+        else {
+            throw "Game number not recognized!";
         }
     }
 }
