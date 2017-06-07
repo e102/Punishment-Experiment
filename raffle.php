@@ -18,8 +18,8 @@ authenticator::authenticate_access("raffle.php", "comprehension_questionnaire.ph
 
     <form action="" method="post">
         <div class="form-group">
-            <label for="opinion">Enter your email below if you want to be entered into the prize draw</label>
-            <input type="email" id="user_email"/>
+            <label for="email">Enter your email below if you want to be entered into the prize draw</label>
+            <input type="email" name="user_email"/>
         </div>
         <br><br>
         <button name="submit" class="btn btn-default">Submit</button>
@@ -28,15 +28,13 @@ authenticator::authenticate_access("raffle.php", "comprehension_questionnaire.ph
 </body>
 <?php
 if (isset($_POST['submit'])) {
-    $userID = $_SESSION["user_id"];
-
     $user_email = htmlspecialchars($_POST['user_email']);
 
     include_once("includes/generate_sql.php");
-    $sql = generate_sql("user_email", $user_email, $userID);
+    $sql = generate_sql("user_email", $user_email, $_SESSION["user_id"]);
 
     if (mysqli_query($con, $sql)) {
-        echo("<script>window.open('final_page.php', '_self')</script>");
+        echo("<script>window.open('final_page.php','_self')</script>");
     }
     else {
         echo("<script>alert('Could not connect to server')</script>");
