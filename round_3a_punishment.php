@@ -33,7 +33,7 @@ include_once("includes/display_contributions.php");
 $AI_1_contribution = get_contribution($round_name, 2, $_SESSION["user_id"]);
 $AI_2_contribution = get_contribution($round_name, 3, $_SESSION["user_id"]);
 $AI_3_contribution = get_contribution($round_name, 4, $_SESSION["user_id"]);
-display_contributions("N/A", $AI_1_contribution, $AI_2_contribution, $AI_3_contribution);
+display_contributions("N/A", $AI_1_contribution, $AI_2_contribution, $AI_3_contribution, $game_number);
 
 $player_starting_ECU = get_starting_ECU($round_name, 1, $_SESSION["user_id"]);
 
@@ -47,7 +47,8 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 <form id="punish_reward_form" action='' method='post'
       onsubmit="return check_ECU_use(player_count, player_starting_ECU)">
     <p>Would you like to want to punish or reward another player?</p>
-    <script>generate_reward_dropdowns(document.getElementById("punish_reward_form"), 4)</script>
+    <?php echo "<script> var game_number = $game_number </script>"?>
+    <script>generate_reward_dropdowns(document.getElementById("punish_reward_form"), 4, game_number)</script>
     <br>
     <p id='ECUs_kept' class="bg-info">ECUs remaining after your punishments/rewards</p>
     <br>

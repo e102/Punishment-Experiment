@@ -34,7 +34,7 @@ $player_contribution = "N/A";
 $AI_1_contribution = get_contribution($round_name, 2, $_SESSION["user_id"]);
 $AI_2_contribution = get_contribution($round_name, 3, $_SESSION["user_id"]);
 $AI_3_contribution = get_contribution($round_name, 4, $_SESSION["user_id"]);
-display_contributions($player_contribution, $AI_1_contribution, $AI_2_contribution, $AI_3_contribution);
+display_contributions($player_contribution, $AI_1_contribution, $AI_2_contribution, $AI_3_contribution, $game_number);
 
 include_once("includes/get_reward.php");
 include_once("includes/display_rewards_punisher_round.php");
@@ -44,7 +44,7 @@ for ($rewarded_player = 2; $rewarded_player <= $player_count; $rewarded_player++
     unset($players_array[$rewarded_player - 1]);
     $players_array = array_values($players_array);
     $reward = get_reward($round_name, 1, $rewarded_player, $_SESSION["user_id"]);
-    display_rewards_punisher_round($rewarded_player, $reward);
+    display_rewards_punisher_round($rewarded_player, $reward, $game_number);
 }
 echo("</ul>");
 echo("<br>");
@@ -55,7 +55,7 @@ $player_final_ECU = get_final_ECU($round_name, 1, $_SESSION["user_id"]);
 $AI_1_final_ECU = get_final_ECU($round_name, 2, $_SESSION["user_id"]);
 $AI_2_final_ECU = get_final_ECU($round_name, 3, $_SESSION["user_id"]);
 $AI_3_final_ECU = get_final_ECU($round_name, 4, $_SESSION["user_id"]);
-display_final_ECU($player_final_ECU, $AI_1_final_ECU, $AI_2_final_ECU, $AI_3_final_ECU);
+display_final_ECU($round_name, $_SESSION['user_id']);
 ?>
 
 <form action="" method="post">
@@ -70,7 +70,7 @@ display_final_ECU($player_final_ECU, $AI_1_final_ECU, $AI_2_final_ECU, $AI_3_fin
 <?php
 if (isset($_POST['submit'])) {
     include_once("includes/get_next_round_name.php");
-    $next_round_address = "round_" . $round_number . "_final_results.php";
+    $next_round_address = "round_" . $game_number . "_final_results.php";
     echo("<script>window.open('$next_round_address', '_self')</script>");
 }
 include("templates/footer.php") ?>

@@ -7,7 +7,9 @@ session_start();
 $player_count = 4;
 echo("<script>var player_count = $player_count;</script>");
 $round_name = "3c";
-$game_number = substr($round_name, 0, 1);
+include_once "includes/get_game_number.php";
+$game_number = get_game_number($round_name);
+
 include("templates/bootstrap_head.php");
 echo_head("Part " . $game_number . " Final Results");
 
@@ -19,21 +21,27 @@ echo("
 <div class='container-fluid'>
 ");
 
-include_once("includes/get_final_ECU.php");
+include_once ("includes/get_final_ECU.php");
+include_once "includes/get_player_colour.php";
 $player_final_ECU = get_final_ECU($round_name, 1, $_SESSION["user_id"]);
+$player_colour = get_player_colour(1, $game_number);
 $AI_1_final_ECU = get_final_ECU($round_name, 2, $_SESSION["user_id"]);
+$AI_1_colour = get_player_colour(2, $game_number);
 $AI_2_final_ECU = get_final_ECU($round_name, 3, $_SESSION["user_id"]);
+$AI_2_colour = get_player_colour(3, $game_number);
 $AI_3_final_ECU = get_final_ECU($round_name, 4, $_SESSION["user_id"]);
+$AI_3_colour = get_player_colour(4, $game_number);
 echo("
-    <h3>Round 3 Final ECU totals:</h3>
+    <h3>Final ECU totals:</h3>
     <ul>
-        <li>You finish the part with $player_final_ECU ECUs</li>
-        <li><span style='color: green'>Green</span> finished the part with $AI_1_final_ECU ECUs</li>
-        <li><span style='color: blue'>Blue</span> finished the part with $AI_2_final_ECU ECUs</li>
-        <li><span style='color: red'>Red</span> finished the part with $AI_3_final_ECU ECUs</li>
+        <li><span style='color: $player_colour'>You</span> finish the part with $player_final_ECU ECUs</li>
+        <li><span style='color: $AI_1_colour'>$AI_1_colour</span> finished the part with $AI_1_final_ECU ECUs</li>
+        <li><span style='color: $AI_2_colour'>$AI_2_colour</span> finished the part with $AI_2_final_ECU ECUs</li>
+        <li><span style='color: $AI_3_colour'>$AI_3_colour</span> finished the part with $AI_3_final_ECU ECUs</li>
     </ul>
     <br>
     ");
+
 include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
 $userID = $_SESSION["user_id"];
 echo_if_pay_dependent_on_ECU($userID, "These ECU's have been added to your bank. The more ECU's in your bank after all three rounds, the greater your chance of winning the prize.")
