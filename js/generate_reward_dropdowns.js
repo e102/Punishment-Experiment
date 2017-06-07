@@ -1,7 +1,6 @@
 function generate_reward_dropdowns(form, player_count, game_number) {
     for (var i = 2; i <= player_count; i++) {
         var player_colour = get_player_colour(i, game_number);
-        console.log(player_colour);
 
         var player_name_text = document.createElement("p");
         player_name_text.innerHTML = player_colour;

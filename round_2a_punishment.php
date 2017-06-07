@@ -53,7 +53,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
     <form id="punish_reward_form" action='' method='post'
           onsubmit="return check_ECU_use(player_count, player_starting_ECU)">
 
-        <?php echo "<script>var game_number = $game_number; player_count = $player_count</script>"; ?>
+        <?php echo "<script>var game_number = $game_number;</script>"; ?>
         <script>generate_reward_dropdowns(document.getElementById('punish_reward_form'), player_count, game_number);</script>
 
         <br>
@@ -66,15 +66,13 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
 </body>
 
 <script>
-    load_page(1, 1);
+    load_page(1, 1);    //TODO change to 1,25
 
     function update_ECU_Count(player_count, player_starting_ECU) {
-        var
-            ECU_used = 0.00;
+        var ECU_used = 0.00;
 
         for (var i = 2; i <= player_count; i++) {
-            var
-                amount_dropdown = document.getElementById("amount_dropdown_player_" + i);
+            var amount_dropdown = document.getElementById("amount_dropdown_player_" + i);
             ECU_used += parseInt(amount_dropdown.options[amount_dropdown.selectedIndex].value / 2);
         }
 
@@ -82,8 +80,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
     }
 
     function check_ECU_use(player_count, player_starting_ECU) {
-        var
-            ECU_used = 0;
+        var ECU_used = 0;
         for (var i = 2; i <= player_count; i++) {
             var
                 amount_dropdown = document.getElementById("amount_dropdown_player_" + i);
