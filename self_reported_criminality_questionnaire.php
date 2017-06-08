@@ -87,13 +87,7 @@ function generate_questionnaire() {
     echo_question("committed a traffic offense such as speeding, driving without insurance, etc...", "traffic_offense");
     echo_question("bought, or been given/passed on stolen property (for example, handling, buying, or helping to sell stolen goods).", "bought_or_given_stolen_property");
 
-    echo_question("comitted fraud, such as evading tax, pretending to be someone else, or using/creating false documents?", "fraud");
-//    echo_question("evaded tax (e.g. not paying income tax when being paid cash-in-hand).", "tax_evasion");
-//    echo_question("used stolen debit/credit cards.", "stolen_cards");
-//    echo_question("pretended to be somebody else (e.g. using a stolen ID).", "impersonation");
-//    echo_question("obtained goods through deception (e.g. items from work without permission).", "goods_by_deception");
-//    echo_question("falsified documents (e.g. producing/selling fake ID cards, passports etc.).", "falsified_documents");
-
+    echo_question("committed fraud, such as evading tax, pretending to be someone else, or using/creating false documents?", "fraud");
     echo_question("tried drugs (cannabis, amphetamines, ecstasy, heroin, cocaine, crack, LSD, GBH, crystal meth, tranquilisers, magic mushrooms).", "tried_drugs");
     echo_question("sold drugs (cannabis, amphetamines, ecstasy, heroin, cocaine, crack, LSD, GBH, crystal meth, tranquilisers, magic mushrooms).", "sold_drugs");
     echo_question("had sex with someone without their active consent.", "raped_someone");
