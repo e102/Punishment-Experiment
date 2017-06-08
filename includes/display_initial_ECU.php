@@ -11,12 +11,12 @@ function display_initial_ECU($round_name, $player_1_initial_ECU, $player_2_initi
     <body>
     <h1>Round $round_name results:</h1>
     
-    <h3>Initial State:</h3>
-    <ul>
-        <li>You entered the round with $player_1_initial_ECU ECUs</li>
-        <li><span style='color: $player_2_colour'>$player_2_colour</span> entered the round with $player_2_initial_ECU ECUs</li>
-        <li><span style='color: $player_3_colour'>$player_3_colour</span> entered the round with $player_3_initial_ECU ECUs</li>
-        <li><span style='color: $player_4_colour'>$player_4_colour</span> entered the round with $player_4_initial_ECU ECUs</li>
+    <h3>Initial ECUs:</h3>
+    <ul class='list-group'>
+        <li class='list-group-item'>You: $player_1_initial_ECU</li>
+        <li class='list-group-item'><span style='color: $player_2_colour'>$player_2_colour</span>: $player_2_initial_ECU</li>
+        <li class='list-group-item'><span style='color: $player_3_colour'>$player_3_colour</span>: $player_3_initial_ECU</li>
+        <li class='list-group-item'><span style='color: $player_4_colour'>$player_4_colour</span>: $player_4_initial_ECU</li>
     </ul>
     <br>
     ");
