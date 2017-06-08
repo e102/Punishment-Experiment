@@ -47,14 +47,14 @@ echo("
     <br>
     <h3>ECU Totals:</h3>
     <ul>
-        <li>You: $test_round_player_payoff ECU's</li>
+        <li>You: $test_round_player_payoff</li>
         <li><span style='color: green'>Green</span>: $test_round_AI_1_payoff</li>
         <li><span style='color: blue'>Blue</span>: $test_round_AI_2_payoff</li>
         <li><span style='color: red'>Red</span>: $test_round_AI_3_payoff</li>
     </ul>
     <br>
     
-    <p>Remember: This was a practice round and no ECU's will carry over to the next round.</p>
+    <p>Remember: This was a practice round and no ECUs will carry over to the next round.</p>
     
     <form action='' method='post'>
         <button name='submit' class='btn btn-default'>Continue to Part 1</button>
