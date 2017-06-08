@@ -9,7 +9,7 @@ include("templates/bootstrap_head.php");
 echo_head("Interviews");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("interviews.php", "comprehension_questionnaire.php");
+authenticator::authenticate_access("raffle.php", "comprehension_questionnaire.php");
 ?>
 
 <body>
