@@ -63,7 +63,7 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
     <div class='display_after_load' style='display:none'>
     <h1>Round 2 results:</h1>
     
-    <h3>Initial ECU:</h3>
+    <h3>ECU at the start of the round:</h3>
     <ul class='list-group'>
         <li class='list-group-item'>You: $round_1a_player_ECU_at_end</li>
         <li class='list-group-item'><span style='color: green'>Green</span>: $round_1a_AI_1_ECU_at_end</li>
@@ -71,7 +71,7 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
         <li class='list-group-item'><span style='color: red'>Red</span>: $round_1a_AI_3_ECU_at_end</li>
     </ul>
     
-    <h3>Donations:</h3>
+    <h3>Contributions to the Social Good:</h3>
     <ul class='list-group'>
         <li class='list-group-item'>You: $round_1b_player_contribution</li>
         <li class='list-group-item'><span style='color: green'>Green</span>: $round_1b_AI_1_contribution</li>
@@ -80,7 +80,7 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
     </ul>
     
     <br>
-    <h3>Final ECU totals:</h3>
+    <h3>ECU at the end of the round:</h3>
     <ul class='list-group'>
         <li class='list-group-item'>You: $round_1b_player_ECU_at_end</li>
         <li class='list-group-item'><span style='color: green'>Green</span>: $round_1b_AI_1_ECU_at_end</li>
@@ -93,9 +93,9 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
     }
 
     ?>
-        <h1>Welcome to round 3</h1>
+        <h1>Welcome to Part 1: Round 3</h1>
         <br>
-        <p>All players have connected. Please enter your contribution below</p>
+        <p>All players have connected. Please enter your contribution below.</p>
         <br>
         <p id="starting_ECUs" class="bg-info"></p>
         <form action='' method='post'>
@@ -114,7 +114,7 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
                     }
                 </script>
             </select>
-            <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution</p>
+            <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution </p>
             <br>
             <button name='submit' class="btn btn-default">Submit</button>
         </form>
@@ -166,7 +166,7 @@ if (isset($_POST['submit'])) {
     function update_ECU_Count() {
         var contribution = document.getElementById("r1c_contribution");
         var x = contribution.options[contribution.selectedIndex].value;
-        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + (player_starting_ECU - x).toString();
+        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution: " + (player_starting_ECU - x).toString();
     }
 </script>
 <?php include("templates/footer.php") ?>
