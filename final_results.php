@@ -4,14 +4,11 @@
 include("includes/connection.php");
 session_start();
 
-$player_count = 4;
-echo("<script>var player_count = $player_count;</script>");
-$round_name = "3c";
 include("templates/bootstrap_head.php");
 echo_head("Final Results");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("final_results.php", "round_3_final_results.php");
+authenticator::authenticate_access("final_results.php", "terms_and_conditions.php");
 
 echo("
 <body>
@@ -19,14 +16,15 @@ echo("
 ");
 
 include_once("includes/get_final_ECU.php");
-$player_final_ECU = get_final_ECU($round_name, 1, $_SESSION["user_id"]);
-$AI_1_final_ECU = get_final_ECU($round_name, 2, $_SESSION["user_id"]);
-$AI_2_final_ECU = get_final_ECU($round_name, 3, $_SESSION["user_id"]);
-$AI_3_final_ECU = get_final_ECU($round_name, 4, $_SESSION["user_id"]);
-echo("
-    <p>Thank you for taking your time to take part in the experiment, at the end of the experiment you will be asked to give your email with which you can enter the lottery to win the £50 Amazon voucher.<br>
-     There are still some questions about yourself that we would ask you to answer.</p>
-    ");
+$part_1_ECU_earned = get_final_ECU("1c", 1, $_SESSION['user_id']);
+$part_2_ECU_earned = get_final_ECU("2c", 1, $_SESSION['user_id']);
+$part_3_ECU_earned = get_final_ECU("3c", 1, $_SESSION['user_id']);
+$total_ECU_earned = $part_1_ECU_earned + $part_2_ECU_earned + $part_3_ECU_earned;
+echo "<h2>You have finished the experiment with <u>$total_ECU_earned</u> ECU's</h2>";
+include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
+echo_if_pay_dependent_on_ECU($_SESSION['user_id'], "This means you will be entered into the lottery " . $total_ECU_earned . "times");
+echo "<p>Thank you for taking your time to take part in the experiment, at the end of the experiment you will be asked to give your email with which you can enter the lottery to win the £50 Amazon voucher.<br>
+     There are still some questions about yourself that we would ask you to answer.</p>";
 ?>
 
 <form action="" method="post">
@@ -35,6 +33,9 @@ echo("
 </div>
 </body>
 
+<script>
+    load_page(0, 0);
+</script>
 <?php
 if (isset($_POST['submit'])) {
     include_once("includes/get_next_round_name.php");
