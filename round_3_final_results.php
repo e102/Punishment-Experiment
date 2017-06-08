@@ -33,11 +33,11 @@ $AI_3_final_ECU = get_final_ECU($round_name, 4, $_SESSION["user_id"]);
 $AI_3_colour = get_player_colour(4, $game_number);
 echo("
     <h3>Final ECU totals:</h3>
-    <ul>
-        <li><span style='color: $player_colour'>You</span> finish the part with $player_final_ECU ECUs</li>
-        <li><span style='color: $AI_1_colour'>$AI_1_colour</span> finished the part with $AI_1_final_ECU ECUs</li>
-        <li><span style='color: $AI_2_colour'>$AI_2_colour</span> finished the part with $AI_2_final_ECU ECUs</li>
-        <li><span style='color: $AI_3_colour'>$AI_3_colour</span> finished the part with $AI_3_final_ECU ECUs</li>
+    <ul class='list-group'>
+        <li class='list-group-item'><span style='color: $player_colour'>You</span> finish the part with $player_final_ECU ECUs</li>
+        <li class='list-group-item'><span style='color: $AI_1_colour'>$AI_1_colour</span> finished the part with $AI_1_final_ECU ECUs</li>
+        <li class='list-group-item'><span style='color: $AI_2_colour'>$AI_2_colour</span> finished the part with $AI_2_final_ECU ECUs</li>
+        <li class='list-group-item'><span style='color: $AI_3_colour'>$AI_3_colour</span> finished the part with $AI_3_final_ECU ECUs</li>
     </ul>
     <br>
     ");

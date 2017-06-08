@@ -38,7 +38,7 @@ display_contributions($player_contribution, $AI_1_contribution, $AI_2_contributi
 
 include_once("includes/get_reward.php");
 include_once("includes/display_rewards_punisher_round.php");
-echo("<h3>Rewards</h3><ul>");
+echo("<h3>Rewards</h3><ul class='list-group'>");
 for ($rewarded_player = 2; $rewarded_player <= $player_count; $rewarded_player++) {
     $players_array = array(1, 2, 3, 4);
     unset($players_array[$rewarded_player - 1]);

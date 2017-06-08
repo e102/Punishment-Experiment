@@ -12,10 +12,10 @@ function display_rewards_punisher_round($target_player, $reward, $game_number) {
     $player_colour = get_player_colour($target_player, $game_number);
 
     if ($reward >= 0) {
-        echo("<li><span style='color: $player_colour'>$player_colour</span> was rewarded for $reward ECU's</li>");
+        echo("<li class='list-group-item'><span style='color: $player_colour'>$player_colour</span> was rewarded for $reward ECU's</li>");
     }
     else {
         $reward = abs($reward);
-        echo("<li><span style='color: $player_colour'>$player_colour</span> was punished for $reward ECU's</li>");
+        echo("<li class='list-group-item'><span style='color: $player_colour'>$player_colour</span> was punished for $reward ECU's</li>");
     }
 }

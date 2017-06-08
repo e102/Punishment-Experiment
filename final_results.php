@@ -28,7 +28,7 @@ echo "<p>Thank you for taking your time to take part in the experiment, at the e
 ?>
 
 <form action="" method="post">
-    <button name='submit'>Continue to Questionnaire</button>
+    <button name='submit' class="btn btn-default">Continue to Questionnaire</button>
 </form>
 </div>
 </body>
