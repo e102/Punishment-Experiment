@@ -86,7 +86,6 @@ function generate_questionnaire() {
     echo_question("not counting events when you took money or other things from someone, beaten up or hit someone (for example punched, stabbed, kicked or head-butted someone). ", "assault");
     echo_question("committed a traffic offense such as speeding, driving without insurance, etc...", "traffic_offense");
     echo_question("bought, or been given/passed on stolen property (for example, handling, buying, or helping to sell stolen goods).", "bought_or_given_stolen_property");
-
     echo_question("committed fraud, such as evading tax, pretending to be someone else, or using/creating false documents?", "fraud");
     echo_question("tried drugs (cannabis, amphetamines, ecstasy, heroin, cocaine, crack, LSD, GBH, crystal meth, tranquilisers, magic mushrooms).", "tried_drugs");
     echo_question("sold drugs (cannabis, amphetamines, ecstasy, heroin, cocaine, crack, LSD, GBH, crystal meth, tranquilisers, magic mushrooms).", "sold_drugs");

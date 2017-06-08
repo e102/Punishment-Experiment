@@ -23,7 +23,7 @@ authenticator::authenticate_access("comprehension_questionnaire.php", "self_repo
     <form action="" method="post">
         <div class="form-group">
             <label for="opinion">What, in your opinion, was the goal of this experiment?</label>
-            <textarea class="form-control" rows="5" id="opinion" maxlength="100000" required="required"></textarea>
+            <textarea class="form-control" rows="5" id="opinion" name="opinion" maxlength="100000" required="required"></textarea>
         </div>
 
         <div class="form-group">
@@ -40,7 +40,7 @@ authenticator::authenticate_access("comprehension_questionnaire.php", "self_repo
 
         <div class="form-group">
             <label for="comment">Do you have any other comments?</label>
-            <textarea class="form-control" rows="5" id="comment" maxlength="100000"></textarea>
+            <textarea class="form-control" rows="5" id="comment" name="comment" maxlength="100000"></textarea>
         </div>
 
         <br><br>
