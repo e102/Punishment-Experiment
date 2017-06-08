@@ -127,7 +127,7 @@ if (isset($_POST['submit'])) {
     global $round_1a_AI_2_ECU_at_end;
     $round_1b_AI_2_contribution = calculate_AI_contribution($round_1a_player_contribution, $round_1a_AI_2_ECU_at_end, 3);
     global $round_1a_AI_2_ECU_at_end;
-    $round_1b_AI_3_contribution = calculate_AI_contribution($round_1a_player_contribution, $round_1a_AI_2_ECU_at_end, 4);
+    $round_1b_AI_3_contribution = rand(0, 4);
 
     $total_contribution = $round_1b_player_contribution + $round_1b_AI_1_contribution + $round_1b_AI_2_contribution + $round_1b_AI_3_contribution;
 
