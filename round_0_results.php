@@ -38,19 +38,19 @@ echo("
     
     <h3>Donations:</h3>
     <ul>
-        <li>You donated $test_round_player_contribution ECUs to the common pool</li>
-        <li><span style='color: green'>Green</span> donated $test_round_AI_1_contribution ECUs to the common pool</li>
-        <li><span style='color: blue'>Blue</span> donated $test_round_AI_2_contribution ECUs to the common pool</li>
-        <li><span style='color: red'>Red</span> donated $test_round_AI_3_contribution ECUs to the common pool</li>
+        <li>You: $test_round_player_contribution</li>
+        <li><span style='color: green'>Green</span>: $test_round_AI_1_contribution</li>
+        <li><span style='color: blue'>Blue</span>: $test_round_AI_2_contribution</li>
+        <li><span style='color: red'>Red</span>: $test_round_AI_3_contribution</li>
     </ul>
     
     <br>
     <h3>ECU Totals:</h3>
     <ul>
-        <li>You have $test_round_player_payoff ECU's</li>
-        <li><span style='color: green'>Green</span> has $test_round_AI_1_payoff ECU's</li>
-        <li><span style='color: blue'>Blue</span> has $test_round_AI_2_payoff ECU's</li>
-        <li><span style='color: red'>Red</span> has $test_round_AI_3_payoff ECU's</li>
+        <li>You: $test_round_player_payoff ECU's</li>
+        <li><span style='color: green'>Green</span>: $test_round_AI_1_payoff</li>
+        <li><span style='color: blue'>Blue</span>: $test_round_AI_2_payoff</li>
+        <li><span style='color: red'>Red</span>: $test_round_AI_3_payoff</li>
     </ul>
     <br>
     

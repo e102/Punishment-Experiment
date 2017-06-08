@@ -60,28 +60,28 @@ authenticator::authenticate_access("round_1_results.php", "round_1c.php");
     <h1>Round 3 results:</h1>
     
     <h3>Initial State:</h3>
-    <ul>
-        <li>You entered the round with $round_1b_player_ECU_at_end ECUs</li>
-        <li><span style='color: green'>Green</span> entered the round with $round_1b_AI_1_ECU_at_end ECUs</li>
-        <li><span style='color: blue'>Blue</span> entered the round with $round_1b_AI_2_ECU_at_end ECUs</li>
-        <li><span style='color: red'>Red</span> entered the round with $round_1b_AI_3_ECU_at_end ECUs</li>
+    <ul class='list-group'>
+        <li class='list-group-item'>You:$round_1b_player_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: green'>Green</span>: $round_1b_AI_1_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: blue'>Blue</span>: $round_1b_AI_2_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: red'>Red</span>: $round_1b_AI_3_ECU_at_end</li>
     </ul>
     
     <h3>Donations:</h3>
-    <ul>
-        <li>You donated $round_1c_player_contribution ECUs to the common pool</li>
-        <li><span style='color: green'>Green</span> donated $round_1c_AI_1_contribution ECUs to the common pool</li>
-        <li><span style='color: blue'>Blue</span> donated $round_1c_AI_2_contribution ECUs to the common pool</li>
-        <li><span style='color: red'>Red</span> donated $round_1c_AI_3_contribution ECUs to the common pool</li>
+    <ul class='list-group'>
+        <li class='list-group-item'>You: $round_1c_player_contribution</li>
+        <li class='list-group-item'><span style='color: green'>Green</span>: $round_1c_AI_1_contribution</li>
+        <li class='list-group-item'><span style='color: blue'>Blue</span>: $round_1c_AI_2_contribution</li>
+        <li class='list-group-item'><span style='color: red'>Red</span>: $round_1c_AI_3_contribution</li>
     </ul>
     
     <br>
     <h3>Final ECU totals:</h3>
-    <ul>
-        <li>You have $round_1c_player_ECU_at_end ECU's</li>
-        <li><span style='color: green'>Green</span> has $round_1c_AI_1_ECU_at_end ECU's</li>
-        <li><span style='color: blue'>Blue</span> has $round_1c_AI_2_ECU_at_end ECU's</li>
-        <li><span style='color: red'>Red</span> has $round_1c_AI_3_ECU_at_end ECU's</li>
+    <ul class='list-group'>
+        <li class='list-group-item'>You: $round_1c_player_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: green'>Green</span>: $round_1c_AI_1_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: blue'>Blue</span>: $round_1c_AI_2_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: red'>Red</span>: $round_1c_AI_3_ECU_at_end</li>
     </ul>
     ");
     }
@@ -107,6 +107,8 @@ authenticator::authenticate_access("round_1_results.php", "round_1c.php");
             throw new Exception("Unexpected error");
         }
 
+        include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
+        echo_if_pay_dependent_on_ECU($userID, "These ECU's have been added to your bank. The more ECU's in your bank after all three rounds, the greater your chance of winning the prize.");
         echo("
                 <p>You have finished the part with $round_1c_player_ECU_at_end ECU's.</p>
                 <form action='' method='post'>
@@ -114,8 +116,6 @@ authenticator::authenticate_access("round_1_results.php", "round_1c.php");
                 </form>
                 </div>
             ");
-        include_once "includes/echo_if_pay_is_dependent_on_ECU.php";
-        echo_if_pay_dependent_on_ECU($userID, "These ECU's have been added to your bank. The more ECU's in your bank after all three rounds, the greater your chance of winning the prize.");
     }
 
     ?>

@@ -63,29 +63,29 @@ authenticator::authenticate_access("round_1c.php", "round_1b.php");
     <div class='display_after_load' style='display:none'>
     <h1>Round 2 results:</h1>
     
-    <h3>Initial State:</h3>
-    <ul>
-        <li>You entered the round with $round_1a_player_ECU_at_end ECUs</li>
-        <li><span style='color: green'>Green</span> entered the round with $round_1a_AI_1_ECU_at_end ECUs</li>
-        <li><span style='color: blue'>Blue</span> entered the round with $round_1a_AI_2_ECU_at_end ECUs</li>
-        <li><span style='color: red'>Red</span>  entered the round with $round_1a_AI_3_ECU_at_end ECUs</li>
+    <h3>Initial ECU:</h3>
+    <ul class='list-group'>
+        <li class='list-group-item'>You: $round_1a_player_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: green'>Green</span>: $round_1a_AI_1_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: blue'>Blue</span>: $round_1a_AI_2_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: red'>Red</span>: $round_1a_AI_3_ECU_at_end</li>
     </ul>
     
     <h3>Donations:</h3>
-    <ul>
-        <li>You donated $round_1b_player_contribution ECUs to the common pool</li>
-        <li><span style='color: green'>Green</span> donated $round_1b_AI_1_contribution ECUs to the common pool</li>
-        <li><span style='color: blue'>Blue</span> donated $round_1b_AI_2_contribution ECUs to the common pool</li>
-        <li><span style='color: red'>Red</span>  donated $round_1b_AI_3_contribution ECUs to the common pool</li>
+    <ul class='list-group'>
+        <li class='list-group-item'>You: $round_1b_player_contribution</li>
+        <li class='list-group-item'><span style='color: green'>Green</span>: $round_1b_AI_1_contribution</li>
+        <li class='list-group-item'><span style='color: blue'>Blue</span>: $round_1b_AI_2_contribution</li>
+        <li class='list-group-item'><span style='color: red'>Red</span>: $round_1b_AI_3_contribution</li>
     </ul>
     
     <br>
     <h3>Final ECU totals:</h3>
-    <ul>
-        <li>You have $round_1b_player_ECU_at_end ECU's</li>
-        <li><span style='color: green'>Green</span> has $round_1b_AI_1_ECU_at_end ECU's</li>
-        <li><span style='color: blue'>Blue</span> has $round_1b_AI_2_ECU_at_end ECU's</li>
-        <li><span style='color: red'>Red</span>  has $round_1b_AI_3_ECU_at_end ECU's</li>
+    <ul class='list-group'>
+        <li class='list-group-item'>You: $round_1b_player_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: green'>Green</span>: $round_1b_AI_1_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: blue'>Blue</span>: $round_1b_AI_2_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: red'>Red</span> $round_1b_AI_3_ECU_at_end</li>
     </ul>
     <br>
     ");
