@@ -13,7 +13,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
 <body>
 <div class="container-fluid">
     <h1>Welcome to the practice round</h1>
-    <p>You are now entering the practice round. Please use it as an opportunity to get familiar with the interface of the game. Any ECU's earned will not carry over to the real game.</p>
+    <p>You are now entering the practice round. Please use it as an opportunity to get familiar with the interface of the game. Any ECUs earned will not carry over to the real game.</p>
 
     <p>Remember</p>
     <ul class="list-group">
@@ -27,7 +27,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
     <p>In total: payout = (20 - your contribution to the project) + 0.5*(total contributions to the project)</p>
     <br>
 
-    <p class="bg-info">You have 20 ECU's</p>
+    <p class="bg-info">You have 20 ECUs</p>
 
     <form action="" method="post">
         <div class="form-group">
@@ -48,7 +48,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
         </select>
         </div>
 
-        <p id="tokens_kept" class="bg-info">ECU's remaining after contribution: 20</p>
+        <p id="tokens_kept" class="bg-info">ECUs remaining after contribution: 20</p>
 
         <button name="submit" class="btn btn-default">Submit</button>
     </form>
@@ -72,7 +72,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
         function update_ECU_Count() {
             var contribution = document.getElementById("r0_contribution");
             var x = contribution.options[contribution.selectedIndex].value;
-            document.getElementById("tokens_kept").innerHTML = "ECU's remaining after contribution: " + (20 - x).toString();
+            document.getElementById("tokens_kept").innerHTML = "ECUs remaining after contribution: " + (20 - x).toString();
         }
     </script>
 </div>
