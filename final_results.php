@@ -8,7 +8,7 @@ include("templates/bootstrap_head.php");
 echo_head("Final Results");
 
 include_once("includes/Authenticator.php");
-authenticator::authenticate_access("final_results.php", "terms_and_conditions.php");
+authenticator::authenticate_access("final_results.php", "round_3_final_results.php");
 
 echo("
 <body>
