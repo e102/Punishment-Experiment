@@ -27,7 +27,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
     <p>In total: payout = (20 - your contribution to the project) + 0.5*(total contributions to the project)</p>
     <br>
 
-    <p class="bg-info">You have 20 ECU's</p>
+    <p class="bg-info">You have 20 ECUs</p>
 
     <form action="" method="post">
         <div class="form-group">
@@ -48,7 +48,7 @@ authenticator::authenticate_access("round_0.php", "round_0_comprehension_quiz.ph
         </select>
         </div>
 
-        <p id="tokens_kept" class="bg-info">ECU's remaining after contribution: 20</p>
+        <p id="tokens_kept" class="bg-info">ECUs remaining after contribution: 20</p>
 
         <button name="submit" class="btn btn-default">Submit</button>
     </form>
