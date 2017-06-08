@@ -109,7 +109,7 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
                     }
                 </script>
             </select>
-            <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution</p>
+            <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution </p>
             <br>
             <button name='submit' class="btn btn-default">Submit</button>
         </form>
@@ -162,7 +162,7 @@ if (isset($_POST['submit'])) {
     function update_ECU_Count() {
         var contribution = document.getElementById("r1b_contribution");
         var x = contribution.options[contribution.selectedIndex].value;
-        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + (player_starting_ECU - x).toString();
+        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution: " + (player_starting_ECU - x).toString();
     }
 </script>
 <?php include("templates/footer.php") ?>
