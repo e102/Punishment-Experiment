@@ -13,6 +13,7 @@ authenticator::authenticate_access("round_1_instructions.php", "round_0_results.
 <div class="container-fluid">
     <p>
         You will now play Part 1. The rules are the same as the practice game, but you will be playing with real people.<br>
+        <br>
         Remember:
     </p>
     <ul class="list-group">
