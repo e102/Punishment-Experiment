@@ -80,7 +80,7 @@ function generate_reward_dropdowns(form, player_count, game_number) {
     function get_player_colour(player_number, game_number) {
         if (game_number === 1) {
             if (player_number === 1) {
-                return "you";
+                return "You";
             }
             else if (player_number === 2) {
                 return "Green";
@@ -92,13 +92,13 @@ function generate_reward_dropdowns(form, player_count, game_number) {
                 return "Red";
             }
             else {
-                throw "Player number not recognized";
+                throw "Player number not recognised";
             }
         }
 
         else if (game_number === 2) {
             if (player_number === 1) {
-                return "you";
+                return "You";
             }
             else if (player_number === 2) {
                 return "Orange";
@@ -110,13 +110,13 @@ function generate_reward_dropdowns(form, player_count, game_number) {
                 return "Purple";
             }
             else {
-                throw "Player number not recognized";
+                throw "Player number not recognised";
             }
         }
 
         else if (game_number === 3) {
             if (player_number === 1) {
-                return "you";
+                return "You";
             }
             else if (player_number === 2) {
                 return "Brown";
@@ -128,12 +128,12 @@ function generate_reward_dropdowns(form, player_count, game_number) {
                 return "Pink";
             }
             else {
-                throw "Player number not recognized";
+                throw "Player number not recognised";
             }
         }
 
         else {
-            throw "Game number not recognized!";
+            throw "Game number not recognised!";
         }
     }
 }
