@@ -24,35 +24,50 @@ function upload_AI_rewards($player_count, $user_ID, $round_name) {
     }
 
     function calculate_reward($AI_type, $AI_contribution, $target_contribution, $ECU_available) {
-        //lazy AI
-        if ($AI_type == "lazy") {
+        //lazy AI (for the purposes of this research lazy == generous)
+        elseif ($AI_type == "lazy") {
             $reward = 0;
-        }
-        //normal AI. Rewards and Punishes
-        elseif ($AI_type == "normal") {
-            if (($target_contribution - $AI_contribution) <= -6) {
-                $reward = -8;
+             if (($target_contribution - $AI_contribution) <= -6) {
+                $reward = rand(-8, -14);
             }
             elseif (($target_contribution - $AI_contribution) <= -3) {
-                $reward = -4;
+                $reward = rand(-2, -6);
             }
             elseif (($target_contribution - $AI_contribution) <= 3 && ($target_contribution - $AI_contribution) >= -3) {
                 $reward = 0;
             }
             elseif (($target_contribution - $AI_contribution) >= 3) {
-                $reward = 4;
+                $reward = rand(6, 10);
             }
             elseif (($target_contribution - $AI_contribution) >= 6) {
-                $reward = 8;
+                $reward = rand(12, 16);
+            }
+        }
+        //normal AI. Rewards and Punishes
+        elseif ($AI_type == "normal") {
+            if (($target_contribution - $AI_contribution) <= -6) {
+                $reward = rand(-6, -8);
+            }
+            elseif (($target_contribution - $AI_contribution) <= -3) {
+                $reward = rand(-2, -4);
+            }
+            elseif (($target_contribution - $AI_contribution) <= 3 && ($target_contribution - $AI_contribution) >= -3) {
+                $reward = 0;
+            }
+            elseif (($target_contribution - $AI_contribution) >= 3) {
+                $reward = rand(2, 4);
+            }
+            elseif (($target_contribution - $AI_contribution) >= 6) {
+                $reward = rand(4, 10);
             }
         }
         //mean AI. Only punishes
         elseif ($AI_type == "mean") {
             if (($target_contribution - $AI_contribution) <= -6) {
-                $reward = -8;
+                $reward = rand(-8, -14);
             }
             elseif (($target_contribution - $AI_contribution) <= -3) {
-                $reward = -4;
+                $reward = rand(-2, -6);
             }
             elseif (($target_contribution - $AI_contribution) > -3) {
                 $reward = 0;
@@ -74,15 +89,15 @@ function upload_AI_rewards($player_count, $user_ID, $round_name) {
         global $round_2a_total_contribution;
         if ($AI_number == 1) {
             global $round_2a_AI_1_contribution;
-            return 20 - $round_2a_AI_1_contribution +($round_2a_total_contribution * 0.4);
+            return 20 - $round_2a_AI_1_contribution +($round_2a_total_contribution * 0.5);
         }
         if ($AI_number == 2) {
             global $round_2a_AI_2_contribution;
-            return 20 - $round_2a_AI_2_contribution +($round_2a_total_contribution * 0.4);
+            return 20 - $round_2a_AI_2_contribution +($round_2a_total_contribution * 0.5);
         }
         if ($AI_number == 3) {
             global $round_2a_AI_3_contribution;
-            return 20 - $round_2a_AI_3_contribution +($round_2a_total_contribution * 0.4);
+            return 20 - $round_2a_AI_3_contribution +($round_2a_total_contribution * 0.5);
         }
         else{
             throw new Exception("AI ECU Available not found");
