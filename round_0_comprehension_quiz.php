@@ -59,8 +59,7 @@ authenticator::authenticate_access("round_0_comprehension_quiz.php", "hypothetic
         </li>
     </ul>
     <p>
-        In sum:
-        (20 - your contribution to the project) + 0.5*(total contributions to the project)</p><br>
+        In Total: 20 - your contribution + 0.5*(the total contribution)</p><br>
 
     <h1>Comprehension Quiz</h1>
     <p>These questions are designed to check if you have understood the instructions. The programme will not allow you

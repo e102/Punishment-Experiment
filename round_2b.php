@@ -17,7 +17,7 @@ authenticator::authenticate_access("round_" . $round_name . ".php", "round_" . g
 echo("
 <body>
 <div class='container-fluid'>
-<h1>Welcome to Round $round_number</h1>
+<h1>Welcome to Part $game_number:Round $round_number</h1>
 ");
 
 include_once("includes/get_starting_ECU.php");

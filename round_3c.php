@@ -18,7 +18,7 @@ authenticator::authenticate_access("round_" . $round_name . ".php", "round_".get
 echo("
 <body>
 <div class='container-fluid'>
-<h1>Welcome to Round $round_number</h1>
+<h1>Welcome to Part $game_number:Round $round_number</h1>
 <div class = 'display_before_load'>
     <p id='intro_text'>Please wait for other players to make their contributions.</p>
 </div>
