@@ -17,8 +17,8 @@ authenticator::authenticate_access("environment_questionnaire.php","demographic_
 
 <body>
 <div class="container-fluid">
-    <p>All the information with which you could be identified will be kept in strict confidentiality. These answers do
-        not influence your chances to win the prize and will not be communicated to other participants. </p>
+    <p>All the information with which you could be identified will be kept in strict confidentiality separately from any information that could be used to identify you. These answers do
+        not influence your chances to win the prize and will not be communicated to other participants or anyone not directly involved in data analysis. </p>
 
     <form action="" method="post">
         <div class="form-group">
