@@ -12,8 +12,8 @@ authenticator::authenticate_access("round_1a.php", "round_1_instructions.php");
 
 <body>
 <div class="container-fluid">
-    <h1>Welcome to round 1</h1>
-    <p class="bg-info">You start with 20 ECU's</p>
+    <h1>Welcome to Part 1: Round 1</h1>
+    <p class="bg-info">You start with 20 ECUs</p>
     <form action='' method='post'>
         <p>How much would you like to give to the public good?</p>
         <select id='r1a_contribution' name='r1a_contribution' onchange='update_ECU_Count()' class="form-control">
@@ -23,7 +23,7 @@ authenticator::authenticate_access("round_1a.php", "round_1_instructions.php");
             }
             ?>
         </select>
-        <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution:20</p>
+        <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution: 20</p>
         <button name='submit' class="btn btn-default">Submit</button>
     </form>
 </div>
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     $round_1a_player_contribution = (int)htmlspecialchars($_POST["r1a_contribution"]);
     $round_1a_AI_1_contribution = rand(14, 15);
     $round_1a_AI_2_contribution = rand(8, 12);
-    $round_1a_AI_3_contribution = rand(0, 3);
+    $round_1a_AI_3_contribution = rand(5, 9);
 
     $total_contribution = $round_1a_player_contribution + $round_1a_AI_1_contribution + $round_1a_AI_2_contribution + $round_1a_AI_3_contribution;
 
