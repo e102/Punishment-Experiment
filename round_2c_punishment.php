@@ -87,7 +87,7 @@ echo("<script>var player_starting_ECU = $player_starting_ECU</script>");
         }
 
         if (ECU_used > player_starting_ECU) {
-            alert("You're choices cost " + ECU_used + " ECUs but you only have " + player_starting_ECU + " ECUs. Reduce your punishments/rewards to continue.");
+             alert("Your choices cost " + ECU_used + " ECUs, but you only have " + player_starting_ECU + " ECUs. Reduce your punishments/rewards to continue.");
             return false;
         }
         else {
