@@ -52,13 +52,13 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
         echo("
     <body>
     <div class='display_before_load'>
-        <p id='intro_text'>Please wait for other players to make their contributions</p>
+        <p id='intro_text'>Please wait for other players to make their contributions.</p>
     </div>
     
     <div class='display_after_load' style='display:none'>
-    <h1>Round 1 results:</h1>
+    <h1>Part 1: Round 1 results:</h1>
     
-    <h3>Initial ECU:</h3>
+    <h3>Starting ECU count:</h3>
     <ul class='list-group'>
         <li class='list-group-item'>You: 20</li>
         <li class='list-group-item'><span style='color: green'>Green</span>: 20</li>
@@ -66,7 +66,7 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
         <li class='list-group-item'><span style='color: red'>Red</span>: 20</li>
     </ul>
     
-    <h3>Donations:</h3>
+    <h3>Player contributions:</h3>
     <ul class='list-group'>
         <li class='list-group-item'>You: $round_1a_player_contribution</li>
         <li class='list-group-item'><span style='color: green'>Green</span>: $round_1a_AI_1_contribution</li>
@@ -75,12 +75,12 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
     </ul>
     
     <br>
-    <h3>Final ECU totals:</h3>
+    <h3>ECU left after the round:</h3>
     <ul class='list-group'>
         <li class='list-group-item'>You: $round_1a_player_ECU_at_end</li>
         <li class='list-group-item'><span style='color: green'>Green</span>: $round_1a_AI_1_ECU_at_end</li>
         <li class='list-group-item'><span style='color: blue'>Blue</span>: $round_1a_AI_2_ECU_at_end</li>
-        <li class='list-group-item'><span style='color: red'>Red</span> $round_1a_AI_3_ECU_at_end</li>
+        <li class='list-group-item'><span style='color: red'>Red</span>: $round_1a_AI_3_ECU_at_end</li>
     </ul>
     <br>
     ");
@@ -88,9 +88,9 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
     }
 
     ?>
-        <h1>Welcome to round 2</h1>
+        <h1>Welcome to Part 1: Round 2</h1>
         <br>
-        <p>All players have connected. Please enter your contribution below</p>
+        <p>All players have connected. Please enter your contribution below.</p>
         <br>
         <p id="starting_ECUs" class="bg-info"></p>
         <form action='' method='post'>
@@ -109,7 +109,7 @@ authenticator::authenticate_access("round_1b.php", "round_1a.php");
                     }
                 </script>
             </select>
-            <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution</p>
+            <p id='ECUs_kept' class="bg-info">ECUs remaining after your contribution </p>
             <br>
             <button name='submit' class="btn btn-default">Submit</button>
         </form>
@@ -127,7 +127,7 @@ if (isset($_POST['submit'])) {
     global $round_1a_AI_2_ECU_at_end;
     $round_1b_AI_2_contribution = calculate_AI_contribution($round_1a_player_contribution, $round_1a_AI_2_ECU_at_end, 3);
     global $round_1a_AI_2_ECU_at_end;
-    $round_1b_AI_3_contribution = rand(0, 4);
+    $round_1b_AI_3_contribution = rand(3, 10);
 
     $total_contribution = $round_1b_player_contribution + $round_1b_AI_1_contribution + $round_1b_AI_2_contribution + $round_1b_AI_3_contribution;
 
@@ -162,7 +162,7 @@ if (isset($_POST['submit'])) {
     function update_ECU_Count() {
         var contribution = document.getElementById("r1b_contribution");
         var x = contribution.options[contribution.selectedIndex].value;
-        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution:" + (player_starting_ECU - x).toString();
+        document.getElementById("ECUs_kept").innerHTML = "ECUs remaining after your contribution: " + (player_starting_ECU - x).toString();
     }
 </script>
 <?php include("templates/footer.php") ?>
